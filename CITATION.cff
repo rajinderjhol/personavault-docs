@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "Beyond AI Audit Trails: The Three Foundations of Verifiable Decision Evidence"
+version: 3.1
+message: "If you cite this work, please cite the paper and, if you use the benchmark, the benchmark's records."
+authors:
+  - given-names: Rajinder
+    family-names: Jhol
+type: generic
+license: CC-BY-4.0
+date-released: 2026-11-05
+url: "https://github.com/rajinderjhol/personavault-docs"
+abstract: >-
+  A three-ontology framework for verifiable decision evidence — sequence,
+  provenance, and authority — with a working artifact (the Clinical Decision
+  Object) and an offline verifier (the Clinical Decision Receipt). Includes a
+  ten-record benchmark that tests the verifier against adversarial and
+  incomplete records.
