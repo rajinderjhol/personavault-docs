@@ -1,0 +1,596 @@
+{
+  "ai_participants": [
+    {
+      "license": "unspecified",
+      "model_class": null,
+      "model_id": "unspecified/unspecified",
+      "model_version": null,
+      "provider": "sovereign_local",
+      "role": "generator"
+    }
+  ],
+  "attestation": {
+    "attested_at": "2026-11-05T07:28:43.626771+00:00",
+    "signature_b64": "5VNPqAeqAh3f8Dw9C5IpwnaITFMf80+/D3aX/NqCTXu0Iz24o5qQBI4hvg9kkBzA7b3XC42ugqNGIDTnPSKbBw==",
+    "signed_payload_hash": "cd434a4a4e632a64feccd8c5a688b79377df5f88d0e49a4c5c73c11145128150"
+  },
+  "case": {
+    "case_id": "pilot-case-367dc6e9",
+    "case_type": "clinical_tumor_board",
+    "pseudo_id": "P-PILOT-367dc6e9"
+  },
+  "cdo_hash": "cd434a4a4e632a64feccd8c5a688b79377df5f88d0e49a4c5c73c11145128150",
+  "cdo_payload": {
+    "actions": [],
+    "ai_bom_ref": {
+      "artifact_id": "aibom-9ea3bdfada6d",
+      "content_hash": "e9e703e0934d0aa5f80a94af5a865b4ec67e4b19f3ed7c9057a3c1649efa6757",
+      "schema_version": "2026.1",
+      "session_id": "pilot-sess-367dc6e9"
+    },
+    "ai_provenance": {
+      "edges": [],
+      "graph_hash": "26fe0b5c5e17635f977264e78cbd93c1618882172ca597fe1b48bff55e0ad746",
+      "nodes": [
+        {
+          "kind": "generative_model",
+          "model": "",
+          "model_version": "1.1.1",
+          "node_id": "gen-001",
+          "output_hash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "prompt_hash": null,
+          "provider": "",
+          "retrieval_set_hash": null,
+          "system_prompt_hash": null
+        }
+      ]
+    },
+    "ai_recommendation": {
+      "content": null,
+      "domain": null,
+      "pack_id": "oncology-tumor-board-governance",
+      "pack_version": "1.1.1",
+      "policies": [
+        {
+          "actions": [
+            {
+              "action": "record",
+              "message": "Molecular target recorded with evidence."
+            },
+            {
+              "action": "assert",
+              "assertion": {
+                "confidence": 0.9,
+                "object": "{target}",
+                "predicate": "has_molecular_target",
+                "subject": "{case_id}"
+              }
+            }
+          ],
+          "autonomy": {
+            "level": "approve"
+          },
+          "confidence_threshold": 0.75,
+          "decision": {
+            "explanation": "Molecular target recorded.",
+            "severity": "high",
+            "type": "record"
+          },
+          "name": "record_molecular_target",
+          "policy_id": "record_molecular_target",
+          "reason": "signals ['molecular_target_identified'] present"
+        },
+        {
+          "actions": [
+            {
+              "action": "observe",
+              "message": "Verify organ function before targeted therapy."
+            }
+          ],
+          "autonomy": {
+            "level": "observe"
+          },
+          "confidence_threshold": 0.6,
+          "decision": {
+            "explanation": "Targeted therapy \u2014 verify organ function.",
+            "severity": "medium",
+            "type": "observe"
+          },
+          "name": "require_organ_function_for_targeted_therapy",
+          "policy_id": "require_organ_function_for_targeted_therapy",
+          "reason": "signals ['targeted_therapy_proposed'] present"
+        }
+      ],
+      "provenance_node_ids": [
+        "gen-001"
+      ],
+      "response": null,
+      "signals": {
+        "biomarker_referenced": [
+          "PD-L1 60%"
+        ],
+        "molecular_reviewed": [
+          "PD-L1"
+        ],
+        "molecular_target_identified": [
+          "PD-L1 60%"
+        ],
+        "staging_discussed": [
+          "stage III"
+        ],
+        "targeted_therapy_proposed": [
+          "pembrolizumab"
+        ]
+      },
+      "trace": null
+    },
+    "consent": {
+      "consenter_id": null,
+      "consenter_role": null,
+      "legal_basis": "Institutional deliberation record.",
+      "manager_uri": null,
+      "period": null,
+      "policy_rule": "oncology-tumor-board-governance",
+      "ref_hash": "a7127670a12f67f6d582cdfb3288a557195742425d4714dd0a99b0e582321025",
+      "ref_id": null,
+      "ref_kind": "fhir_consent",
+      "scope": "clinical_tumor_board",
+      "status_at_decision": "revoked",
+      "subject_id": "P-PILOT-367dc6e9"
+    },
+    "context_plan": {},
+    "deliberation_metrics": {
+      "ai_contribution_count": 0,
+      "ai_contributions_by_role": {},
+      "ai_failure_count": 0,
+      "ai_failure_rate": 0.0,
+      "ai_response_seconds": {
+        "median": null,
+        "p95": null,
+        "sample_size": 0
+      },
+      "chair_override_rate": 0.0,
+      "computed_at": "2026-11-05T07:28:42.230184+00:00",
+      "dissent_count": 0,
+      "dissent_rate": 0.0,
+      "ruling_counts": {},
+      "schema_version": "deliberation_metrics.v1",
+      "session_duration_seconds": 0.5
+    },
+    "environment": {
+      "environment_id": "env-default-001",
+      "parent_environment_id": null,
+      "tenant_name": "Default Sovereign Environment",
+      "tenant_type": "standard"
+    },
+    "human_decision": {
+      "approval_type": "pending",
+      "content": {
+        "decision_details": {
+          "expected_outcomes": [],
+          "recommended_at": null,
+          "recommended_by_actor_id": null,
+          "regimen": null,
+          "structured_order": null
+        }
+      },
+      "decided_at": null,
+      "decision_owner_actor_id": null
+    },
+    "human_deliberation": {
+      "alternatives": [],
+      "dissent": [],
+      "follow_up": [],
+      "participants": [],
+      "proposals": [],
+      "rationale": "",
+      "transcript_artifact_id": "transcript-0c78a726866f",
+      "transcript_hash": "62b4a9217aa0fdf24cfc46bdd932d1fad9706314b84f5b6a5400e4cc8fd7b96f"
+    },
+    "incomplete": null,
+    "knowledge_state": {
+      "captured_at": "2026-11-05T07:28:42.158981+00:00",
+      "declared_universe": {
+        "available_count": 0,
+        "record_types": [
+          "source_document"
+        ],
+        "repositories": [
+          "case_documents"
+        ],
+        "retrieval_rules": {
+          "scope": "case_documents_joined"
+        },
+        "retrieved_count": 0,
+        "time_window": {
+          "end": null,
+          "start": null
+        }
+      },
+      "entries": [
+        {
+          "availability": "generated",
+          "content_hash": "unspecified/unspecified",
+          "kind": "ai_output",
+          "metadata": {
+            "license": "unspecified",
+            "model_class": null,
+            "provider": "sovereign_local",
+            "role": "generator"
+          },
+          "source": "unspecified/unspecified",
+          "version": ""
+        }
+      ],
+      "snapshot_hash": "b800a6d9665c98bb7a547398f73f8bb5985e07fdefc527142180b8324e2d8fb7"
+    },
+    "metadata": {
+      "artifact_type": "decision_record",
+      "count": 2,
+      "domain": "healthcare",
+      "id": "oncology-tumor-board-governance",
+      "name": "Oncology Tumor Board Governance",
+      "pack": "oncology-tumor-board-governance",
+      "packs": [
+        "oncology_tumor_board_governance",
+        "molecular_tumor_board_governance"
+      ],
+      "subject_type": "subject",
+      "version": "1.1.1"
+    },
+    "pre_ai_assessment": {
+      "plan_structured": {
+        "regimen": "supportive"
+      },
+      "plan_text": "Multidisciplinary review: suspected viral URI; plan: supportive care, re-evaluate in 72h.",
+      "recorded_at": "2026-11-05T07:28:41.120323+00:00",
+      "recorded_by_actor_id": "prof-weber",
+      "schema_version": "pre_ai_assessment.v1"
+    },
+    "pre_ai_commitment": {
+      "committed_at": "2026-11-05T07:28:41.122899+00:00",
+      "committed_by_actor_id": "prof-weber",
+      "metadata": {
+        "canonicalization": "sorted-keys-compact"
+      },
+      "plan_hash": "d224e822cba44e1cd74c63b2dc817e059d0be5ddb10c6c2ad021e65a41f11ea3",
+      "schema_version": "pre_ai_commitment.v1"
+    },
+    "schema_version": "cdo.v1",
+    "treatment_intent": {
+      "expected_outcomes": [],
+      "recommended_at": null,
+      "recommended_by_actor_id": null,
+      "regimen": null,
+      "structured_order": null
+    },
+    "version_chain": {
+      "amendment_reason": null,
+      "prior_cdo_hash": null,
+      "signed_at": null,
+      "version": 1
+    }
+  },
+  "cdo_payload_canonical": "{\"actions\":[],\"ai_bom_ref\":{\"artifact_id\":\"aibom-9ea3bdfada6d\",\"content_hash\":\"e9e703e0934d0aa5f80a94af5a865b4ec67e4b19f3ed7c9057a3c1649efa6757\",\"schema_version\":\"2026.1\",\"session_id\":\"pilot-sess-367dc6e9\"},\"ai_provenance\":{\"edges\":[],\"graph_hash\":\"26fe0b5c5e17635f977264e78cbd93c1618882172ca597fe1b48bff55e0ad746\",\"nodes\":[{\"kind\":\"generative_model\",\"model\":\"\",\"model_version\":\"1.1.1\",\"node_id\":\"gen-001\",\"output_hash\":\"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\"prompt_hash\":null,\"provider\":\"\",\"retrieval_set_hash\":null,\"system_prompt_hash\":null}]},\"ai_recommendation\":{\"content\":null,\"domain\":null,\"pack_id\":\"oncology-tumor-board-governance\",\"pack_version\":\"1.1.1\",\"policies\":[{\"actions\":[{\"action\":\"record\",\"message\":\"Molecular target recorded with evidence.\"},{\"action\":\"assert\",\"assertion\":{\"confidence\":0.9,\"object\":\"{target}\",\"predicate\":\"has_molecular_target\",\"subject\":\"{case_id}\"}}],\"autonomy\":{\"level\":\"approve\"},\"confidence_threshold\":0.75,\"decision\":{\"explanation\":\"Molecular target recorded.\",\"severity\":\"high\",\"type\":\"record\"},\"name\":\"record_molecular_target\",\"policy_id\":\"record_molecular_target\",\"reason\":\"signals ['molecular_target_identified'] present\"},{\"actions\":[{\"action\":\"observe\",\"message\":\"Verify organ function before targeted therapy.\"}],\"autonomy\":{\"level\":\"observe\"},\"confidence_threshold\":0.6,\"decision\":{\"explanation\":\"Targeted therapy \u2014 verify organ function.\",\"severity\":\"medium\",\"type\":\"observe\"},\"name\":\"require_organ_function_for_targeted_therapy\",\"policy_id\":\"require_organ_function_for_targeted_therapy\",\"reason\":\"signals ['targeted_therapy_proposed'] present\"}],\"provenance_node_ids\":[\"gen-001\"],\"response\":null,\"signals\":{\"biomarker_referenced\":[\"PD-L1 60%\"],\"molecular_reviewed\":[\"PD-L1\"],\"molecular_target_identified\":[\"PD-L1 60%\"],\"staging_discussed\":[\"stage III\"],\"targeted_therapy_proposed\":[\"pembrolizumab\"]},\"trace\":null},\"consent\":{\"consenter_id\":null,\"consenter_role\":null,\"legal_basis\":\"Institutional deliberation record.\",\"manager_uri\":null,\"period\":null,\"policy_rule\":\"oncology-tumor-board-governance\",\"ref_hash\":\"a7127670a12f67f6d582cdfb3288a557195742425d4714dd0a99b0e582321025\",\"ref_id\":null,\"ref_kind\":\"fhir_consent\",\"scope\":\"clinical_tumor_board\",\"status_at_decision\":\"revoked\",\"subject_id\":\"P-PILOT-367dc6e9\"},\"context_plan\":{},\"deliberation_metrics\":{\"ai_contribution_count\":0,\"ai_contributions_by_role\":{},\"ai_failure_count\":0,\"ai_failure_rate\":0.0,\"ai_response_seconds\":{\"median\":null,\"p95\":null,\"sample_size\":0},\"chair_override_rate\":0.0,\"computed_at\":\"2026-11-05T07:28:42.230184+00:00\",\"dissent_count\":0,\"dissent_rate\":0.0,\"ruling_counts\":{},\"schema_version\":\"deliberation_metrics.v1\",\"session_duration_seconds\":0.5},\"environment\":{\"environment_id\":\"env-default-001\",\"parent_environment_id\":null,\"tenant_name\":\"Default Sovereign Environment\",\"tenant_type\":\"standard\"},\"human_decision\":{\"approval_type\":\"pending\",\"content\":{\"decision_details\":{\"expected_outcomes\":[],\"recommended_at\":null,\"recommended_by_actor_id\":null,\"regimen\":null,\"structured_order\":null}},\"decided_at\":null,\"decision_owner_actor_id\":null},\"human_deliberation\":{\"alternatives\":[],\"dissent\":[],\"follow_up\":[],\"participants\":[],\"proposals\":[],\"rationale\":\"\",\"transcript_artifact_id\":\"transcript-0c78a726866f\",\"transcript_hash\":\"62b4a9217aa0fdf24cfc46bdd932d1fad9706314b84f5b6a5400e4cc8fd7b96f\"},\"incomplete\":null,\"knowledge_state\":{\"captured_at\":\"2026-11-05T07:28:42.158981+00:00\",\"declared_universe\":{\"available_count\":0,\"record_types\":[\"source_document\"],\"repositories\":[\"case_documents\"],\"retrieval_rules\":{\"scope\":\"case_documents_joined\"},\"retrieved_count\":0,\"time_window\":{\"end\":null,\"start\":null}},\"entries\":[{\"availability\":\"generated\",\"content_hash\":\"unspecified/unspecified\",\"kind\":\"ai_output\",\"metadata\":{\"license\":\"unspecified\",\"model_class\":null,\"provider\":\"sovereign_local\",\"role\":\"generator\"},\"source\":\"unspecified/unspecified\",\"version\":\"\"}],\"snapshot_hash\":\"b800a6d9665c98bb7a547398f73f8bb5985e07fdefc527142180b8324e2d8fb7\"},\"metadata\":{\"artifact_type\":\"decision_record\",\"count\":2,\"domain\":\"healthcare\",\"id\":\"oncology-tumor-board-governance\",\"name\":\"Oncology Tumor Board Governance\",\"pack\":\"oncology-tumor-board-governance\",\"packs\":[\"oncology_tumor_board_governance\",\"molecular_tumor_board_governance\"],\"subject_type\":\"subject\",\"version\":\"1.1.1\"},\"pre_ai_assessment\":{\"plan_structured\":{\"regimen\":\"supportive\"},\"plan_text\":\"Multidisciplinary review: suspected viral URI; plan: supportive care, re-evaluate in 72h.\",\"recorded_at\":\"2026-11-05T07:28:41.120323+00:00\",\"recorded_by_actor_id\":\"prof-weber\",\"schema_version\":\"pre_ai_assessment.v1\"},\"pre_ai_commitment\":{\"committed_at\":\"2026-11-05T07:28:41.122899+00:00\",\"committed_by_actor_id\":\"prof-weber\",\"metadata\":{\"canonicalization\":\"sorted-keys-compact\"},\"plan_hash\":\"d224e822cba44e1cd74c63b2dc817e059d0be5ddb10c6c2ad021e65a41f11ea3\",\"schema_version\":\"pre_ai_commitment.v1\"},\"schema_version\":\"cdo.v1\",\"treatment_intent\":{\"expected_outcomes\":[],\"recommended_at\":null,\"recommended_by_actor_id\":null,\"regimen\":null,\"structured_order\":null},\"version_chain\":{\"amendment_reason\":null,\"prior_cdo_hash\":null,\"signed_at\":null,\"version\":1}}",
+  "cdo_payload_canonicalization": "sorted-keys-compact-rfc8785-subset",
+  "chair": {
+    "actor_id": "prof-weber",
+    "key_id": "83b05a5c-6155-4639-a626-84b6fb632394",
+    "public_key_b64": "mVZKReHJqkBlyjiQmmjtfPQjrAby/P9QcXrP6Vw5A4A=",
+    "signature_algorithm": "Ed25519"
+  },
+  "dqi": {
+    "components": {
+      "coherence": 1.0,
+      "completeness": 0.8571,
+      "documented_disagreement": 1.0,
+      "knowledge_adequacy": 0.1,
+      "pre_commitment_integrity": 1.0,
+      "rationale_depth": 0.2,
+      "temporal_integrity": 0.8333
+    },
+    "computed_at": "2026-11-05T07:28:43.689699+00:00",
+    "score": 0.7293,
+    "version": "dqi.v1"
+  },
+  "environment_id": "env-default-001",
+  "issued_at": "2026-11-05T07:28:43.608492+00:00",
+  "outcome": null,
+  "receipt_id": "rcpt-bf5f7e9177a7d145",
+  "record": {
+    "artifact_id": "artifact-51e7e7891baf",
+    "content_hash": "33ac4e64b69a8703dc3ea7e42d309b331548c35b49a468731b9639cf300cfe98",
+    "payload": {
+      "actions": [],
+      "ai_bom_ref": {
+        "artifact_id": "aibom-9ea3bdfada6d",
+        "content_hash": "e9e703e0934d0aa5f80a94af5a865b4ec67e4b19f3ed7c9057a3c1649efa6757",
+        "schema_version": "2026.1",
+        "session_id": "pilot-sess-367dc6e9"
+      },
+      "ai_provenance": {
+        "edges": [],
+        "graph_hash": "26fe0b5c5e17635f977264e78cbd93c1618882172ca597fe1b48bff55e0ad746",
+        "nodes": [
+          {
+            "kind": "generative_model",
+            "model": "",
+            "model_version": "1.1.1",
+            "node_id": "gen-001",
+            "output_hash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "prompt_hash": null,
+            "provider": "",
+            "retrieval_set_hash": null,
+            "system_prompt_hash": null
+          }
+        ]
+      },
+      "ai_recommendation": {
+        "content": null,
+        "domain": null,
+        "pack_id": "oncology-tumor-board-governance",
+        "pack_version": "1.1.1",
+        "policies": [
+          {
+            "actions": [
+              {
+                "action": "record",
+                "message": "Molecular target recorded with evidence."
+              },
+              {
+                "action": "assert",
+                "assertion": {
+                  "confidence": 0.9,
+                  "object": "{target}",
+                  "predicate": "has_molecular_target",
+                  "subject": "{case_id}"
+                }
+              }
+            ],
+            "autonomy": {
+              "level": "approve"
+            },
+            "confidence_threshold": 0.75,
+            "decision": {
+              "explanation": "Molecular target recorded.",
+              "severity": "high",
+              "type": "record"
+            },
+            "name": "record_molecular_target",
+            "policy_id": "record_molecular_target",
+            "reason": "signals ['molecular_target_identified'] present"
+          },
+          {
+            "actions": [
+              {
+                "action": "observe",
+                "message": "Verify organ function before targeted therapy."
+              }
+            ],
+            "autonomy": {
+              "level": "observe"
+            },
+            "confidence_threshold": 0.6,
+            "decision": {
+              "explanation": "Targeted therapy \u2014 verify organ function.",
+              "severity": "medium",
+              "type": "observe"
+            },
+            "name": "require_organ_function_for_targeted_therapy",
+            "policy_id": "require_organ_function_for_targeted_therapy",
+            "reason": "signals ['targeted_therapy_proposed'] present"
+          }
+        ],
+        "provenance_node_ids": [
+          "gen-001"
+        ],
+        "response": null,
+        "signals": {
+          "biomarker_referenced": [
+            "PD-L1 60%"
+          ],
+          "molecular_reviewed": [
+            "PD-L1"
+          ],
+          "molecular_target_identified": [
+            "PD-L1 60%"
+          ],
+          "staging_discussed": [
+            "stage III"
+          ],
+          "targeted_therapy_proposed": [
+            "pembrolizumab"
+          ]
+        },
+        "trace": null
+      },
+      "consent": {
+        "consenter_id": null,
+        "consenter_role": null,
+        "legal_basis": "Institutional deliberation record.",
+        "manager_uri": null,
+        "period": null,
+        "policy_rule": "oncology-tumor-board-governance",
+        "ref_hash": null,
+        "ref_id": null,
+        "ref_kind": "pack_basis",
+        "scope": "clinical_tumor_board",
+        "status_at_decision": "active",
+        "subject_id": "P-PILOT-367dc6e9"
+      },
+      "context_plan": {},
+      "deliberation_metrics": {
+        "ai_contribution_count": 0,
+        "ai_contributions_by_role": {},
+        "ai_failure_count": 0,
+        "ai_failure_rate": 0.0,
+        "ai_response_seconds": {
+          "median": null,
+          "p95": null,
+          "sample_size": 0
+        },
+        "chair_override_rate": 0.0,
+        "computed_at": "2026-11-05T07:28:42.230184+00:00",
+        "dissent_count": 0,
+        "dissent_rate": 0.0,
+        "ruling_counts": {},
+        "schema_version": "deliberation_metrics.v1",
+        "session_duration_seconds": 0.5
+      },
+      "environment": {
+        "environment_id": "env-default-001",
+        "parent_environment_id": null,
+        "tenant_name": "Default Sovereign Environment",
+        "tenant_type": "standard"
+      },
+      "human_decision": {
+        "approval_type": "pending",
+        "content": {
+          "decision_details": {
+            "expected_outcomes": [],
+            "recommended_at": null,
+            "recommended_by_actor_id": null,
+            "regimen": null,
+            "structured_order": null
+          }
+        },
+        "decided_at": null,
+        "decision_owner_actor_id": null
+      },
+      "human_deliberation": {
+        "alternatives": [],
+        "dissent": [],
+        "follow_up": [],
+        "participants": [],
+        "proposals": [],
+        "rationale": "",
+        "transcript_artifact_id": "transcript-0c78a726866f",
+        "transcript_hash": "62b4a9217aa0fdf24cfc46bdd932d1fad9706314b84f5b6a5400e4cc8fd7b96f"
+      },
+      "incomplete": null,
+      "knowledge_state": {
+        "captured_at": "2026-11-05T07:28:42.158981+00:00",
+        "declared_universe": {
+          "available_count": 0,
+          "record_types": [
+            "source_document"
+          ],
+          "repositories": [
+            "case_documents"
+          ],
+          "retrieval_rules": {
+            "scope": "case_documents_joined"
+          },
+          "retrieved_count": 0,
+          "time_window": {
+            "end": null,
+            "start": null
+          }
+        },
+        "entries": [
+          {
+            "availability": "generated",
+            "content_hash": "unspecified/unspecified",
+            "kind": "ai_output",
+            "metadata": {
+              "license": "unspecified",
+              "model_class": null,
+              "provider": "sovereign_local",
+              "role": "generator"
+            },
+            "source": "unspecified/unspecified",
+            "version": ""
+          }
+        ],
+        "snapshot_hash": "b800a6d9665c98bb7a547398f73f8bb5985e07fdefc527142180b8324e2d8fb7"
+      },
+      "metadata": {
+        "artifact_type": "decision_record",
+        "count": 2,
+        "domain": "healthcare",
+        "id": "oncology-tumor-board-governance",
+        "name": "Oncology Tumor Board Governance",
+        "pack": "oncology-tumor-board-governance",
+        "packs": [
+          "oncology_tumor_board_governance",
+          "molecular_tumor_board_governance"
+        ],
+        "subject_type": "subject",
+        "version": "1.1.1"
+      },
+      "pre_ai_assessment": {
+        "plan_structured": {
+          "regimen": "supportive"
+        },
+        "plan_text": "Multidisciplinary review: suspected viral URI; plan: supportive care, re-evaluate in 72h.",
+        "recorded_at": "2026-11-05T07:28:41.120323+00:00",
+        "recorded_by_actor_id": "prof-weber",
+        "schema_version": "pre_ai_assessment.v1"
+      },
+      "pre_ai_commitment": {
+        "committed_at": "2026-11-05T07:28:41.122899+00:00",
+        "committed_by_actor_id": "prof-weber",
+        "metadata": {
+          "canonicalization": "sorted-keys-compact"
+        },
+        "plan_hash": "d224e822cba44e1cd74c63b2dc817e059d0be5ddb10c6c2ad021e65a41f11ea3",
+        "schema_version": "pre_ai_commitment.v1"
+      },
+      "schema_version": "cdo.v1",
+      "treatment_intent": {
+        "expected_outcomes": [],
+        "recommended_at": null,
+        "recommended_by_actor_id": null,
+        "regimen": null,
+        "structured_order": null
+      },
+      "version_chain": {
+        "amendment_reason": null,
+        "prior_cdo_hash": null,
+        "signed_at": null,
+        "version": 1
+      }
+    },
+    "payload_canonical": "{\"actions\":[],\"ai_bom_ref\":{\"artifact_id\":\"aibom-9ea3bdfada6d\",\"content_hash\":\"e9e703e0934d0aa5f80a94af5a865b4ec67e4b19f3ed7c9057a3c1649efa6757\",\"schema_version\":\"2026.1\",\"session_id\":\"pilot-sess-367dc6e9\"},\"ai_provenance\":{\"edges\":[],\"graph_hash\":\"26fe0b5c5e17635f977264e78cbd93c1618882172ca597fe1b48bff55e0ad746\",\"nodes\":[{\"kind\":\"generative_model\",\"model\":\"\",\"model_version\":\"1.1.1\",\"node_id\":\"gen-001\",\"output_hash\":\"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\"prompt_hash\":null,\"provider\":\"\",\"retrieval_set_hash\":null,\"system_prompt_hash\":null}]},\"ai_recommendation\":{\"content\":null,\"domain\":null,\"pack_id\":\"oncology-tumor-board-governance\",\"pack_version\":\"1.1.1\",\"policies\":[{\"actions\":[{\"action\":\"record\",\"message\":\"Molecular target recorded with evidence.\"},{\"action\":\"assert\",\"assertion\":{\"confidence\":0.9,\"object\":\"{target}\",\"predicate\":\"has_molecular_target\",\"subject\":\"{case_id}\"}}],\"autonomy\":{\"level\":\"approve\"},\"confidence_threshold\":0.75,\"decision\":{\"explanation\":\"Molecular target recorded.\",\"severity\":\"high\",\"type\":\"record\"},\"name\":\"record_molecular_target\",\"policy_id\":\"record_molecular_target\",\"reason\":\"signals ['molecular_target_identified'] present\"},{\"actions\":[{\"action\":\"observe\",\"message\":\"Verify organ function before targeted therapy.\"}],\"autonomy\":{\"level\":\"observe\"},\"confidence_threshold\":0.6,\"decision\":{\"explanation\":\"Targeted therapy \u2014 verify organ function.\",\"severity\":\"medium\",\"type\":\"observe\"},\"name\":\"require_organ_function_for_targeted_therapy\",\"policy_id\":\"require_organ_function_for_targeted_therapy\",\"reason\":\"signals ['targeted_therapy_proposed'] present\"}],\"provenance_node_ids\":[\"gen-001\"],\"response\":null,\"signals\":{\"biomarker_referenced\":[\"PD-L1 60%\"],\"molecular_reviewed\":[\"PD-L1\"],\"molecular_target_identified\":[\"PD-L1 60%\"],\"staging_discussed\":[\"stage III\"],\"targeted_therapy_proposed\":[\"pembrolizumab\"]},\"trace\":null},\"consent\":{\"consenter_id\":null,\"consenter_role\":null,\"legal_basis\":\"Institutional deliberation record.\",\"manager_uri\":null,\"period\":null,\"policy_rule\":\"oncology-tumor-board-governance\",\"ref_hash\":null,\"ref_id\":null,\"ref_kind\":\"pack_basis\",\"scope\":\"clinical_tumor_board\",\"status_at_decision\":\"active\",\"subject_id\":\"P-PILOT-367dc6e9\"},\"context_plan\":{},\"deliberation_metrics\":{\"ai_contribution_count\":0,\"ai_contributions_by_role\":{},\"ai_failure_count\":0,\"ai_failure_rate\":0.0,\"ai_response_seconds\":{\"median\":null,\"p95\":null,\"sample_size\":0},\"chair_override_rate\":0.0,\"computed_at\":\"2026-11-05T07:28:42.230184+00:00\",\"dissent_count\":0,\"dissent_rate\":0.0,\"ruling_counts\":{},\"schema_version\":\"deliberation_metrics.v1\",\"session_duration_seconds\":0.5},\"environment\":{\"environment_id\":\"env-default-001\",\"parent_environment_id\":null,\"tenant_name\":\"Default Sovereign Environment\",\"tenant_type\":\"standard\"},\"human_decision\":{\"approval_type\":\"pending\",\"content\":{\"decision_details\":{\"expected_outcomes\":[],\"recommended_at\":null,\"recommended_by_actor_id\":null,\"regimen\":null,\"structured_order\":null}},\"decided_at\":null,\"decision_owner_actor_id\":null},\"human_deliberation\":{\"alternatives\":[],\"dissent\":[],\"follow_up\":[],\"participants\":[],\"proposals\":[],\"rationale\":\"\",\"transcript_artifact_id\":\"transcript-0c78a726866f\",\"transcript_hash\":\"62b4a9217aa0fdf24cfc46bdd932d1fad9706314b84f5b6a5400e4cc8fd7b96f\"},\"incomplete\":null,\"knowledge_state\":{\"captured_at\":\"2026-11-05T07:28:42.158981+00:00\",\"declared_universe\":{\"available_count\":0,\"record_types\":[\"source_document\"],\"repositories\":[\"case_documents\"],\"retrieval_rules\":{\"scope\":\"case_documents_joined\"},\"retrieved_count\":0,\"time_window\":{\"end\":null,\"start\":null}},\"entries\":[{\"availability\":\"generated\",\"content_hash\":\"unspecified/unspecified\",\"kind\":\"ai_output\",\"metadata\":{\"license\":\"unspecified\",\"model_class\":null,\"provider\":\"sovereign_local\",\"role\":\"generator\"},\"source\":\"unspecified/unspecified\",\"version\":\"\"}],\"snapshot_hash\":\"b800a6d9665c98bb7a547398f73f8bb5985e07fdefc527142180b8324e2d8fb7\"},\"metadata\":{\"artifact_type\":\"decision_record\",\"count\":2,\"domain\":\"healthcare\",\"id\":\"oncology-tumor-board-governance\",\"name\":\"Oncology Tumor Board Governance\",\"pack\":\"oncology-tumor-board-governance\",\"packs\":[\"oncology_tumor_board_governance\",\"molecular_tumor_board_governance\"],\"subject_type\":\"subject\",\"version\":\"1.1.1\"},\"pre_ai_assessment\":{\"plan_structured\":{\"regimen\":\"supportive\"},\"plan_text\":\"Multidisciplinary review: suspected viral URI; plan: supportive care, re-evaluate in 72h.\",\"recorded_at\":\"2026-11-05T07:28:41.120323+00:00\",\"recorded_by_actor_id\":\"prof-weber\",\"schema_version\":\"pre_ai_assessment.v1\"},\"pre_ai_commitment\":{\"committed_at\":\"2026-11-05T07:28:41.122899+00:00\",\"committed_by_actor_id\":\"prof-weber\",\"metadata\":{\"canonicalization\":\"sorted-keys-compact\"},\"plan_hash\":\"d224e822cba44e1cd74c63b2dc817e059d0be5ddb10c6c2ad021e65a41f11ea3\",\"schema_version\":\"pre_ai_commitment.v1\"},\"schema_version\":\"cdo.v1\",\"treatment_intent\":{\"expected_outcomes\":[],\"recommended_at\":null,\"recommended_by_actor_id\":null,\"regimen\":null,\"structured_order\":null},\"version_chain\":{\"amendment_reason\":null,\"prior_cdo_hash\":null,\"signed_at\":null,\"version\":1}}",
+    "payload_canonicalization": "sorted-keys-compact-rfc8785-subset"
+  },
+  "schema_version": "cdr.v1",
+  "transcript": {
+    "artifact_id": "transcript-0c78a726866f",
+    "content_hash": "62b4a9217aa0fdf24cfc46bdd932d1fad9706314b84f5b6a5400e4cc8fd7b96f",
+    "payload": {
+      "environment_id": "env-default-001",
+      "produced_at": "2026-11-05T07:28:43.517254+00:00",
+      "produced_by": "prof-weber",
+      "schema_version": "transcript.v1",
+      "segments": [
+        {
+          "actor_id": "system",
+          "content": "MTB case: 58-year-old with stage IIIA NSCLC, PD-L1 60%. Pathology reviewed. Recommend pembrolizumab plus platinum.",
+          "role": "participant",
+          "seq": 3,
+          "timestamp": "2026-11-05T07:28:41.469631+00:00"
+        },
+        {
+          "actor_id": "system",
+          "content": "[stub] MTB case: 58-year-old with stage IIIA NSCLC, PD-L1 60%. Pathology reviewed. Recommend pembrolizumab plus platinum.",
+          "role": "system",
+          "seq": 4,
+          "timestamp": "2026-11-05T07:28:43.379302+00:00"
+        }
+      ],
+      "session_id": "pilot-sess-367dc6e9",
+      "source": "chat"
+    }
+  },
+  "verification": {
+    "instructions": "Run tools/verify_cdr.py on this file. Exit 0 means valid.",
+    "verifier_version": "cdr.v1"
+  },
+  "version_chain": {
+    "amendment_reason": null,
+    "prior_cdo_hash": null,
+    "signed_at": null,
+    "version": 1
+  }
+}

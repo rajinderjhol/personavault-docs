@@ -1,0 +1,133 @@
+{
+  "attestation": {
+    "attested_at": "2026-11-05T09:06:00Z",
+    "signature_b64": "ZKrR4mbE9BuCMBW0JFxQVyLq/kynJbP4urzo4TiRUK8KNIoCc2SXSRG55YqvteYJZeEcme61qT/ypuhwcv9eAQ==",
+    "signed_payload_hash": "93cfa46fcdbdea26f97d8f9368f503c7de87a931806b84622db7e83c6cefce4f"
+  },
+  "cdo_hash": "93cfa46fcdbdea26f97d8f9368f503c7de87a931806b84622db7e83c6cefce4f",
+  "cdo_payload": {
+    "ai_provenance": {
+      "edges": [],
+      "graph_hash": "",
+      "nodes": [
+        {
+          "kind": "generative_model",
+          "model": "clinical-respiratory-model",
+          "model_version": "1.0.0",
+          "node_id": "gen-001",
+          "provider": "sovereign_local"
+        }
+      ]
+    },
+    "ai_recommendation": {
+      "content": "Recommend amoxicillin-clavulanate 875/125 mg twice daily for 7 days.",
+      "domain": "clinical",
+      "pack_id": "clinical-respiratory",
+      "pack_version": "1.0.0",
+      "policies": [
+        "clinical-respiratory.antibiotic-first-line",
+        "clinical-respiratory.cover-atypicals"
+      ],
+      "provenance_node_ids": [
+        "gen-001"
+      ]
+    },
+    "consent": {
+      "ref_kind": "pack_basis"
+    },
+    "incomplete": null,
+    "knowledge_state": {
+      "captured_at": "2026-11-05T09:03:00Z",
+      "declared_universe": {
+        "available_count": 1,
+        "record_types": [
+          "source_document"
+        ],
+        "repositories": [
+          "case_documents"
+        ],
+        "retrieval_rules": {
+          "scope": "case_documents_joined"
+        },
+        "retrieved_count": 0,
+        "time_window": {
+          "end": null,
+          "start": null
+        }
+      },
+      "entries": [
+        {
+          "availability": "generated",
+          "content_hash": "unspecified/unspecified",
+          "kind": "ai_output",
+          "metadata": {
+            "role": "generator"
+          },
+          "source": "unspecified/unspecified",
+          "version": ""
+        }
+      ],
+      "snapshot_hash": "b800a6d9665c98bb7a547398f73f8bb5985e07fdefc527142180b8324e2d8fb7"
+    },
+    "metadata": {
+      "benchmark": "decision-evidence-v0",
+      "record": "b"
+    },
+    "schema_version": "cdo.v1"
+  },
+  "cdo_payload_canonical": "{\"ai_provenance\":{\"edges\":[],\"graph_hash\":\"\",\"nodes\":[{\"kind\":\"generative_model\",\"model\":\"clinical-respiratory-model\",\"model_version\":\"1.0.0\",\"node_id\":\"gen-001\",\"provider\":\"sovereign_local\"}]},\"ai_recommendation\":{\"content\":\"Recommend amoxicillin-clavulanate 875/125 mg twice daily for 7 days.\",\"domain\":\"clinical\",\"pack_id\":\"clinical-respiratory\",\"pack_version\":\"1.0.0\",\"policies\":[\"clinical-respiratory.antibiotic-first-line\",\"clinical-respiratory.cover-atypicals\"],\"provenance_node_ids\":[\"gen-001\"]},\"consent\":{\"ref_kind\":\"pack_basis\"},\"incomplete\":null,\"knowledge_state\":{\"captured_at\":\"2026-11-05T09:03:00Z\",\"declared_universe\":{\"available_count\":1,\"record_types\":[\"source_document\"],\"repositories\":[\"case_documents\"],\"retrieval_rules\":{\"scope\":\"case_documents_joined\"},\"retrieved_count\":0,\"time_window\":{\"end\":null,\"start\":null}},\"entries\":[{\"availability\":\"generated\",\"content_hash\":\"unspecified/unspecified\",\"kind\":\"ai_output\",\"metadata\":{\"role\":\"generator\"},\"source\":\"unspecified/unspecified\",\"version\":\"\"}],\"snapshot_hash\":\"b800a6d9665c98bb7a547398f73f8bb5985e07fdefc527142180b8324e2d8fb7\"},\"metadata\":{\"benchmark\":\"decision-evidence-v0\",\"record\":\"b\"},\"schema_version\":\"cdo.v1\"}",
+  "chair": {
+    "actor_id": "prof-weber",
+    "key_id": "benchmark-chair-key-b",
+    "public_key_b64": "o3W3qXbRmq+j/igrtL1V50HPPj9/EBMrWN7pUKLi07E=",
+    "signature_algorithm": "Ed25519"
+  },
+  "environment_id": "env-default-001",
+  "issued_at": "2026-11-05T09:06:00Z",
+  "receipt_id": "rcpt-benchmark-b-001",
+  "record": {
+    "artifact_id": "artifact-benchmark-001",
+    "content_hash": "5924841f2c0bf6ecd1a3d225e328bcfafc0d317211a87990fa95315ecad5eaef",
+    "payload": {
+      "decided_at": "2026-11-05T09:05:00Z",
+      "decided_by": "prof-weber",
+      "decision": "accept_with_revision"
+    },
+    "payload_canonical": "{\"decided_at\":\"2026-11-05T09:05:00Z\",\"decided_by\":\"prof-weber\",\"decision\":\"accept_with_revision\"}"
+  },
+  "schema_version": "cdr.v1",
+  "transcript": {
+    "artifact_id": "transcript-benchmark-001",
+    "content_hash": "e566e626f1a5a044e03461e28e0756d72776149b14e0ae77015ff36d4b1ba138",
+    "payload": {
+      "environment_id": "env-default-001",
+      "produced_at": "2026-11-05T09:06:00Z",
+      "produced_by": "prof-weber",
+      "schema_version": "transcript.v1",
+      "segments": [
+        {
+          "actor_id": "prof-weber",
+          "content": "Empiric coverage for CAP. Amoxicillin first-line; re-evaluate at 72h.",
+          "role": "chair",
+          "seq": 1,
+          "timestamp": "2026-11-05T09:02:00Z"
+        },
+        {
+          "actor_id": "system",
+          "content": "AI recommendation: amoxicillin-clavulanate 875/125 for 7 days.",
+          "role": "participant",
+          "seq": 2,
+          "timestamp": "2026-11-05T09:03:00Z"
+        }
+      ],
+      "session_id": "benchmark-sess-001",
+      "source": "chat"
+    }
+  },
+  "version_chain": {
+    "amendment_reason": null,
+    "prior_cdo_hash": null,
+    "signed_at": null,
+    "version": 1
+  }
+}

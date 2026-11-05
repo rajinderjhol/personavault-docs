@@ -1,0 +1,468 @@
+{
+  "ai_participants": [
+    {
+      "license": "unspecified",
+      "model_class": null,
+      "model_id": "unspecified/unspecified",
+      "model_version": null,
+      "provider": "sovereign_local",
+      "role": "generator"
+    }
+  ],
+  "attestation": {
+    "attested_at": "2026-11-05T14:43:27.246324+00:00",
+    "signature_b64": "2FHe/m2gFcUApzjP9eDhLQjJX1DiZwbwqammDC6AKdrnpwS9ZHo2chorFSS9CxvN4uIvRIeeeE1eqiTbAzxNCQ==",
+    "signed_payload_hash": "2397d4632b8875aa010c86366c77affb4eb0274da1429fa8b5afcf550c3db9b7"
+  },
+  "case": {
+    "case_id": "pilot-case-edad374a",
+    "case_type": "clinical_tumor_board",
+    "pseudo_id": "P-PILOT-edad374a"
+  },
+  "cdo_hash": "2397d4632b8875aa010c86366c77affb4eb0274da1429fa8b5afcf550c3db9b7",
+  "cdo_payload": {
+    "actions": [],
+    "ai_bom_ref": {
+      "artifact_id": "aibom-e31cde8dc6cd",
+      "content_hash": "12b64771ed401c7ebb98c2673ef8ddc3d53aef6cc6e608212ad9f2274722d2c8",
+      "schema_version": "2026.1",
+      "session_id": "pilot-sess-edad374a"
+    },
+    "ai_provenance": {
+      "edges": [],
+      "graph_hash": "7c3460cf13844851ec5382902dd22a47367fe1e03bb48518375bde0e188f1385",
+      "nodes": [
+        {
+          "kind": "generative_model",
+          "model": "",
+          "model_version": "1.0.0",
+          "node_id": "gen-001",
+          "output_hash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "prompt_hash": null,
+          "provider": "",
+          "retrieval_set_hash": null,
+          "system_prompt_hash": null
+        }
+      ]
+    },
+    "ai_recommendation": {
+      "content": null,
+      "domain": null,
+      "pack_id": "clinical-intelligence",
+      "pack_version": "1.0.0",
+      "policies": [],
+      "provenance_node_ids": [
+        "gen-001"
+      ],
+      "response": null,
+      "signals": [],
+      "trace": null
+    },
+    "consent": {
+      "consenter_id": null,
+      "consenter_role": null,
+      "legal_basis": "Institutional deliberation record.",
+      "manager_uri": null,
+      "period": null,
+      "policy_rule": "clinical-intelligence",
+      "ref_hash": null,
+      "ref_id": null,
+      "ref_kind": "pack_basis",
+      "scope": "clinical_tumor_board",
+      "status_at_decision": "active",
+      "subject_id": "P-PILOT-edad374a"
+    },
+    "context_plan": {},
+    "deliberation_metrics": {
+      "ai_contribution_count": 0,
+      "ai_contributions_by_role": {},
+      "ai_failure_count": 0,
+      "ai_failure_rate": 0.0,
+      "ai_response_seconds": {
+        "median": null,
+        "p95": null,
+        "sample_size": 0
+      },
+      "chair_override_rate": 0.0,
+      "computed_at": "2026-11-05T14:43:24.735092+00:00",
+      "dissent_count": 0,
+      "dissent_rate": 0.0,
+      "ruling_counts": {},
+      "schema_version": "deliberation_metrics.v1",
+      "session_duration_seconds": 0.7
+    },
+    "environment": {
+      "environment_id": "env-default-001",
+      "parent_environment_id": null,
+      "tenant_name": "Default Sovereign Environment",
+      "tenant_type": "standard"
+    },
+    "human_decision": {
+      "approval_type": "pending",
+      "content": {
+        "decision_details": {
+          "expected_outcomes": [],
+          "recommended_at": null,
+          "recommended_by_actor_id": null,
+          "regimen": null,
+          "structured_order": null
+        }
+      },
+      "decided_at": null,
+      "decision_owner_actor_id": null
+    },
+    "human_deliberation": {
+      "alternatives": [],
+      "dissent": [],
+      "follow_up": [],
+      "participants": [],
+      "proposals": [],
+      "rationale": "",
+      "transcript_artifact_id": "transcript-beaa1a6d972d",
+      "transcript_hash": "2b64168a8c7f5f5283e180def83f4f002814f460b5d7baaaf33e01c858b8ab2f"
+    },
+    "incomplete": null,
+    "knowledge_state": {
+      "captured_at": "2026-11-05T14:43:24.631065+00:00",
+      "declared_universe": {
+        "available_count": 0,
+        "record_types": [
+          "source_document"
+        ],
+        "repositories": [
+          "case_documents"
+        ],
+        "retrieval_rules": {
+          "scope": "case_documents_joined"
+        },
+        "retrieved_count": 0,
+        "time_window": {
+          "end": null,
+          "start": null
+        }
+      },
+      "entries": [
+        {
+          "availability": "generated",
+          "content_hash": "unspecified/unspecified",
+          "kind": "ai_output",
+          "metadata": {
+            "license": "unspecified",
+            "model_class": null,
+            "provider": "sovereign_local",
+            "role": "generator"
+          },
+          "source": "unspecified/unspecified",
+          "version": ""
+        }
+      ],
+      "snapshot_hash": "b800a6d9665c98bb7a547398f73f8bb5985e07fdefc527142180b8324e2d8fb7"
+    },
+    "metadata": {
+      "artifact_type": "decision_record",
+      "count": 2,
+      "domain": "healthcare",
+      "id": "clinical-intelligence",
+      "name": "clinical",
+      "pack": "clinical",
+      "packs": [
+        "clinical",
+        "contract"
+      ],
+      "subject_type": "subject",
+      "version": "1.0.0"
+    },
+    "pre_ai_assessment": {
+      "plan_structured": {
+        "duration_days": 5,
+        "follow_up_hours": 72,
+        "regimen": "amoxicillin"
+      },
+      "plan_text": "Empiric coverage for community-acquired pneumonia. Consider amoxicillin as first-line for a patient without comorbidities or recent antibiotics. Re-evaluate at 48-72 hours; escalate to a respiratory fluoroquinolone if no improvement.",
+      "recorded_at": "2026-11-05T14:43:22.895422+00:00",
+      "recorded_by_actor_id": "prof-weber",
+      "schema_version": "pre_ai_assessment.v1"
+    },
+    "pre_ai_commitment": {
+      "committed_at": "2026-11-05T14:43:22.899688+00:00",
+      "committed_by_actor_id": "prof-weber",
+      "metadata": {
+        "canonicalization": "sorted-keys-compact"
+      },
+      "plan_hash": "e456ec2e0adb9d532a2141fa561ae693028686fe9b455bfd808963be4c28fbae",
+      "schema_version": "pre_ai_commitment.v1"
+    },
+    "schema_version": "cdo.v1",
+    "treatment_intent": {
+      "expected_outcomes": [],
+      "recommended_at": null,
+      "recommended_by_actor_id": null,
+      "regimen": null,
+      "structured_order": null
+    },
+    "version_chain": {
+      "amendment_reason": null,
+      "prior_cdo_hash": null,
+      "signed_at": null,
+      "version": 1
+    }
+  },
+  "cdo_payload_canonical": "{\"actions\":[],\"ai_bom_ref\":{\"artifact_id\":\"aibom-e31cde8dc6cd\",\"content_hash\":\"12b64771ed401c7ebb98c2673ef8ddc3d53aef6cc6e608212ad9f2274722d2c8\",\"schema_version\":\"2026.1\",\"session_id\":\"pilot-sess-edad374a\"},\"ai_provenance\":{\"edges\":[],\"graph_hash\":\"7c3460cf13844851ec5382902dd22a47367fe1e03bb48518375bde0e188f1385\",\"nodes\":[{\"kind\":\"generative_model\",\"model\":\"\",\"model_version\":\"1.0.0\",\"node_id\":\"gen-001\",\"output_hash\":\"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\"prompt_hash\":null,\"provider\":\"\",\"retrieval_set_hash\":null,\"system_prompt_hash\":null}]},\"ai_recommendation\":{\"content\":null,\"domain\":null,\"pack_id\":\"clinical-intelligence\",\"pack_version\":\"1.0.0\",\"policies\":[],\"provenance_node_ids\":[\"gen-001\"],\"response\":null,\"signals\":[],\"trace\":null},\"consent\":{\"consenter_id\":null,\"consenter_role\":null,\"legal_basis\":\"Institutional deliberation record.\",\"manager_uri\":null,\"period\":null,\"policy_rule\":\"clinical-intelligence\",\"ref_hash\":null,\"ref_id\":null,\"ref_kind\":\"pack_basis\",\"scope\":\"clinical_tumor_board\",\"status_at_decision\":\"active\",\"subject_id\":\"P-PILOT-edad374a\"},\"context_plan\":{},\"deliberation_metrics\":{\"ai_contribution_count\":0,\"ai_contributions_by_role\":{},\"ai_failure_count\":0,\"ai_failure_rate\":0.0,\"ai_response_seconds\":{\"median\":null,\"p95\":null,\"sample_size\":0},\"chair_override_rate\":0.0,\"computed_at\":\"2026-11-05T14:43:24.735092+00:00\",\"dissent_count\":0,\"dissent_rate\":0.0,\"ruling_counts\":{},\"schema_version\":\"deliberation_metrics.v1\",\"session_duration_seconds\":0.7},\"environment\":{\"environment_id\":\"env-default-001\",\"parent_environment_id\":null,\"tenant_name\":\"Default Sovereign Environment\",\"tenant_type\":\"standard\"},\"human_decision\":{\"approval_type\":\"pending\",\"content\":{\"decision_details\":{\"expected_outcomes\":[],\"recommended_at\":null,\"recommended_by_actor_id\":null,\"regimen\":null,\"structured_order\":null}},\"decided_at\":null,\"decision_owner_actor_id\":null},\"human_deliberation\":{\"alternatives\":[],\"dissent\":[],\"follow_up\":[],\"participants\":[],\"proposals\":[],\"rationale\":\"\",\"transcript_artifact_id\":\"transcript-beaa1a6d972d\",\"transcript_hash\":\"2b64168a8c7f5f5283e180def83f4f002814f460b5d7baaaf33e01c858b8ab2f\"},\"incomplete\":null,\"knowledge_state\":{\"captured_at\":\"2026-11-05T14:43:24.631065+00:00\",\"declared_universe\":{\"available_count\":0,\"record_types\":[\"source_document\"],\"repositories\":[\"case_documents\"],\"retrieval_rules\":{\"scope\":\"case_documents_joined\"},\"retrieved_count\":0,\"time_window\":{\"end\":null,\"start\":null}},\"entries\":[{\"availability\":\"generated\",\"content_hash\":\"unspecified/unspecified\",\"kind\":\"ai_output\",\"metadata\":{\"license\":\"unspecified\",\"model_class\":null,\"provider\":\"sovereign_local\",\"role\":\"generator\"},\"source\":\"unspecified/unspecified\",\"version\":\"\"}],\"snapshot_hash\":\"b800a6d9665c98bb7a547398f73f8bb5985e07fdefc527142180b8324e2d8fb7\"},\"metadata\":{\"artifact_type\":\"decision_record\",\"count\":2,\"domain\":\"healthcare\",\"id\":\"clinical-intelligence\",\"name\":\"clinical\",\"pack\":\"clinical\",\"packs\":[\"clinical\",\"contract\"],\"subject_type\":\"subject\",\"version\":\"1.0.0\"},\"pre_ai_assessment\":{\"plan_structured\":{\"duration_days\":5,\"follow_up_hours\":72,\"regimen\":\"amoxicillin\"},\"plan_text\":\"Empiric coverage for community-acquired pneumonia. Consider amoxicillin as first-line for a patient without comorbidities or recent antibiotics. Re-evaluate at 48-72 hours; escalate to a respiratory fluoroquinolone if no improvement.\",\"recorded_at\":\"2026-11-05T14:43:22.895422+00:00\",\"recorded_by_actor_id\":\"prof-weber\",\"schema_version\":\"pre_ai_assessment.v1\"},\"pre_ai_commitment\":{\"committed_at\":\"2026-11-05T14:43:22.899688+00:00\",\"committed_by_actor_id\":\"prof-weber\",\"metadata\":{\"canonicalization\":\"sorted-keys-compact\"},\"plan_hash\":\"e456ec2e0adb9d532a2141fa561ae693028686fe9b455bfd808963be4c28fbae\",\"schema_version\":\"pre_ai_commitment.v1\"},\"schema_version\":\"cdo.v1\",\"treatment_intent\":{\"expected_outcomes\":[],\"recommended_at\":null,\"recommended_by_actor_id\":null,\"regimen\":null,\"structured_order\":null},\"version_chain\":{\"amendment_reason\":null,\"prior_cdo_hash\":null,\"signed_at\":null,\"version\":1}}",
+  "cdo_payload_canonicalization": "sorted-keys-compact-rfc8785-subset",
+  "chair": {
+    "actor_id": "prof-weber",
+    "key_id": "ab505235-6fe3-4d4b-9a59-bbf7fda8137c",
+    "public_key_b64": "Ma9SSLAKYUS1uwbnMGAjJfHuHS09KKYJSNOokc821KM=",
+    "signature_algorithm": "Ed25519"
+  },
+  "dqi": {
+    "components": {
+      "coherence": 1.0,
+      "completeness": 0.8571,
+      "documented_disagreement": 1.0,
+      "knowledge_adequacy": 0.1,
+      "pre_commitment_integrity": 1.0,
+      "rationale_depth": 0.2,
+      "temporal_integrity": 0.8333
+    },
+    "computed_at": "2026-11-05T14:43:27.336638+00:00",
+    "score": 0.7293,
+    "version": "dqi.v1"
+  },
+  "environment_id": "env-default-001",
+  "issued_at": "2026-11-05T14:43:27.227190+00:00",
+  "outcome": null,
+  "receipt_id": "rcpt-a1183beb494d1d7c",
+  "record": {
+    "artifact_id": "artifact-482abde4150e",
+    "content_hash": "2397d4632b8875aa010c86366c77affb4eb0274da1429fa8b5afcf550c3db9b7",
+    "payload": {
+      "actions": [],
+      "ai_bom_ref": {
+        "artifact_id": "aibom-e31cde8dc6cd",
+        "content_hash": "12b64771ed401c7ebb98c2673ef8ddc3d53aef6cc6e608212ad9f2274722d2c8",
+        "schema_version": "2026.1",
+        "session_id": "pilot-sess-edad374a"
+      },
+      "ai_provenance": {
+        "edges": [],
+        "graph_hash": "7c3460cf13844851ec5382902dd22a47367fe1e03bb48518375bde0e188f1385",
+        "nodes": [
+          {
+            "kind": "generative_model",
+            "model": "",
+            "model_version": "1.0.0",
+            "node_id": "gen-001",
+            "output_hash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "prompt_hash": null,
+            "provider": "",
+            "retrieval_set_hash": null,
+            "system_prompt_hash": null
+          }
+        ]
+      },
+      "ai_recommendation": {
+        "content": null,
+        "domain": null,
+        "pack_id": "clinical-intelligence",
+        "pack_version": "1.0.0",
+        "policies": [],
+        "provenance_node_ids": [
+          "gen-001"
+        ],
+        "response": null,
+        "signals": [],
+        "trace": null
+      },
+      "consent": {
+        "consenter_id": null,
+        "consenter_role": null,
+        "legal_basis": "Institutional deliberation record.",
+        "manager_uri": null,
+        "period": null,
+        "policy_rule": "clinical-intelligence",
+        "ref_hash": null,
+        "ref_id": null,
+        "ref_kind": "pack_basis",
+        "scope": "clinical_tumor_board",
+        "status_at_decision": "active",
+        "subject_id": "P-PILOT-edad374a"
+      },
+      "context_plan": {},
+      "deliberation_metrics": {
+        "ai_contribution_count": 0,
+        "ai_contributions_by_role": {},
+        "ai_failure_count": 0,
+        "ai_failure_rate": 0.0,
+        "ai_response_seconds": {
+          "median": null,
+          "p95": null,
+          "sample_size": 0
+        },
+        "chair_override_rate": 0.0,
+        "computed_at": "2026-11-05T14:43:24.735092+00:00",
+        "dissent_count": 0,
+        "dissent_rate": 0.0,
+        "ruling_counts": {},
+        "schema_version": "deliberation_metrics.v1",
+        "session_duration_seconds": 0.7
+      },
+      "environment": {
+        "environment_id": "env-default-001",
+        "parent_environment_id": null,
+        "tenant_name": "Default Sovereign Environment",
+        "tenant_type": "standard"
+      },
+      "human_decision": {
+        "approval_type": "pending",
+        "content": {
+          "decision_details": {
+            "expected_outcomes": [],
+            "recommended_at": null,
+            "recommended_by_actor_id": null,
+            "regimen": null,
+            "structured_order": null
+          }
+        },
+        "decided_at": null,
+        "decision_owner_actor_id": null
+      },
+      "human_deliberation": {
+        "alternatives": [],
+        "dissent": [],
+        "follow_up": [],
+        "participants": [],
+        "proposals": [],
+        "rationale": "",
+        "transcript_artifact_id": "transcript-beaa1a6d972d",
+        "transcript_hash": "2b64168a8c7f5f5283e180def83f4f002814f460b5d7baaaf33e01c858b8ab2f"
+      },
+      "incomplete": null,
+      "knowledge_state": {
+        "captured_at": "2026-11-05T14:43:24.631065+00:00",
+        "declared_universe": {
+          "available_count": 0,
+          "record_types": [
+            "source_document"
+          ],
+          "repositories": [
+            "case_documents"
+          ],
+          "retrieval_rules": {
+            "scope": "case_documents_joined"
+          },
+          "retrieved_count": 0,
+          "time_window": {
+            "end": null,
+            "start": null
+          }
+        },
+        "entries": [
+          {
+            "availability": "generated",
+            "content_hash": "unspecified/unspecified",
+            "kind": "ai_output",
+            "metadata": {
+              "license": "unspecified",
+              "model_class": null,
+              "provider": "sovereign_local",
+              "role": "generator"
+            },
+            "source": "unspecified/unspecified",
+            "version": ""
+          }
+        ],
+        "snapshot_hash": "b800a6d9665c98bb7a547398f73f8bb5985e07fdefc527142180b8324e2d8fb7"
+      },
+      "metadata": {
+        "artifact_type": "decision_record",
+        "count": 2,
+        "domain": "healthcare",
+        "id": "clinical-intelligence",
+        "name": "clinical",
+        "pack": "clinical",
+        "packs": [
+          "clinical",
+          "contract"
+        ],
+        "subject_type": "subject",
+        "version": "1.0.0"
+      },
+      "pre_ai_assessment": {
+        "plan_structured": {
+          "duration_days": 5,
+          "follow_up_hours": 72,
+          "regimen": "amoxicillin"
+        },
+        "plan_text": "Empiric coverage for community-acquired pneumonia. Consider amoxicillin as first-line for a patient without comorbidities or recent antibiotics. Re-evaluate at 48-72 hours; escalate to a respiratory fluoroquinolone if no improvement.",
+        "recorded_at": "2026-11-05T14:43:22.895422+00:00",
+        "recorded_by_actor_id": "prof-weber",
+        "schema_version": "pre_ai_assessment.v1"
+      },
+      "pre_ai_commitment": {
+        "committed_at": "2026-11-05T14:43:22.899688+00:00",
+        "committed_by_actor_id": "prof-weber",
+        "metadata": {
+          "canonicalization": "sorted-keys-compact"
+        },
+        "plan_hash": "e456ec2e0adb9d532a2141fa561ae693028686fe9b455bfd808963be4c28fbae",
+        "schema_version": "pre_ai_commitment.v1"
+      },
+      "schema_version": "cdo.v1",
+      "treatment_intent": {
+        "expected_outcomes": [],
+        "recommended_at": null,
+        "recommended_by_actor_id": null,
+        "regimen": null,
+        "structured_order": null
+      },
+      "version_chain": {
+        "amendment_reason": null,
+        "prior_cdo_hash": null,
+        "signed_at": null,
+        "version": 1
+      }
+    },
+    "payload_canonical": "{\"actions\":[],\"ai_bom_ref\":{\"artifact_id\":\"aibom-e31cde8dc6cd\",\"content_hash\":\"12b64771ed401c7ebb98c2673ef8ddc3d53aef6cc6e608212ad9f2274722d2c8\",\"schema_version\":\"2026.1\",\"session_id\":\"pilot-sess-edad374a\"},\"ai_provenance\":{\"edges\":[],\"graph_hash\":\"7c3460cf13844851ec5382902dd22a47367fe1e03bb48518375bde0e188f1385\",\"nodes\":[{\"kind\":\"generative_model\",\"model\":\"\",\"model_version\":\"1.0.0\",\"node_id\":\"gen-001\",\"output_hash\":\"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\"prompt_hash\":null,\"provider\":\"\",\"retrieval_set_hash\":null,\"system_prompt_hash\":null}]},\"ai_recommendation\":{\"content\":null,\"domain\":null,\"pack_id\":\"clinical-intelligence\",\"pack_version\":\"1.0.0\",\"policies\":[],\"provenance_node_ids\":[\"gen-001\"],\"response\":null,\"signals\":[],\"trace\":null},\"consent\":{\"consenter_id\":null,\"consenter_role\":null,\"legal_basis\":\"Institutional deliberation record.\",\"manager_uri\":null,\"period\":null,\"policy_rule\":\"clinical-intelligence\",\"ref_hash\":null,\"ref_id\":null,\"ref_kind\":\"pack_basis\",\"scope\":\"clinical_tumor_board\",\"status_at_decision\":\"active\",\"subject_id\":\"P-PILOT-edad374a\"},\"context_plan\":{},\"deliberation_metrics\":{\"ai_contribution_count\":0,\"ai_contributions_by_role\":{},\"ai_failure_count\":0,\"ai_failure_rate\":0.0,\"ai_response_seconds\":{\"median\":null,\"p95\":null,\"sample_size\":0},\"chair_override_rate\":0.0,\"computed_at\":\"2026-11-05T14:43:24.735092+00:00\",\"dissent_count\":0,\"dissent_rate\":0.0,\"ruling_counts\":{},\"schema_version\":\"deliberation_metrics.v1\",\"session_duration_seconds\":0.7},\"environment\":{\"environment_id\":\"env-default-001\",\"parent_environment_id\":null,\"tenant_name\":\"Default Sovereign Environment\",\"tenant_type\":\"standard\"},\"human_decision\":{\"approval_type\":\"pending\",\"content\":{\"decision_details\":{\"expected_outcomes\":[],\"recommended_at\":null,\"recommended_by_actor_id\":null,\"regimen\":null,\"structured_order\":null}},\"decided_at\":null,\"decision_owner_actor_id\":null},\"human_deliberation\":{\"alternatives\":[],\"dissent\":[],\"follow_up\":[],\"participants\":[],\"proposals\":[],\"rationale\":\"\",\"transcript_artifact_id\":\"transcript-beaa1a6d972d\",\"transcript_hash\":\"2b64168a8c7f5f5283e180def83f4f002814f460b5d7baaaf33e01c858b8ab2f\"},\"incomplete\":null,\"knowledge_state\":{\"captured_at\":\"2026-11-05T14:43:24.631065+00:00\",\"declared_universe\":{\"available_count\":0,\"record_types\":[\"source_document\"],\"repositories\":[\"case_documents\"],\"retrieval_rules\":{\"scope\":\"case_documents_joined\"},\"retrieved_count\":0,\"time_window\":{\"end\":null,\"start\":null}},\"entries\":[{\"availability\":\"generated\",\"content_hash\":\"unspecified/unspecified\",\"kind\":\"ai_output\",\"metadata\":{\"license\":\"unspecified\",\"model_class\":null,\"provider\":\"sovereign_local\",\"role\":\"generator\"},\"source\":\"unspecified/unspecified\",\"version\":\"\"}],\"snapshot_hash\":\"b800a6d9665c98bb7a547398f73f8bb5985e07fdefc527142180b8324e2d8fb7\"},\"metadata\":{\"artifact_type\":\"decision_record\",\"count\":2,\"domain\":\"healthcare\",\"id\":\"clinical-intelligence\",\"name\":\"clinical\",\"pack\":\"clinical\",\"packs\":[\"clinical\",\"contract\"],\"subject_type\":\"subject\",\"version\":\"1.0.0\"},\"pre_ai_assessment\":{\"plan_structured\":{\"duration_days\":5,\"follow_up_hours\":72,\"regimen\":\"amoxicillin\"},\"plan_text\":\"Empiric coverage for community-acquired pneumonia. Consider amoxicillin as first-line for a patient without comorbidities or recent antibiotics. Re-evaluate at 48-72 hours; escalate to a respiratory fluoroquinolone if no improvement.\",\"recorded_at\":\"2026-11-05T14:43:22.895422+00:00\",\"recorded_by_actor_id\":\"prof-weber\",\"schema_version\":\"pre_ai_assessment.v1\"},\"pre_ai_commitment\":{\"committed_at\":\"2026-11-05T14:43:22.899688+00:00\",\"committed_by_actor_id\":\"prof-weber\",\"metadata\":{\"canonicalization\":\"sorted-keys-compact\"},\"plan_hash\":\"e456ec2e0adb9d532a2141fa561ae693028686fe9b455bfd808963be4c28fbae\",\"schema_version\":\"pre_ai_commitment.v1\"},\"schema_version\":\"cdo.v1\",\"treatment_intent\":{\"expected_outcomes\":[],\"recommended_at\":null,\"recommended_by_actor_id\":null,\"regimen\":null,\"structured_order\":null},\"version_chain\":{\"amendment_reason\":null,\"prior_cdo_hash\":null,\"signed_at\":null,\"version\":1}}",
+    "payload_canonicalization": "sorted-keys-compact-rfc8785-subset"
+  },
+  "schema_version": "cdr.v1",
+  "transcript": {
+    "artifact_id": "transcript-beaa1a6d972d",
+    "content_hash": "2b64168a8c7f5f5283e180def83f4f002814f460b5d7baaaf33e01c858b8ab2f",
+    "payload": {
+      "environment_id": "env-default-001",
+      "produced_at": "2026-11-05T14:43:27.121652+00:00",
+      "produced_by": "prof-weber",
+      "schema_version": "transcript.v1",
+      "segments": [
+        {
+          "actor_id": "system",
+          "content": "CAP case: adult with productive cough, fever 38.9 C, focal right lower lobe crackles. CXR shows right lower lobe consolidation. Empiric antibiotic selection for outpatient CAP, no recent healthcare exposure.",
+          "role": "participant",
+          "seq": 3,
+          "timestamp": "2026-11-05T14:43:23.423986+00:00"
+        },
+        {
+          "actor_id": "system",
+          "content": "[stub] CAP case: adult with productive cough, fever 38.9 C, focal right lower lobe crackles. CXR shows right lower lobe consoli",
+          "role": "system",
+          "seq": 4,
+          "timestamp": "2026-11-05T14:43:26.939386+00:00"
+        }
+      ],
+      "session_id": "pilot-sess-edad374a",
+      "source": "chat"
+    }
+  },
+  "verification": {
+    "instructions": "Run tools/verify_cdr.py on this file. Exit 0 means valid.",
+    "verifier_version": "cdr.v1"
+  },
+  "version_chain": {
+    "amendment_reason": null,
+    "prior_cdo_hash": null,
+    "signed_at": null,
+    "version": 1
+  }
+}

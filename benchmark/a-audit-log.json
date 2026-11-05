@@ -1,0 +1,55 @@
+{
+  "_comment": "A conventional audit log. No signatures, no hashes, no verifier material. Records what happened, in order. This is what most organizations produce today.",
+  "case_id": "benchmark-case-001",
+  "environment_id": "env-default-001",
+  "events": [
+    {
+      "seq": 1,
+      "at": "2026-11-05T09:00:00Z",
+      "actor": "prof-weber",
+      "type": "case_opened",
+      "payload": { "title": "Suspected bacterial pneumonia, antibiotic selection" }
+    },
+    {
+      "seq": 2,
+      "at": "2026-11-05T09:02:00Z",
+      "actor": "prof-weber",
+      "type": "pre_ai_assessment_recorded",
+      "payload": {
+        "plan_text": "Empiric coverage for community-acquired pneumonia. Consider amoxicillin as first-line...",
+        "plan_structured": { "regimen": "amoxicillin", "duration_days": 5, "follow_up_hours": 72 }
+      }
+    },
+    {
+      "seq": 3,
+      "at": "2026-11-05T09:03:00Z",
+      "actor": "system",
+      "type": "ai_recommendation_disclosed",
+      "payload": {
+        "pack_id": "clinical-respiratory",
+        "pack_version": "1.0.0",
+        "content": "Recommend amoxicillin-clavulanate 875/125 mg twice daily for 7 days...",
+        "policies": ["clinical-respiratory.antibiotic-first-line", "clinical-respiratory.cover-atypicals"]
+      }
+    },
+    {
+      "seq": 4,
+      "at": "2026-11-05T09:05:00Z",
+      "actor": "prof-weber",
+      "type": "human_revision_recorded",
+      "payload": {
+        "revised_at_decision": "Accept amoxicillin-clavulanate. Duration shortened to 5 days pending clinical response..."
+      }
+    },
+    {
+      "seq": 5,
+      "at": "2026-11-05T09:06:00Z",
+      "actor": "prof-weber",
+      "type": "decision_finalized",
+      "payload": {
+        "decision": "accept_with_revision",
+        "decision_text": "Amoxicillin-clavulanate 875/125 mg twice daily for 5 days. De-escalate to amoxicillin if afebrile at 48 hours."
+      }
+    }
+  ]
+}
