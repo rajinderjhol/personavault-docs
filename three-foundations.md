@@ -1,7 +1,7 @@
 ---
 title: "Beyond AI Audit Trails: The Three Foundations of Verifiable Decision Evidence"
 author: Rajinder Jhol
-version: 3.1
+version: 3.2
 status: draft-for-circulation
 date: 2026-11-05
 audience: external
@@ -60,6 +60,8 @@ A record can answer the first and fail the third. A record can answer the third 
 The object that answers all three is not a log, an audit trail, or a signed decision in isolation. It is an **evidence object** that allows an independent party to test three propositions: that the decision evolved in the order claimed, that the evidence supporting it can be accounted for, and that it was made under verifiable authority. This paper calls that object a **Verifiable Decision Record (VDR)**.
 
 The VDR is a conceptual standard, not a product. It defines what must be true of any artifact that claims to be independently verifiable decision evidence. It is separable from any particular implementation: the framework stands whether or not the Clinical Decision Object exists.
+
+The word "ontology" in this paper is not the data-governance sense. A data ontology models business concepts — Customer, Order, Asset — and their relationships, so that the data inside a system means the same thing everywhere. A decision ontology models the evidence claims a decision record must make, so that a stranger can verify them. The two are complementary: a data ontology governs what the data means; a decision ontology governs what the record proves. A record can have perfectly consistent data and still fail to prove the human judged first. The four questions that distinguish any two ontologies — what is the domain, what is the criterion of identity, what are the relations, what is the purpose — are what this paper calls the sequence, provenance, and authority claims for decision evidence.
 
 ### 1.3 Two artifacts, two names
 
@@ -128,6 +130,8 @@ The clinical evidence shows why the narrower claim still matters. A retrospectiv
 | Authority | Who had the right to decide? | Portability collapse | Identity, delegation chain, revocation status | That the decision was lawful in the full legal sense |
 
 A system can be excellent at one and fail catastrophically at another. A signed record does not establish independent judgment. A complete evidence list does not establish lawful authority. A pre-AI commitment does not establish that the evidence base was complete.
+
+The three ontologies are orthogonal in a specific sense that the data-governance use of the word does not carry. A business ontology that standardizes what "Customer" means does not make any claim about whether a human formed a judgment before an AI spoke. It cannot, because its domain is the meaning of terms, and the claim this paper is about is the order of events. The two kinds of ontology answer different questions: one is about consistency of meaning across a system, the other is about verifiability of a sequence by a stranger. A hospital can have a perfectly governed data ontology and no evidence ontology at all. The two are not substitutes; they are not even adjacent.
 
 ---
 

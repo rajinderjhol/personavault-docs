@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 title: "Beyond AI Audit Trails: The Three Foundations of Verifiable Decision Evidence"
-version: 3.1
+version: 3.2
 message: "If you cite this work, please cite the paper and, if you use the benchmark, the benchmark's records."
 authors:
   - given-names: Rajinder
