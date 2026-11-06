@@ -8,7 +8,7 @@ This repository contains two artifacts. A paper that argues those are three sepa
 
 ## Read the paper
 
-[`three-foundations.md`](three-foundations.md) — v3.2, 2026-11-05.
+[`three-foundations.md`](three-foundations.md) — v3.3, 2026-11-06.
 
 The paper makes four claims:
 
@@ -51,7 +51,7 @@ The benchmark was built after the paper's first draft and before circulation. It
 Each correction cites a benchmark record that demonstrates it. The paper's Section 5.3 names the provenance of the corrections.
 
 ## Repository structure
-three-foundations.md the paper (v3.2)
+three-foundations.md the paper (v3.3)
 benchmark/ the ten evidence records and the offline verifier
 README.md what each record contains and what it demonstrates
 verify_cdr.py the offline verifier (imports only cryptography)
@@ -68,6 +68,6 @@ It is not the implementation. The Clinical Decision Object and its pipeline live
 
 ## Cite
 
-> Jhol, R. (2026). *Beyond AI Audit Trails: The Three Foundations of Verifiable Decision Evidence* (v3.2). https://github.com/rajinderjhol/personavault-docs
+> Jhol, R. (2026). *Beyond AI Audit Trails: The Three Foundations of Verifiable Decision Evidence* (v3.3). https://github.com/rajinderjhol/personavault-docs
 
 The benchmark's format is not yet a published specification. If you want to add a record or compare your verifier against the ten records here, open an issue.
