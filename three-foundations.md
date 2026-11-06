@@ -1,7 +1,7 @@
 ---
 title: "Beyond AI Audit Trails: The Three Foundations of Verifiable Decision Evidence"
 author: Rajinder Jhol
-version: 3.2
+version: 3.3
 status: draft-for-circulation
 date: 2026-11-05
 audience: external
@@ -302,6 +302,8 @@ The benchmark at `benchmarks/decision-evidence-v0/` demonstrates all three state
 One further limit is worth stating in this section, because it is a check a reader might assume is stronger than it is. The verifier's transcript check recomputes `canonical_hash(transcript.payload)` and compares it to `transcript.content_hash`; if the CDO carries `human_deliberation.transcript_hash`, the verifier also checks that the two agree. **The transcript guarantee is self-consistency, not authenticity.** A fabricator who rewrites a transcript segment and recomputes the content hash and the deliberation binding — the `i-alt` variant the benchmark describes in its README — passes all fourteen checks. The verifier has no external anchor for the transcript's content; that is a limit of an offline verifier, not a defect of this one. The record `i-fabricated-transcript.json` demonstrates the check working against a naive fabricator who changes the payload without updating the hash.
 
 The unit tests prove the verifier's detection for the second state; the pilot proves the gate's prevention for the first; the benchmark demonstrates the third, and makes the reader's obligation explicit: a passing CDR is a stronger claim than a CDR that did not fail.
+
+The room enforces the sequence at the draft stage as well as at the verifier. The `seed_decision` endpoint (`app/api/v2/endpoints/deliberations.py`) refuses to create a draft if the session has no `pre_ai_commitment` message. This means a human using the UI cannot produce a state-3 CDR: the draft cannot be created, so the record cannot be signed, so the verifier will never see the absent-policies state from a UI-produced record. State 3 is producible only by a direct call to the pipeline (e.g., a test), not by the chair in the room. The benchmark's `e-vdr.json` demonstrates the pipeline's capability to produce state 3, but the room's guard prevents a human from reaching it. This is a defense in depth: the verifier is silent about state 3, the draft guard prevents state 3 from being authored, and the DQI reports `pre_commitment_integrity` as a signal that the sequence was exercised. Three layers, three different mechanisms, one guarantee.
 
 ---
 
