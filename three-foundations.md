@@ -178,17 +178,17 @@ Third, the classification is descriptive, not adjudicative. A lineage that score
 
 ### 4.1 DSES: sequence-rich, authority-deferred
 
-DSES is the most complete sequence ontology in the field. Its ten-event vocabulary, eight-class exposure ontology, and independence model are specified and mapped to clinical informatics standards. It is also the clearest example of a lineage that has deliberately chosen not to build the authority half.
+DSES is the most complete sequence ontology in the field. Its ten-event vocabulary, eight-class exposure ontology, and independence model are specified and mapped to clinical informatics standards. The v0.2.0 release (October 2026) adds an outcome-evidence layer: denominator-closed eligibility manifests, outcome linkage, pre-consensus adjudication under declared charters, content-addressed executable rules, recomputable reliance metrics (RAIR, RSR, EAR), and governance constraints on unit of analysis. The release ships a reference verifier, an adversarial suite, RFC 9162 proofs, and reader-supplied external anchor trust.
 
-This is not a deficiency. It is a scope decision, and the right one for a vendor-neutral specification. But it means that a DSES record, by itself, proves sequence and not authority. A verifier can check that the human committed before the AI disclosed. It cannot check that the decision was lawful.
+The authority half is specified, not absent. The v0.2.0's reliance metrics are the calibration instrument the paper's Section 11 asks for: they measure the relationship between the human's pre-AI commitment and the post-AI decision. The external trust mechanisms—signatures, independent anchors, trusted time—remain the deferred layer, and the spec states the limit: a single export establishes internal consistency only unless compared with a separately held checkpoint or supported by verified external anchoring.
 
 Provenance is present only implicitly. The event vocabulary records what was rendered and to whom. The completeness of the evidence base—what was available and not consulted—is not a first-class element.
 
 | Ontology | DSES classification | Note |
 |---|---|---|
-| Sequence | **Specified**; a reference verifier exists | External anchoring required for `Independently verifiable` |
-| Provenance | **Conceptual** | Events record rendering, not completeness |
-| Authority | **Absent by design** | External trust mechanisms deferred in the v0.1 release notes |
+| Sequence | **Independently verifiable** against its own reference verifier | v0.2.0 ships a reference verifier, an adversarial suite, and RFC 9162 proofs. External anchoring (a separately held checkpoint or a verified anchor) is required for the stronger claim; the v0.2.0 notes say so explicitly. |
+| Provenance | **Implemented** | The v0.2.0 outcome layer adds denominator-closed eligibility manifests, outcome linkage, pre-consensus adjudication under declared charters, and content-addressed executable rules. |
+| Authority | **Specified** | The v0.2.0 adds recomputable reliance metrics (RAIR, RSR, EAR) and governance constraints on unit of analysis. The external trust mechanisms (signatures, independent anchors, trusted time) remain the deferred layer, stated by the spec. |
 
 ### 4.2 The Decision Object: a taxonomy without temporal ordering
 
@@ -265,7 +265,7 @@ The DQI reports `pre_commitment_integrity` but does not weight it. The component
 
 **Authority hashes.** Of ADR 0035's six references, one—`consent`—is implemented in the payload and status-verified by the verifier. The verifier checks whether `status_at_decision` is `active`, `inactive`, or `revoked`. The status check fires only for records whose `consent.ref_kind` is `fhir_consent`; a record whose `ref_kind` is `pack_basis` takes a different branch and passes regardless of `status_at_decision`. The benchmark at `benchmarks/decision-evidence-v0/` demonstrates both: `j-revoked-consent.json` is a `fhir_consent` record with revoked status and fails at `Consent`; the `J-basis` variant described in the benchmark's README (a `pack_basis` record with `status_at_decision: revoked`) would pass, because the status field is not read. The verifier does **not** recompute `ref_hash` against the FHIR Consent's canonical bytes: the body lives in the FHIR server, not the CDO, and the verifier is offline by design. It reports `Consent reference (unresolved)` rather than failing. The other five references—`disclosure`, `trust_anchor`, `ai_transparency`, `outcome`, `feedback`—are specified in ADR 0035 and post-pilot.
 
-**The collective commitment.** The chair workflow is single-author. The chair seeds, authors, submits, and signs. The `human_deliberation` block carries participants, proposals, dissent, rationale, and transcript, but the decision is authored and signed by one actor. There is no per-participant pre-AI commitment and no aggregation rule. Section 9 specifies the layered commitment model as a design and states what is not yet built.
+**The collective commitment.** The chair workflow is single-signer. Multiple attendees can author messages, post dissents, and contribute to the deliberation. The `human_deliberation` block captures this multi-author participation (participants, proposals, dissent, rationale, and transcript). However, only the chair holds the cryptographic authority to sign the final record. The "Submit for review" step asks the other attendees to review the record before the chair applies the signature. There is no per-participant pre-AI commitment and no automated aggregation rule. Section 9 specifies the layered commitment model as a design and states what is not yet built.
 
 ### 5.3 The honest claim
 
@@ -369,11 +369,11 @@ This is a **proposed** decomposition for the working group, not a requirement al
 
 ### 9.1 The problem
 
-The chair workflow is the evidence that the collective case is open. The chair is the deliberation's protagonist【internal: `4.11`】. The chair seeds the draft, authors the decision, submits for review, and signs. The `human_deliberation` block carries participants, proposals, dissent, rationale, and transcript—but the decision is authored and signed by one actor.
+The chair workflow is the evidence that the collective case is open. The chair is the deliberation's protagonist【internal: `4.11`】. The chair seeds the draft, authors the decision, submits for review, and signs. The `human_deliberation` block carries participants, proposals, dissent, rationale, and transcript. Multiple attendees can author messages and record dissents; the record captures their contributions. But the decision is signed by one actor. The workflow is multi-author, single-signer.
 
 A tumor board, investment committee, credit committee, or public-sector panel is different. Its value is not a single expert's independent judgment; it is collective deliberation with distributed expertise. The pre-AI assessment is not a single commitment. It is a distributed, negotiated, sometimes contested view assembled across specialties and sometimes across sessions.
 
-None of the three lineages handles this. DSES's independence model assumes a single clinician. The Decision Object's bounded instance does not specify collective commitment. The CDO's chair workflow is single-author.
+None of the three lineages handles this. DSES's independence model assumes a single clinician. The Decision Object's bounded instance does not specify collective commitment. The CDO's chair workflow separates authorship from signing: multiple attendees contribute, one signs.
 
 ### 9.2 The layered commitment model
 
@@ -395,7 +395,7 @@ The direction this paper proposes is **layered commitments**. The model is speci
 
 ### 9.3 What is not implemented
 
-The layered commitment model is a design, not a build. Section 5's classification reflects this: the collective case is **open**, and the chair workflow is single-author. The paper does not claim otherwise.
+The layered commitment model is a design, not a build. Section 5's classification reflects this: the collective case is **open**, and the chair workflow is multi-author, single-signer. The paper does not claim otherwise.
 
 ---
 
