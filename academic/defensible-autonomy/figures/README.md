@@ -7,7 +7,7 @@ Diagrams referenced by `paper.md` in this directory.
 1. **temporal-asymmetry.png** — T₀ pre-AI commitment → T₁ AI output → T₂ decision and review; automation bias at T₀→T₁, hindsight bias at T₁→T₂.
 2. **four-claims.png** — the four evidentiary claims and their mechanisms / non-proofs (the table in §3).
 3. **receipt-blocks.png** — `cdr.v1` / `cdo.v1` field map with signature boundary.
-4. **worked-example.png** — the frozen verification fixture: source assertion vs AI negation, adopted item vs operative order.
+4. **exhibits.png** — Exhibit A (frozen kit: source assertion vs AI negation, adopted item vs operative order) alongside Exhibit B (signed override: divergences, contradiction, dissent, rationale).
 
 ## Current status
 
