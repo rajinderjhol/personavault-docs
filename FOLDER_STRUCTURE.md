@@ -100,7 +100,7 @@ This repository follows the same documentation taxonomy as `verilinkos-docs`. Th
 1. **Use `git mv` when relocating a document**, so history follows the file.
 2. **Leave a root redirect stub** whenever a previously published root-level document moves into `academic/`. External links and `CITATION.cff` keep working.
 3. **`STATUS.md` wins on conflicts** with papers or benchmark material. Papers describe claims; status describes what is actually shipped.
-4. **Do not create empty directories.** Add `technical/`, `enterprise/`, `investor/`, `blog-posts/`, `standards/` when the first real document lands. A README promising content that does not exist is worse than no directory.
+4. **Do not create empty directories.** Add `technical/`, `investor/`, `blog-posts/`, `standards/` when the first real document lands. A README promising content that does not exist is worse than no directory.
 5. **Keep the public/private split.** This repository holds papers, specifications, and verifiable evidence. Internal readiness assessments, file-path inventories, and unapproved product claims stay in the private implementation repository.
 6. **Benchmark and verification artifacts stay at root** (`benchmark/`), because they are runnable evidence, not a paper.
 
@@ -116,13 +116,14 @@ whitepapers/                                 measuring-clinical-judgment.md,
                                              verifiable-decision-layer-for-clinical-ai.md
 protocols/cdr/v1/                            specification.md
 references/                                  claim-matrix.md, claim-boundaries.md
-benchmark/                                   unchanged (10 records + verifier + demo script)
+benchmark/                                   README.md, 10 records, verifier, demo script
 challenge-kit/                               README.md, FINDINGS.md, CHECKSUMS.sha256,
                                              valid + tampered receipts, standalone HTML verifier
+enterprise/                                  packs-and-dius.md, conformance.md
 .github/ISSUE_TEMPLATE/                      challenge-finding.md
 ```
 
-Reserved and not created: `standards/`, `technical/`, `enterprise/`, `investor/`, `blog-posts/`, `whitepapers/figures/`, `protocols/*/schemas/`, `protocols/*/security/`.
+Reserved and not created: `standards/`, `technical/`, `investor/`, `blog-posts/`, `whitepapers/figures/`, `protocols/*/schemas/`, `protocols/*/security/`.
 
 ## Source mapping from the private implementation repository
 

@@ -19,8 +19,10 @@ A signed decision record proves who signed it. It does not prove that the human 
 - [A Verifiable Decision Layer for Clinical AI](whitepapers/verifiable-decision-layer-for-clinical-ai.md)
 - [Measuring Clinical Judgment](whitepapers/measuring-clinical-judgment.md)
 
-## Specification and claim boundaries
+## For evaluators and buyers
 
+- [Packs and Domain Intelligence Units](enterprise/packs-and-dius.md) — thirteen vertical packs on one substrate; the vocabulary and the action perimeter each pack declares.
+- [Conformance self-assessment](enterprise/conformance.md) — how the recorded fields map to EU AI Act, nDSG and sector guidance; what is not certified.
 - [CDR 1.0 specification](protocols/cdr/v1/specification.md)
 - [Claim matrix — what we can say, and what proves it](references/claim-matrix.md)
 - [The horizontal claim — what the CDR proves and does not prove](references/claim-boundaries.md)
@@ -32,7 +34,7 @@ cd benchmark
 ./verify_demo.sh
 ```
 
-That runs the offline verifier against the paper's reference case. The output ends with `DECISION INTEGRITY: VALID` and lists `Pre-AI commitment` among the passed checks. The full table — ten records, ten artifact classes, seven failure modes — is in the benchmark material.
+That runs the offline verifier against the paper's reference case. The output ends with `DECISION INTEGRITY: VALID` and lists `Pre-AI commitment` among the passed checks. The full table — ten records, ten artifact classes, and the findings behind them — is in the [benchmark README](benchmark/README.md). The bundled verifier is a frozen snapshot; read its version note before interpreting results.
 
 ## Challenge the verifier
 
