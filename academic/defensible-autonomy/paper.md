@@ -1,6 +1,6 @@
 # Defensible Autonomy: Cryptographic Decision Receipts as an Evidentiary Bridge Between Automation Bias and Hindsight Liability
 
-**Status:** working draft for framing / circulation. Not submitted.
+**Status:** working paper.
 **Audience:** health-informatics, AI-law, and FAccT readers.
 **Terminology note:** PersonaVault calls the person or thing a decision is about the **subject** (`subject_id`, `subject_type`); its consent model maps FHIR `Consent.patient` to `subject_id`. "Patient" is a pack-configurable UI label ("Patient" in the oncology pack, "Subject" in the generic clinical pack), not a schema field. This paper uses *subject* generically and *patient* only when discussing the clinical literature.
 
@@ -16,7 +16,7 @@ We argue that the missing object is an **evidentiary bridge**: a tamper-evident,
 
 ## 1. Introduction
 
-The promise of clinical decision support was that AI would reduce error. The observed reality is a double bind. Physicians are asked to use tools they did not select and cannot fully inspect, and are held responsible both for following a flawed recommendation and for ignoring a sound one (Myers et al., 2025; Appel, 2025). In a randomized vignette study across U.S. and German samples, physicians who rejected AI advice aligned with standard care were rated significantly less reasonable than those who accepted it; where the AI recommended *nonstandard* care, accepting and rejecting were rated equivalently reasonable (Tacconelli et al., 2026). The law's own categories are unsettled: the respectable-minority doctrine has historically shielded physicians who follow a respected school of thought, but its protection depends on showing that the approach was adopted in the exercise of judgment — a showing that is evidentiary, not doctrinal (Price et al., 2024; Peters, 2000).
+The promise of clinical decision support was that AI would reduce error. The observed reality is a double bind. Physicians are asked to use tools they did not select and cannot fully inspect, and are held responsible both for following a flawed recommendation and for ignoring a sound one (Patil et al., 2025; Appel, 2025). In a randomized vignette study across U.S. and German samples, physicians who rejected AI advice aligned with standard care were rated significantly less reasonable than those who accepted it; where the AI recommended *nonstandard* care, accepting and rejecting were rated equivalently reasonable (Tacconelli et al., 2026). The law's own categories are unsettled: the respectable-minority doctrine has historically shielded physicians who follow a respected school of thought, but its protection depends on showing that the approach was adopted in the exercise of judgment — a showing that is evidentiary, not doctrinal (Price et al., 2024; Peters, 2000).
 
 This paper asks a narrower question than "how do we make AI more accurate?" It asks: **what artifact would let a reviewer distinguish an unexplained deviation from a documented judgment, without granting the artifact powers it does not have?**
 
@@ -28,13 +28,13 @@ Three observations motivate the answer.
 
 ## 2. Related work
 
-**Human–AI judgment.** Automation bias (Mosier & Skitka, 1996; Goddard et al., 2012) and algorithm aversion (Dietvorst et al., 2015; Burton et al., 2020) are well characterized but usually studied separately from liability. Appel's "negative outcome penalty paradox" (Appel, 2025) is the closest statement of the double bind: physicians risk jury penalties whether they overrule or accept AI. Tacconelli et al. (2026) refine the empirical picture and, importantly, find *equivalence* between accepting and rejecting nonstandard AI advice — a boundary condition this paper relies on. Dai and Singh's analytical model (JMR, 2025; Johns Hopkins Carey, 2023) explains why physicians may avoid AI precisely in high-uncertainty cases where it would be most useful.
+**Human–AI judgment.** Automation bias (Mosier & Skitka, 1996; Goddard et al., 2012) and algorithm aversion (Dietvorst et al., 2015; Burton et al., 2020) are well characterized but usually studied separately from liability. Appel's "negative outcome penalty paradox" (Appel, 2025) is the closest statement of the double bind: physicians risk jury penalties whether they overrule or accept AI. Tacconelli et al. (2026) refine the empirical picture and, importantly, find *equivalence* between accepting and rejecting nonstandard AI advice — a boundary condition this paper relies on. Dai and Singh's analytical model (Dai & Singh, 2025) explains why physicians may avoid AI precisely in high-uncertainty cases where it would be most useful.
 
 **Liability doctrine.** The respectable-minority / two-schools rule is a burden-allocation device: the defendant identifies a second school of thought, and the plaintiff must persuade that the chosen approach was acceptable (Peters, 2000; Price et al., 2024). Its evidentiary demands are poorly specified — a 2026 analysis of the Restatement (Third) of Torts notes that the commentary does not say what "acceptability" consists in when evidence tells against a practice (Nikolic, 2026). Our claim is not that a receipt satisfies this doctrine, but that it supplies the *contemporaneous record* the doctrine presupposes.
 
 **Tamper-evident evidence.** Cryptographically chained audit logs have a long literature (Schneier & Kelsey, 1999; Snodgrass et al., 2004; Yavuz et al., 2011) and a current one (Nitro, CCS 2025; "Agent Flight Recorder," 2026; "Notarized Agents," 2026). The distinguishing feature of the CDR is not the hash chain — that is table stakes — but the *semantic fields* bound at decision time.
 
-**Three evidentiary primitives.** We use three terms throughout, defined here so the argument stands on its own. *Sequence* asks whether the human formed a judgment before the AI's output could shape it; its failure mode is retroactive rationalization. *Provenance* asks what evidence was available, what was considered, and what was omitted; its failure mode is evidentiary incompleteness. *Authority* asks by what right the decision was made and whether a stranger can verify that right; its failure mode is portability collapse. These are orthogonal: a record can establish one and fail the others. Prior work develops this trichotomy in detail (Jhol, 2026a); here it is used only as vocabulary. The boundary that matters for this paper is that *integrity of a recorded sequence is not independence of the underlying cognition* — a commitment gate can be satisfied by a ritual.
+**Three evidentiary primitives.** We use three terms throughout, defined here so the argument stands on its own. *Sequence* asks whether the human formed a judgment before the AI's output could shape it; its failure mode is retroactive rationalization. *Provenance* asks what evidence was available, what was considered, and what was omitted; its failure mode is evidentiary incompleteness. *Authority* asks by what right the decision was made and whether a stranger can verify that right; its failure mode is portability collapse. These are orthogonal: a record can establish one and fail the others. Prior work develops this trichotomy in detail (Author, 2026); here it is used only as vocabulary. The boundary that matters for this paper is that *integrity of a recorded sequence is not independence of the underlying cognition* — a commitment gate can be satisfied by a ritual.
 
 ## 3. The temporal-asymmetry framework
 
@@ -57,6 +57,21 @@ An evidentiary bridge must bind four claims:
 | The AI said exactly this, over exactly this evidence | hash-bound transcript, `knowledge_state.entries` with content hashes, AI provenance graph | That the AI's factual claims were true |
 | The human disposed of recommendations deliberately | `adopted_items`, `human_deliberation.rationale` / `dissent`, divergence fields | That the deliberation actually occurred as recorded; that it was read |
 | The record was not rewritten later | Ed25519 signature over a canonical payload, append-only version chain | That the originating system was secure; that all relevant evidence was present |
+
+```mermaid
+flowchart LR
+    T0["T0 · pre-AI<br/>independent plan"] --> T1["T1 · AI output<br/>advice + evidence"]
+    T1 --> T2["T2 · human decision"]
+    T2 --> T3["T2 · later review<br/>insurer · court · auditor"]
+    T1 -.->|"automation bias<br/>anticipated failure"| T0
+    T3 -.->|"hindsight bias<br/>retrospective failure"| T2
+    T0 ==>|"commitment hash"| BR["Evidentiary bridge<br/>signed decision record"]
+    T1 ==>|"output + evidence snapshot"| BR
+    T2 ==>|"disposition + rationale"| BR
+    BR ==>|"frozen context"| T3
+```
+
+*Figure 1. The two temporal failures and the bridge. Solid arrows are the decision sequence; dotted arrows are the biases the bridge is designed to make visible. The bridge does not correct either bias — it preserves the record against which review can be checked.*
 
 The framework's central normative claim is that these mechanisms change the **standard of review**, not the **standard of care**. They make review contemporaneous in structure even when it occurs in retrospect; they do not make the underlying decision correct.
 
@@ -93,7 +108,18 @@ To address the gap in Exhibit A, we generated a second receipt through the curre
 - a recorded `dissent` with grounds, dissenter, and timestamp;
 - an alternative considered and rejected, with the reason tied to the documented mutation.
 
-The offline verifier reports `DECISION INTEGRITY: VALID` with all sixteen pass-labels and exit code 0. The exhibit therefore demonstrates that override rationale can be bound to the machine's advice in a signed, independently checkable artifact. It does **not** demonstrate clinical correctness, and two limits are visible in the verifier output: the pre-AI commitment check was not exercised because the pack fired no AI policies, and the advisory completeness review reports no terminal marker and no bound completeness attestation. A real override case under the full signing gates remains future work; Exhibit B establishes the mechanism, not efficacy.
+The offline verifier reports `DECISION INTEGRITY: VALID` with seventeen pass-labels and exit code 0, including `Pre-AI commitment`: the seeded plan hash is recomputed from the assessment and the recorded commit time precedes the evidence snapshot. The exhibit therefore exercises all three primitives at once — sequence (commitment before AI output), provenance (hash-bound evidence and AI prose), and authority (consent basis and enrolled chair key) — while binding the override rationale to the AI's exact advice. It does **not** demonstrate clinical correctness, and two limits remain visible: the advisory completeness review reports no terminal marker and no bound completeness attestation, and the scenario is synthetic. A real override case under the full signing gates remains future work; Exhibit B establishes the mechanism, not efficacy.
+
+```mermaid
+flowchart LR
+    P["T0 · chair plan<br/>plan_hash + committed_at"] -->|"Pre-AI commitment ✓"| A["T1 · AI output<br/>0.9 confidence · 'no significant mutations'"]
+    A -->|"Provenance ✓"| E["Source: EGFR exon 19 deletion<br/>VAF 42% · PD-L1 65%"]
+    E -->|"Evidence contradiction ✓"| D["T2 · chair decision<br/>reject AI item · EGFR-directed regimen"]
+    D -->|"Divergence + dissent + rationale"| R["Signed CDR<br/>Ed25519 · 17 verifier pass-labels"]
+    R --> V["Offline third-party verification"]
+```
+
+*Figure 2. Exhibit B's end-to-end chain. Each label corresponds to a named verifier check; advisory completeness findings are reported separately and never alter the integrity verdict.*
 
 ## 6. What the bridge cannot do
 
@@ -132,7 +158,7 @@ Making AI safer cannot be solved solely by making models more accurate. High-sta
 
 ---
 
-## References (draft — verify against publisher pages before submission)
+## References
 
 - Appel, J. M. (2025). Artificial intelligence in medicine and the negative outcome penalty paradox. *Journal of Medical Ethics*, 51(1), 34–39. doi:10.1136/jme-2023-109848.
 - Burton, J. W., Stein, M.-K., & Jensen, T. B. (2020). A systematic review of algorithm aversion in augmented decision making. *Journal of Behavioral Decision Making*, 33(2), 220–239. doi:10.1002/bdm.2155.
@@ -141,11 +167,9 @@ Making AI safer cannot be solved solely by making models more accurate. High-sta
 - Ghaith, S., Moore, G. P., Colbenson, K. M., & Lindor, R. A. (2022). Charting practices to protect against malpractice: Case reviews and learning points. *West J Emerg Med*, 23(3), 412–417. doi:10.5811/westjem.2022.1.53894. *(10–20% figure is from its introduction, citing Cohn 1997; the study itself is qualitative.)*
 - Goddard, K., Roudsari, A., & Wyatt, J. C. (2012). Automation bias: A systematic review. *JAMIA*, 19(1), 121–127.
 - Holland & Knight. (2026, October 15). Keeping humans in the loop: California sets new ground rules for AI in healthcare. *(AB 2575 vetoed 30 Sep 2026; AB 1979 signed, effective 1 Jan 2027.)*
-- Jhol, R. (2026a). *Beyond AI Audit Trails: The Three Foundations of Verifiable Decision Evidence* (v3.3). `academic/three-foundations/paper.md`.
-- Jhol, R. (2026b). *The Horizontal Claim — What the CDR Proves and What It Does Not*. `references/claim-boundaries.md`.
-- Jhol, R. (2026c). *Open Questions*. Implementation repository.
+- Author. (2026). *Beyond AI Audit Trails: The Three Foundations of Verifiable Decision Evidence* (v3.3). Anonymized for review.
 - Lyell, D., & Coiera, E. (2017). Automation bias and verification complexity: A systematic review. *JAMIA*, 24(2), 423–431.
-- Myers, C. et al. (2025). [Viewpoint on the "superhuman burden" of AI on physicians]. *JAMA Health Forum*; see Johns Hopkins Medicine summary, 6 Oct 2025.
+- Patil, S. V., Myers, C. G., & Lu-Myers, Y. (2025). Calibrating AI reliance—A physician's superhuman dilemma. *JAMA Health Forum*, 6(3), e250106. doi:10.1001/jamahealthforum.2025.0106.
 - Nikolic, B. (2026). Regarded as competent: Medical knowledge and professional acceptance in the Restatement (Third) of Torts. *J Eval Clin Pract*, 32(8), e70751. doi:10.1111/jep.70751.
 - Peters, P. G. (2000). The quiet demise of deference to custom: Malpractice law at the millennium. *57 Wash. & Lee L. Rev.* 163.
 - Price, W. N., et al. (2024). Liability for use of artificial intelligence in medicine. In *Research Handbook on Health, AI and the Law*. NCBI Bookshelf NBK613216.
@@ -155,10 +179,6 @@ Making AI safer cannot be solved solely by making models more accurate. High-sta
 - Yavuz, A. A., Ning, P., & Reiter, M. K. (2011). Efficient, compromise resilient and append-only cryptographic schemes for secure audit logging. *NCSU TR*.
 - EU AI Act, Regulation (EU) 2024/1689, Art. 14 (consolidated 27 Jul 2026).
 
-**Repository artifacts (primary sources for the implementation claims):** ADR 0046 (structured recommendation and divergence attestation, `proposed`), ADR 0048 (draft decision records evidence contradictions, `proposed (pilot)`), ADR 0064 (adequacy findings advisory), ADR 0067 (AI exposure attested, `accepted`), ADR 0068 (completeness against a declared universe, `accepted`), and the offline verifier with its frozen verification fixture — all in the private implementation repository; `references/claim-matrix.md` and `references/claim-boundaries.md` in this repository.
+**Adjacent contemporary systems.** *Nitro: Rethinking Tamper-Evident Logging* (CCS 2025, doi:10.1145/3719027.3765024), *Agent Flight Recorder* (arXiv:2609.01931, 2026), and *Notarized Agents* (arXiv:2606.04193, 2026) each provide integrity, ordering, and external verifiability; none claims the decision-time semantic commitment structure analyzed here.
 
-**Adjacent contemporary systems (positioning, not prior-art priority claims):** *Nitro: Rethinking Tamper-Evident Logging*, CCS 2025, doi:10.1145/3719027.3765024; *Agent Flight Recorder*, arXiv:2609.01931 (2026); *Notarized Agents: Receiver-Attested Confidential Receipts*, arXiv:2606.04193 (2026). Each provides integrity/ordering/external verifiability; none claims the decision-time semantic commitment structure analyzed here. Verify recency and claims before submission.
 
----
-
-*Editorial note: the working draft and its internal claim-by-claim readiness assessment remain in the private implementation repository. This public copy contains the paper only.*

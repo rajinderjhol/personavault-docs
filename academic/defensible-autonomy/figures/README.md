@@ -11,7 +11,7 @@ Diagrams referenced by `paper.md` in this directory.
 
 ## Current status
 
-No graphics are committed yet. Section 3's table and the worked example in §5 serve as text placeholders.
+No raster graphics are committed. Figures 1 (§3) and 2 (§5) are inline Mermaid diagrams in `paper.md` and render in GitHub-flavored Markdown.
 
 ## Usage
 
