@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PersonaVault — Offline CDR Verifier</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; background: #0f1115; color: #e6e8ec; }
+  main { max-width: 860px; margin: 0 auto; padding: 32px 20px 64px; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  .sub { color: #9aa3b2; margin-bottom: 24px; }
+  .card { background: #181b22; border: 1px solid #2a2f3a; border-radius: 10px; padding: 20px; margin-bottom: 16px; }
+  label { display: block; font-weight: 600; margin-bottom: 8px; }
+  input[type=file] { width: 100%; padding: 10px; border: 1px dashed #3a4150; border-radius: 8px; background: #12151b; color: inherit; }
+  textarea { width: 100%; height: 130px; box-sizing: border-box; background: #12151b; color: inherit; border: 1px solid #2a2f3a; border-radius: 8px; padding: 10px; font-family: ui-monospace, monospace; font-size: 12px; }
+  button { background: #2f6fed; color: #fff; border: 0; border-radius: 8px; padding: 10px 18px; font-weight: 600; cursor: pointer; }
+  button:disabled { opacity: .5; cursor: not-allowed; }
+  .verdict { font-size: 18px; font-weight: 700; padding: 12px 14px; border-radius: 8px; margin: 8px 0 16px; }
+  .valid { background: #10331f; color: #7ee2a8; border: 1px solid #1f6b40; }
+  .invalid { background: #3a1418; color: #ff9aa2; border: 1px solid #7a2a33; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { padding: 3px 0; }
+  .pass::before { content: "✓ "; color: #7ee2a8; }
+  .skip::before { content: "– "; color: #9aa3b2; }
+  .fail { color: #ff9aa2; font-weight: 600; }
+  .review { color: #e6c07b; padding: 5px 0; border-bottom: 1px solid #242833; }
+  .meta { color: #9aa3b2; font-size: 12px; margin-top: 12px; }
+  code { background: #12151b; padding: 1px 5px; border-radius: 4px; }
+  .notice { font-size: 13px; color: #9aa3b2; border-left: 3px solid #2f6fed; padding-left: 12px; margin-top: 18px; }
+  .contact { font-size: 12px; color: #9aa3b2; border-top: 1px solid #2a2f3a; padding-top: 14px; margin-top: 24px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>PersonaVault — Independent Verifier Challenge Kit</h1>
+  <div class="sub">Nothing is uploaded. All checks run in this browser, with no network access,
+  no account, and no trust in PersonaVault. Open the two supplied receipts: the valid one
+  passes; the one-byte-tampered one fails at the content hash.</div>
+
+  <div class="card">
+    <label for="file">Load a CDR document (<code>receipt.cdr.json</code>)</label>
+    <input type="file" id="file" accept="application/json,.json">
+    <div style="margin:12px 0 8px;color:#9aa3b2">or paste JSON below</div>
+    <textarea id="json" placeholder='{"schema_version":"cdr.v1", ...}'></textarea>
+    <div style="margin-top:12px"><button id="run">Verify</button></div>
+  </div>
+
+  <div id="result"></div>
+
+  <div class="notice">
+    <strong>What this proves.</strong> The record's bytes are unchanged since the chair signed
+    them; the chair's key produced the signature; the frozen DQI snapshot and any signed
+    mandate or outcome receipt are bound to this exact decision.
+    <br><br>
+    <strong>What this does not prove.</strong> Integrity is not adequacy. This verifier does
+    not re-execute the decision path, does not check that the recorded claim matches its
+    source span or its operative order, does not check that consent was current, does not
+    carry an independent receiver's attestation, and does not prove that no receipt is
+    missing. It also does not prove clinical correctness, that the evidence was true, or
+    that an outcome was accurately reported. Those are separate questions, and this page
+    makes no claim about them.
+    <br><br>
+    <strong>Why the review panels are advisory.</strong> If a contradiction failed the
+    receipt, an operator would be tempted to suppress it and lose the immutable record.
+    Keeping the seal valid while flagging the contradiction preserves both: what happened
+    stays sealed, and what is questionable stays visible to the human reviewer.
+    <br><br>
+    <strong>A concrete example in the supplied valid receipt.</strong> Its adopted item says
+    “Recommend targeted therapy as the primary treatment option”, while the operative order
+    names <code>carboplatin</code>, and the pre-AI commitment's structured plan is empty.
+    All 16 checks still pass. That is the exact boundary between byte integrity and
+    semantic adequacy — not a defect in the verifier, but a limit it states rather than hides.
+  </div>
+
+  <div class="contact">
+    PersonaVault · source and publication: <code>github.com/rajinderjhol</code>
+    <br>Shown as plain text on purpose — this page never opens a connection, so the address
+    is for you to type, not for the page to follow.
+  </div>
+</main>
+
+<script>
+/* Inlined from tools/verify_cdr_browser.js — keep the two in sync. */
+/**
+ * Offline CDR verifier — browser/Node implementation.
+ *
+ * No imports, no network, no PersonaVault dependency. This is the
+ * executable form of docs/HEALTHCARE/02-architecture/the-verification-protocol.md
+ * and must stay in parity with tools/verify_cdr.py.
+ *
+ * Exports (when used as a module): verifyReceipt(receipt) -> Promise<{
+ *   valid: boolean, passed: string[], skipped: string[],
+ *   failure: {check, reason} | null
+ * }>
+ */
+
+const KINDS = new Set([
+  'case_document', 'policy', 'clinical_record', 'guideline', 'precedent',
+  'context', 'ai_output', 'ontology_entity', 'pack_knowledge',
+  'subject_data', 'patient_data', 'pathology', 'imaging', 'genomic', 'literature',
+  'retrieved_passage', 'pattern',
+  'regulation', 'framework', 'standard', 'database',
+]);
+const AUTHORITIES = new Set([
+  'grounding', 'binding', 'advisory', 'precedent', 'contextual',
+]);
+const AVAIL = new Set([
+  'available', 'referenced', 'generated', 'retrieved_but_excluded', 'unavailable',
+]);
+const EVIDENCE_KINDS = new Set([
+  'case_document', 'policy', 'clinical_record', 'guideline', 'precedent', 'context',
+]);
+
+class VerifyFailure extends Error {
+  constructor(check, reason) {
+    super(reason);
+    this.check = check;
+    this.reason = reason;
+  }
+}
+function fail(check, reason) { throw new VerifyFailure(check, reason); }
+
+/** Deterministic JSON: sorted keys, compact separators, UTF-8 safe. */
+
+function hexToBytes(hex) {
+  const out = new Uint8Array(hex.length / 2);
+  for (let i = 0; i < out.length; i++) out[i] = parseInt(hex.slice(i*2, i*2+2), 16);
+  return out;
+}
+async function sha256HexBytes(bytes) {
+  const out = await crypto.subtle.digest('SHA-256', bytes);
+  return Array.from(new Uint8Array(out)).map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+async function merkleRoot(hashes) {
+  if (!hashes.length) return sha256Hex('empty');
+  let level = hashes.slice();
+  while (level.length > 1) {
+    if (level.length % 2) level.push(level[level.length - 1]);
+    const next = [];
+    for (let i = 0; i < level.length; i += 2) {
+      const pair = hexToBytes(level[i]).concat(hexToBytes(level[i + 1]));
+      next.push(await sha256HexBytes(pair));
+    }
+    level = next;
+  }
+  return level[0];
+}
+async function verifyInclusion(chunkHash, path, root) {
+  let current = chunkHash;
+  for (const step of path) {
+    const pair = step.side === 'left'
+      ? hexToBytes(step.hash).concat(hexToBytes(current))
+      : hexToBytes(current).concat(hexToBytes(step.hash));
+    current = await sha256HexBytes(pair);
+  }
+  return current === root;
+}
+
+function canonicalize(value) {
+  if (value === null || value === undefined) return 'null';
+  if (typeof value === 'string') return JSON.stringify(value);
+  if (typeof value === 'boolean') return value ? 'true' : 'false';
+  if (typeof value === 'number') {
+    if (!Number.isFinite(value)) fail('Canonicalization', 'non-finite number is not permitted');
+    return String(value);
+  }
+  if (Array.isArray(value)) return '[' + value.map(canonicalize).join(',') + ']';
+  if (typeof value === 'object') {
+    const keys = Object.keys(value).sort();
+    return '{' + keys.map((k) => JSON.stringify(k) + ':' + canonicalize(value[k])).join(',') + '}';
+  }
+  fail('Canonicalization', 'unsupported value type');
+}
+
+const enc = new TextEncoder();
+async function sha256Hex(text) {
+  const bytes = await crypto.subtle.digest('SHA-256', enc.encode(text));
+  return Array.from(new Uint8Array(bytes)).map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+async function canonicalHash(value) { return sha256Hex(canonicalize(value)); }
+
+function b64ToBytes(s) {
+  const bin = atob(s);
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+
+async function verifyEd25519(publicKeyB64, signatureBytes, messageBytes, check) {
+  try {
+    const key = await crypto.subtle.importKey(
+      'raw', b64ToBytes(publicKeyB64), { name: 'Ed25519' }, false, ['verify'],
+    );
+    const ok = await crypto.subtle.verify({ name: 'Ed25519' }, key, signatureBytes, messageBytes);
+    if (!ok) fail(check, 'signature does not verify against the provided public key');
+  } catch (e) {
+    if (e instanceof VerifyFailure) throw e;
+    fail(check, String(e && e.message ? e.message : e));
+  }
+}
+
+function verifierRequirements(cdo) {
+  const req = (cdo && cdo.verifier_requirements) || {};
+  return {
+    transcript_required: !!req.transcript_required,
+    pre_ai_plan_required: !!req.pre_ai_plan_required,
+    ai_policies_required: !!req.ai_policies_required,
+  };
+}
+
+/** Standalone mandate envelope verification (mirrors tools/verify_mandate.py). */
+async function verifyMandate(envelope) {
+  const errors = [];
+  if (!envelope || envelope.schema_version !== 'agent-mandate.v1') errors.push('unsupported envelope schema');
+  const payload = (envelope && envelope.payload) || {};
+  if (!payload || payload.schema_version !== 'mandate.v1') errors.push('unsupported mandate schema');
+  const hashOk = envelope && (await canonicalHash(payload)) === envelope.payload_hash;
+  if (!hashOk) errors.push('payload hash mismatch');
+  const sig = (envelope && envelope.signature) || '';
+  if (!sig.startsWith('ed25519:')) {
+    errors.push('missing Ed25519 signature');
+  } else {
+    try {
+      const pub = envelope.signer_public_key || '';
+      await verifyEd25519(pub, b64ToBytes(sig.slice(8)), hexToBytes(envelope.payload_hash), 'Signed mandate');
+    } catch (e) {
+      errors.push(e.reason || String(e.message || e));
+    }
+  }
+  const now = Date.now();
+  if (payload.valid_from && Date.parse(payload.valid_from) > now) errors.push('mandate not yet active');
+  if (payload.valid_until && Date.parse(payload.valid_until) < now) errors.push('mandate expired');
+  return { valid: errors.length === 0, errors };
+}
+
+async function verifySystemBindings(receipt, cdoHash, passed, skipped) {
+  const system = receipt.system_receipt || null;
+  if (!system) { skipped.push('System receipt (absent; legacy record)'); return; }
+
+  const body = system.body || {};
+  const proof = body.proof || {};
+  const sig = system.signature || proof.signature || '';
+  const pub = system.signer_public_key || proof.signer_public_key || '';
+  if (!sig.startsWith('ed25519:') || !pub) fail('System receipt signature', 'missing Ed25519 signature or public key');
+  const signable = { ...body };
+  delete signable.proof;
+  // Prefer the exact canonical string produced by the signer (ADR 0028).
+  // Re-serializing in JS turns Python's "1.0" into "1" and breaks the
+  // signature on any receipt carrying a float.
+  const shipped = receipt.system_receipt && receipt.system_receipt.body_canonical;
+  if (shipped) {
+    // The shipped canonical string must still describe this exact body.
+    // Parsing both sides erases the 1.0/1 distinction, so this catches
+    // content tampering without creating a false float mismatch.
+    let parsed;
+    try { parsed = JSON.parse(shipped); }
+    catch { fail('System receipt signature', 'body_canonical is not valid JSON'); }
+    if (canonicalize(parsed) !== canonicalize(signable)) {
+      fail('System receipt signature', 'receipt body was altered after export');
+    }
+  }
+  const canonical = shipped || canonicalize(signable);
+  await verifyEd25519(pub, b64ToBytes(sig.slice(8)), enc.encode(canonical), 'System receipt signature');
+  passed.push('System receipt signature');
+
+  const snap = receipt.dqi_snapshot || null;
+  const snapPayload = (snap && snap.payload) || {};
+  const meta = (((body.extensions || {}).metadata) || {});
+  const claim = meta.dqi_snapshot_hash;
+  if (!claim) { skipped.push('Frozen DQI snapshot (no snapshot hash in receipt; legacy)'); return; }
+  if (!snap) fail('Frozen DQI snapshot', 'receipt binds a snapshot hash but none was supplied');
+  const snapHash = await canonicalHash(snapPayload);
+  if (snapHash !== snap.content_hash) fail('Frozen DQI snapshot', 'snapshot payload does not hash to its content_hash');
+  if (snapHash !== claim) fail('Frozen DQI snapshot', 'snapshot hash does not match the signed receipt binding');
+  if (snapPayload.schema_version !== 'dqi_snapshot.v1') fail('Frozen DQI snapshot', 'unsupported snapshot schema');
+  if (snapPayload.input_hash !== cdoHash) fail('Frozen DQI snapshot', 'snapshot was computed from a different CDO hash');
+  const score = Number(snapPayload.score);
+  if (!Number.isFinite(score) || score < 0 || score > 1) fail('Frozen DQI snapshot', 'snapshot score is outside [0, 1]');
+  passed.push('Frozen DQI snapshot');
+
+  const mandateId = meta.mandate_id;
+  if (!mandateId) {
+    skipped.push('Signed mandate (none bound at signing)');
+  } else {
+    const mandate = receipt.mandate || {};
+    const envelope = mandate.envelope || {};
+    if (!meta.mandate_hash || !envelope || !Object.keys(envelope).length) {
+      fail('Signed mandate', 'a mandate was bound but no envelope was supplied');
+    }
+    if ((await canonicalHash(envelope)) !== meta.mandate_hash) {
+      fail('Signed mandate', 'mandate hash does not match the signed receipt');
+    }
+    if (mandate.revoked) fail('Signed mandate', 'the mandate was revoked');
+    if ((envelope.payload || {}).mandate_id !== mandateId) {
+      fail('Signed mandate', 'mandate id mismatch between receipt and envelope');
+    }
+    const result = await verifyMandate(envelope);
+    if (!result.valid) fail('Signed mandate', result.errors.join('; '));
+    passed.push('Signed mandate');
+  }
+
+  const outcome = receipt.outcome_receipt || null;
+  if (!outcome) {
+    skipped.push('Outcome receipt (absent; decision may predate outcome)');
+  } else {
+    const op = outcome.payload || {};
+    if ((await canonicalHash(op)) !== outcome.content_hash) {
+      fail('Outcome receipt', 'outcome payload does not hash to its content_hash');
+    }
+    if (op.decision_cdo_hash !== cdoHash) {
+      fail('Outcome receipt', 'decision_cdo_hash does not match this CDO');
+    }
+    const cdoArtifactId =
+      (((receipt.cdo_payload || {}).metadata || {}).artifact_id) ||
+      ((receipt.record || {}).artifact_id);
+    if (cdoArtifactId && op.decision_artifact_id !== cdoArtifactId) {
+      fail('Outcome receipt', 'decision_artifact_id does not match this record');
+    }
+    passed.push('Outcome receipt');
+  }
+}
+
+function verifyExecutionEvidence(cdo, passed, skipped) {
+  if (!Object.prototype.hasOwnProperty.call(cdo, 'agent_execution')) {
+    skipped.push('Execution evidence (absent; legacy record)');
+    return;
+  }
+  const assessment = ((cdo.agent_execution || {}).evidence_assessment) || {};
+  const items = assessment.items || [];
+  if (assessment.rubric_version && !Array.isArray(items)) {
+    fail('Execution evidence', 'evidence_assessment.items is not a list');
+  }
+  for (const item of items) {
+    if (!item || typeof item !== 'object' || !item.reasons) {
+      fail('Execution evidence', 'an evidence item carries no reasons');
+    }
+  }
+  passed.push('Execution evidence');
+}
+
+/** Verify a full CDR document. Returns a verdict object; never throws for bad receipts. */
+async function verifyReceipt(receipt) {
+  const passed = [];
+  const skipped = [];
+  try {
+    if (!receipt || receipt.schema_version !== 'cdr.v1') {
+      fail('Schema version', "expected 'cdr.v1'");
+    }
+    const cdo = receipt.cdo_payload || {};
+    if (cdo.schema_version !== 'cdo.v1') fail('CDO schema version', "expected 'cdo.v1'");
+    passed.push('Schema version');
+
+    const canonicalStr = receipt.cdo_payload_canonical;
+    const cdoHash = typeof canonicalStr === 'string'
+      ? await sha256Hex(canonicalStr)
+      : await canonicalHash(cdo);
+    if (cdoHash !== receipt.cdo_hash) fail('CDO hash', 'recomputed hash does not match receipt');
+    passed.push('CDO hash');
+
+    const ks = cdo.knowledge_state || {};
+    const entries = ks.entries || [];
+    if (ks.snapshot_hash || entries.length) {
+      const tuples = entries.filter((e) => e && typeof e === 'object').map((e) => [
+        String(e.kind || ''), String(e.source || ''),
+        String(e.version || ''), String(e.content_hash || ''),
+      ]).sort();
+      if ((await canonicalHash(tuples)) !== (ks.snapshot_hash || '')) {
+        fail('knowledge_state.snapshot_hash', "the entries' hash does not match the claimed snapshot");
+      }
+      passed.push('knowledge_state.snapshot_hash');
+
+      for (const e of entries) {
+        if (!e || typeof e !== 'object') continue;
+        const kind = String(e.kind || '');
+        if (kind && !KINDS.has(kind)) fail('knowledge_state.entry.kind', `entry kind ${kind} is not a known evidence kind`);
+        const meta = e.metadata || {};
+        const auth = String(meta.authority || '');
+        if (auth && !AUTHORITIES.has(auth)) fail('knowledge_state.entry.authority', `entry authority ${auth} is not one of the five`);
+        const ch = String(e.content_hash || '');
+        if (EVIDENCE_KINDS.has(kind) && ch.length !== 64) {
+          fail('knowledge_state.entry.content_hash', 'a evidence entry must carry a sha256 content_hash');
+        }
+        if (meta.content && EVIDENCE_KINDS.has(kind)) {
+          const computed = await sha256Hex(String(meta.content));
+          if (computed !== ch) fail('knowledge_state.entry.content_hash', 'entry content hashes to a different value');
+        }
+      }
+      passed.push('knowledge_state.entries');
+
+      // 2a-ii. Local evidence (L1) — Merkle chain and companion signature
+      let localSeen = 0;
+      let ocrSeen = 0;
+      for (const e of entries) {
+        const le = (((e || {}).metadata || {}).local_evidence) || {};
+        if (!le || !Object.keys(le).length) continue;
+        localSeen += 1;
+        if (le.schema_version !== 'pv-local-evidence.v1') fail('Local evidence', 'unsupported schema');
+        const hashes = le.chunk_hashes || [];
+        // The entry's top-level content_hash must be the L1 range hash.
+        if ((e.content_hash || '') !== le.range_hash) {
+          fail('Local evidence', 'entry content hash does not match L1 range hash');
+        }
+        const root = await merkleRoot(hashes);
+        if (root !== le.canonical_root) fail('Local evidence', 'canonical root mismatch');
+        const idx = le.chunk_index || 0;
+        if (!await verifyInclusion(hashes[idx] || '', le.inclusion_proof || [], le.canonical_root || '')) {
+          fail('Local evidence', 'Merkle inclusion proof failed');
+        }
+        if (!String(le.signature || '').startsWith('ed25519:')) {
+          fail('Local evidence', 'missing companion signature');
+        }
+        if (le.proof_class === 'ocr') {
+          ocrSeen += 1;
+          // OCR is a distinct, engine-dependent proof class. Never present
+          // it as byte-derivable deterministic extraction.
+          if (le.deterministic !== false) fail('OCR evidence', 'OCR proof must declare deterministic=false');
+          if (!le.engine_binary_hash || !le.language_data_hash || le.language_data_hash === 'not-pinned') {
+            fail('OCR evidence', 'OCR engine or weights are not pinned');
+          }
+        }
+      }
+      if (localSeen) passed.push(`Local evidence (${localSeen} L1 proof(s))`);
+      if (ocrSeen) {
+        passed.push(`OCR evidence (${ocrSeen} proof(s), engine/weights pinned; non-deterministic — not byte-derivable)`);
+      }
+
+      for (const e of entries) {
+        if (!e || typeof e !== 'object') continue;
+        if (!AVAIL.has(e.availability)) fail('Provenance completeness', `unknown availability ${e.availability}`);
+      }
+      const u = ks.declared_universe;
+      if (u && Number(u.retrieved_count || 0) > Number(u.available_count || 0)) {
+        fail('Provenance completeness', 'retrieved_count > available_count');
+      }
+      passed.push('Provenance completeness');
+    }
+
+    const consent = cdo.consent || {};
+    if (consent.ref_kind === 'fhir_consent') {
+      if (['inactive', 'revoked', 'rejected'].includes(consent.status_at_decision)) {
+        fail('Consent', `consent status at decision was ${consent.status_at_decision}`);
+      }
+      passed.push(consent.ref_hash ? 'Consent reference (unresolved)' : 'Consent reference');
+    } else {
+      passed.push('Consent (pack basis)');
+    }
+
+    const att = receipt.attestation || {};
+    if (cdoHash !== att.signed_payload_hash) fail('Attestation signed payload hash', 'CDO hash != signed_payload_hash');
+    passed.push('Attestation signed payload hash');
+
+    const chair = receipt.chair || {};
+    if (!chair.public_key_b64 || !att.signature_b64) fail('Ed25519 signature', 'missing public_key_b64 or signature_b64');
+    await verifyEd25519(chair.public_key_b64, b64ToBytes(att.signature_b64), hexToBytes(cdoHash), 'Ed25519 signature');
+    passed.push('Ed25519 signature');
+
+    // 4a. Audio manifest (ADR 0032 §8)
+    const sysBody = (receipt.system_receipt || {}).body || {};
+    const audioClaim = (((sysBody.extensions || {}).audio_manifest_hash));
+    const audioManifest = receipt.audio_manifest || null;
+    if (!audioClaim) {
+      skipped.push('Audio manifest (none bound at signing)');
+    } else {
+      if (!audioManifest) fail('Audio manifest', 'the receipt binds audio but no manifest was supplied');
+      const payload = audioManifest.payload || {};
+      if ((await canonicalHash(payload)) !== audioManifest.content_hash) {
+        fail('Audio manifest', 'manifest payload does not hash to its content_hash');
+      }
+      if (audioManifest.content_hash !== audioClaim) {
+        fail('Audio manifest', 'manifest hash does not match the signed receipt binding');
+      }
+      let segments = [];
+      for (const cap of (payload.captures || [])) segments = segments.concat(cap.segments || []);
+      for (const seg of segments) {
+        if (!seg.audio_hash || String(seg.audio_hash).length !== 64) {
+          fail('Audio manifest', 'a segment is missing its sha256 audio_hash');
+        }
+        if (!['client', 'diarized', 'unknown'].includes(seg.attribution_provenance)) {
+          fail('Audio manifest', 'a segment has invalid attribution provenance');
+        }
+      }
+      passed.push('Audio manifest');
+    }
+
+    await verifySystemBindings(receipt, cdoHash, passed, skipped);
+    verifyExecutionEvidence(cdo, passed, skipped);
+
+    const requirements = verifierRequirements(cdo);
+    const transcript = receipt.transcript || null;
+    if (!transcript && requirements.transcript_required) fail('Transcript hash', 'pack requires a transcript but the receipt carries none');
+    if (!transcript) {
+      skipped.push('Transcript hash (absent; not required by pack)');
+      skipped.push('Transcript binding (absent; not required by pack)');
+    } else {
+      const tHash = await canonicalHash(transcript.payload || {});
+      if (tHash !== transcript.content_hash) fail('Transcript hash', 'recomputed transcript hash does not match the receipt');
+      passed.push('Transcript hash');
+      const cdoDelib = cdo.human_deliberation || {};
+      if (cdoDelib.transcript_hash && cdoDelib.transcript_hash !== tHash) {
+        fail('Transcript binding', 'transcript hash does not match the CDO binding');
+      }
+      passed.push('Transcript binding');
+    }
+
+    const aiRec = cdo.ai_recommendation || {};
+    const aiPresent = Object.keys(aiRec).length > 0;
+    const policiesPresent = Array.isArray(aiRec.policies) ? aiRec.policies.length > 0 : !!aiRec.policies;
+    if (requirements.ai_policies_required && aiPresent && !policiesPresent) {
+      fail('AI policies', 'pack requires AI policies but none are recorded');
+    }
+    if (policiesPresent || (requirements.pre_ai_plan_required && aiPresent)) {
+      const pac = cdo.pre_ai_commitment;
+      const pai = cdo.pre_ai_assessment;
+      if (!pac || !pai) fail('Pre-AI commitment', 'CDO carries AI policies but no pre-AI commitment');
+      const planStr = canonicalize({
+        plan_text: pai.plan_text,
+        plan_structured: pai.plan_structured || {},
+      });
+      const expected = await sha256Hex(planStr);
+      if (pac.plan_hash !== expected) fail('Pre-AI commitment', 'plan_hash does not match recomputed hash');
+      const committed = pac.committed_at;
+      const captured = (cdo.knowledge_state || {}).captured_at;
+      if (committed && captured && committed >= captured) {
+        fail('Pre-AI commitment', 'committed_at does not precede knowledge_state.captured_at');
+      }
+      passed.push('Pre-AI commitment');
+    } else {
+      skipped.push(requirements.pre_ai_plan_required
+        ? 'Pre-AI commitment (no AI participation; requirement not applicable)'
+        : 'Pre-AI commitment (no AI policies; not required by pack)');
+    }
+
+    const record = receipt.record || null;
+    if (record) {
+      const rCanonical = record.payload_canonical;
+      const rHash = typeof rCanonical === 'string'
+        ? await sha256Hex(rCanonical)
+        : await canonicalHash(record.payload || {});
+      if (rHash !== record.content_hash) fail('Record hash', 'recomputed record hash does not match the receipt');
+      if (typeof rCanonical === 'string') {
+        let fromCanon;
+        try { fromCanon = JSON.parse(rCanonical); }
+        catch { fail('Record hash', 'payload_canonical is not valid JSON'); }
+        if (canonicalize(fromCanon) !== canonicalize(record.payload || {})) {
+          fail('Record hash', 'record.payload does not match record.payload_canonical');
+        }
+      }
+      passed.push('Record hash');
+    }
+
+    const vc = receipt.version_chain || cdo.version_chain || {};
+    if (vc.version === 1 && vc.prior_cdo_hash !== null && vc.prior_cdo_hash !== undefined) {
+      fail('Version chain', 'version 1 must have prior_cdo_hash == null');
+    }
+    if (vc.version && vc.version > 1 && !vc.prior_cdo_hash) {
+      fail('Version chain', 'version > 1 must have a prior_cdo_hash');
+    }
+    passed.push('Version chain');
+
+    const attestedAt = att.attested_at;
+    if (!attestedAt) fail('Attestation timestamp', 'attestation.attested_at is missing from the CDR');
+    const decidedAt = ((cdo.human_decision || {}).decided_at);
+    if (decidedAt && attestedAt < decidedAt) fail('Attestation timestamp', 'attested_at is before decided_at');
+    passed.push('Attestation timestamp');
+
+    const provenance = cdo.ai_provenance || {};
+    if (Object.keys(provenance).length) {
+      const nodes = provenance.nodes || [];
+      for (const n of nodes) {
+        if (!n.node_id || !n.kind) fail('AI provenance graph', 'node missing node_id or kind');
+      }
+      passed.push('AI provenance graph');
+    }
+
+    return { valid: true, passed, skipped, failure: null };
+  } catch (e) {
+    if (e instanceof VerifyFailure) {
+      return { valid: false, passed, skipped, failure: { check: e.check, reason: e.reason } };
+    }
+    return {
+      valid: false, passed, skipped,
+      failure: { check: 'Unexpected error', reason: String(e && e.message ? e.message : e) },
+    };
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// Adequacy & completeness review — ADVISORY, not part of the 16
+// integrity checks. These are deterministic review prompts over
+// the sealed document. They never change the integrity verdict.
+// ─────────────────────────────────────────────────────────────
+const THERAPY_CLASSES = {
+  targeted: ['targeted therapy', 'targeted', 'tki', 'osimertinib', 'egfr'],
+  cytotoxic: ['carboplatin', 'cisplatin', 'pemetrexed', 'chemotherapy', 'cytotoxic'],
+  immunotherapy: ['immunotherapy', 'pd-l1', 'pembrolizumab', 'checkpoint'],
+};
+
+function therapyClasses(text) {
+  const s = String(text == null ? '' : text).toLowerCase();
+  return Object.keys(THERAPY_CLASSES).filter(
+    (k) => THERAPY_CLASSES[k].some((token) => s.includes(token))
+  );
+}
+
+function matchedTherapyTokens(text) {
+  const s = String(text == null ? '' : text).toLowerCase();
+  const out = [];
+  for (const tokens of Object.values(THERAPY_CLASSES)) {
+    for (const token of tokens) {
+      if (s.includes(token) && out.indexOf(token) === -1) out.push(token);
+    }
+  }
+  return out;
+}
+
+function auditAdequacy(receipt) {
+  const cdo = (receipt && receipt.cdo_payload) || {};
+  const findings = [];
+  const add = (id, message) => { findings.push({ id: id, message: message }); };
+
+  const commitment = cdo.pre_ai_commitment || {};
+  const meta = commitment.metadata || {};
+  const structured = meta.plan_structured;
+  if (structured && typeof structured === 'object' &&
+      Object.keys(structured).length === 0 && meta.plan_hash) {
+    add('empty_structured_plan',
+      'Pre-AI commitment has a plan hash but an empty structured plan; the committed plan cannot be inspected offline.');
+  }
+
+  const content = ((cdo.human_decision || {}).content) || {};
+  const adopted = Array.isArray(content.adopted_items) ? content.adopted_items : [];
+  const details = content.decision_details || {};
+  const regimen = details.regimen || {};
+  const orderText = [regimen.name, regimen.intent, content.recommendation,
+    (details.structured_order || {}).fhir_code]
+    .filter((x) => x !== null && x !== undefined && x !== '')
+    .join(' ');
+
+  for (let i = 0; i < adopted.length; i++) {
+    const text = adopted[i].text || '';
+    const a = therapyClasses(text);
+    const o = therapyClasses(orderText);
+    if (a.length && o.length && a.every((c) => o.indexOf(c) === -1)) {
+      add('adopted_item_order_conflict',
+        'Adopted item "' + text + '" signals ' + a.join(', ') +
+        ' but the operative order names ' + o.join(', ') +
+        ' [' + matchedTherapyTokens(orderText).join(', ') + ']' +
+        ' — lexical contradiction for human review.');
+      break;
+    }
+  }
+
+  const rec = cdo.ai_recommendation || {};
+  const citesProposal = adopted.some(
+    (x) => x.ai_proposal_seq !== null && x.ai_proposal_seq !== undefined
+  );
+  if (citesProposal && (rec.content === null || rec.content === undefined || rec.content === '')) {
+    add('null_ai_content_with_adopted_citation',
+      'Adopted items cite AI proposal sequences, but the sealed AI recommendation content is null; the cited proposal cannot be inspected offline.');
+  }
+
+  if (adopted.length && adopted.every(
+    (x) => !Array.isArray(x.evidence_citations) || x.evidence_citations.length === 0
+  )) {
+    add('no_evidence_citations',
+      'Adopted items carry no evidence citations in the sealed record.');
+  }
+
+  return { findings: findings, reviewed: 4 };
+}
+
+function auditCompleteness(receipt) {
+  const cdo = (receipt && receipt.cdo_payload) || {};
+  const findings = [];
+  const add = (id, message) => { findings.push({ id: id, message: message }); };
+
+  const transcript = receipt.transcript || {};
+  const payload = transcript.payload || {};
+  const segments = Array.isArray(payload.segments) ? payload.segments : [];
+  const seqs = segments
+    .map((s) => s.seq)
+    .filter((n) => Number.isInteger(n))
+    .sort((a, b) => a - b);
+  if (seqs.length > 1) {
+    const gaps = [];
+    for (let i = 1; i < seqs.length; i++) {
+      if (seqs[i] !== seqs[i - 1] + 1) gaps.push(seqs[i - 1] + ' -> ' + seqs[i]);
+    }
+    if (gaps.length) {
+      add('transcript_sequence_gap',
+        'Transcript excerpt has a sequence gap: ' + gaps.join(', '));
+    }
+  }
+
+  const hasTerminal = segments.some((s) =>
+    (s.role === 'chair' || s.role === 'system') || s.event_type || s.decision
+  ) || !!receipt.outcome_receipt;
+  if (!hasTerminal) {
+    add('no_terminal_marker',
+      'No terminal marker in the sealed transcript excerpt; absence of later records cannot be excluded from this document alone.');
+  }
+
+  if (!cdo.declared_universe) {
+    add('no_declared_universe',
+      'No declared universe of expected actions; completeness cannot be asserted.');
+  } else if (!cdo.completeness_attestation) {
+    add('no_completeness_attestation',
+      'Declared universe present but no signed completeness attestation is bound to it.');
+  }
+
+  return { findings: findings, reviewed: 3 };
+}
+
+
+</script>
+
+<script>
+(function () {
+  const fileInput = document.getElementById('file');
+  const jsonBox = document.getElementById('json');
+  const runBtn = document.getElementById('run');
+  const result = document.getElementById('result');
+
+  fileInput.addEventListener('change', async () => {
+    const f = fileInput.files && fileInput.files[0];
+    if (!f) return;
+    jsonBox.value = await f.text();
+  });
+
+  function render(v, reviews) {
+    result.innerHTML = '';
+    const box = document.createElement('div');
+    box.className = 'card';
+
+    const verdict = document.createElement('div');
+    verdict.className = 'verdict ' + (v.valid ? 'valid' : 'invalid');
+    verdict.textContent = v.valid ? 'DECISION INTEGRITY: VALID' : 'DECISION INTEGRITY: INVALID';
+    box.appendChild(verdict);
+
+    if (v.failure) {
+      const f = document.createElement('div');
+      f.className = 'fail';
+      f.textContent = 'Failed at: ' + v.failure.check + ' — ' + v.failure.reason;
+      box.appendChild(f);
+      box.appendChild(document.createElement('hr'));
+    }
+
+    const ul = document.createElement('ul');
+    for (const c of v.passed) {
+      const li = document.createElement('li');
+      li.className = 'pass';
+      li.textContent = c;
+      ul.appendChild(li);
+    }
+    for (const s of v.skipped) {
+      const li = document.createElement('li');
+      li.className = 'skip';
+      li.textContent = s;
+      ul.appendChild(li);
+    }
+    box.appendChild(ul);
+
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.textContent = 'Checks passed: ' + v.passed.length + ' · Checks not run: ' + v.skipped.length;
+    box.appendChild(meta);
+
+    result.appendChild(box);
+
+    // Advisory review — deliberately separate from the integrity verdict.
+    // These findings never change the 16-check result above.
+    if (reviews) {
+      for (const [title, audit] of [
+        ['ADEQUACY REVIEW — advisory, not an integrity check', reviews.adequacy],
+        ['COMPLETENESS REVIEW — advisory, not an integrity check', reviews.completeness],
+      ]) {
+        if (!audit) continue;
+        const panel = document.createElement('div');
+        panel.className = 'card';
+        const heading = document.createElement('div');
+        heading.className = 'cardTitle';
+        heading.textContent = title;
+        panel.appendChild(heading);
+        const desc = document.createElement('div');
+        desc.className = 'meta';
+        desc.textContent = 'Deterministic review prompts over the sealed document. ' +
+          'A finding is a question for a human reviewer, not a failed check.';
+        panel.appendChild(desc);
+        const list = document.createElement('ul');
+        if (!audit.findings.length) {
+          const li = document.createElement('li');
+          li.className = 'skip';
+          li.textContent = 'no findings';
+          list.appendChild(li);
+        }
+        for (const f of audit.findings) {
+          const li = document.createElement('li');
+          li.className = 'review';
+          const code = document.createElement('code');
+          code.textContent = f.id;
+          li.appendChild(code);
+          li.appendChild(document.createTextNode(' — ' + f.message));
+          list.appendChild(li);
+        }
+        panel.appendChild(list);
+        result.appendChild(panel);
+      }
+    }
+  }
+
+  runBtn.addEventListener('click', async () => {
+    let receipt;
+    try {
+      receipt = JSON.parse(jsonBox.value);
+    } catch (e) {
+      result.innerHTML = '<div class="card"><div class="verdict invalid">INVALID JSON</div><div class="fail">' + e.message + '</div></div>';
+      return;
+    }
+    runBtn.disabled = true;
+    runBtn.textContent = 'Verifying…';
+    try {
+      const v = await verifyReceipt(receipt);
+      render(v, {
+        adequacy: auditAdequacy(receipt),
+        completeness: auditCompleteness(receipt),
+      });
+    } catch (e) {
+      render({ valid: false, passed: [], skipped: [], failure: { check: 'Verifier error', reason: String(e.message || e) } }, null);
+    } finally {
+      runBtn.disabled = false;
+      runBtn.textContent = 'Verify';
+    }
+  });
+})();
+</script>
+</body>
+</html>

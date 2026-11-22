@@ -60,7 +60,18 @@ This repository follows the same documentation taxonomy as `verilinkos-docs`. Th
 │   ├── passing.cdr.json
 │   └── <case-letter>-<description>.json
 │
-└── <old-paper>.md                 redirect stub when a paper moves into academic/
+├── challenge-kit/                frozen adversarial challenge (kept at root)
+│   ├── README.md                 threat model, expected results, limits
+│   ├── FINDINGS.md               confirmed findings log
+│   ├── CHECKSUMS.sha256          frozen artifact hashes
+│   ├── receipt-valid.json
+│   ├── receipt-tampered.json
+│   └── verify_cdr_standalone.html
+│
+├── <old-paper>.md                 redirect stub when a paper moves into academic/
+│
+└── .github/ISSUE_TEMPLATE/       contribution entry points
+    └── challenge-finding.md
 ```
 
 ## What belongs where
@@ -106,6 +117,9 @@ whitepapers/                                 measuring-clinical-judgment.md,
 protocols/cdr/v1/                            specification.md
 references/                                  claim-matrix.md, claim-boundaries.md
 benchmark/                                   unchanged (10 records + verifier + demo script)
+challenge-kit/                               README.md, FINDINGS.md, CHECKSUMS.sha256,
+                                             valid + tampered receipts, standalone HTML verifier
+.github/ISSUE_TEMPLATE/                      challenge-finding.md
 ```
 
 Reserved and not created: `standards/`, `technical/`, `enterprise/`, `investor/`, `blog-posts/`, `whitepapers/figures/`, `protocols/*/schemas/`, `protocols/*/security/`.
@@ -122,5 +136,6 @@ Reserved and not created: `standards/`, `technical/`, `enterprise/`, `investor/`
 | `docs/HEALTHCARE/04-standards/cdr-1.0.md` | `protocols/cdr/v1/specification.md` |
 | `docs/CLAIM_MATRIX.md` | `references/claim-matrix.md` |
 | `docs/HORIZONTAL_CLAIM.md` | `references/claim-boundaries.md` |
+| `challenge-kit/` (implementation repo) | `challenge-kit/` (canonical public kit) |
 
 Not published: `docs/papers/defensible-autonomy/READINESS_ASSESSMENT.md` (internal working document), ADRs, and other private engineering notes.

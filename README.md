@@ -34,6 +34,10 @@ cd benchmark
 
 That runs the offline verifier against the paper's reference case. The output ends with `DECISION INTEGRITY: VALID` and lists `Pre-AI commitment` among the passed checks. The full table — ten records, ten artifact classes, seven failure modes — is in the benchmark material.
 
+## Challenge the verifier
+
+The [`challenge-kit/`](challenge-kit/README.md) is a frozen signed receipt, its one-character tampered twin, and a standalone browser verifier with no network dependency. Try to break it and [file a finding](challenge-kit/FINDINGS.md). The expected results, the threat model, and the limits of what a valid receipt proves are stated up front in the kit's README.
+
 ## What this repository is not
 
 It is not a product. The framework does not claim that a conforming record documents a good decision: cryptography proves sequence integrity, not independent cognition. The offline verifier cannot check that the declared evidence universe was complete.
@@ -42,7 +46,7 @@ It is not the implementation. The Clinical Decision Object, its pipeline, and th
 
 ## Repository structure
 
-See [FOLDER_STRUCTURE.md](FOLDER_STRUCTURE.md) for the full taxonomy and naming rules. In short: `academic/` for papers, `whitepapers/` for long-form arguments, `protocols/` for versioned specifications, `references/` for claim-boundary documents, and `benchmark/` for runnable evidence.
+See [FOLDER_STRUCTURE.md](FOLDER_STRUCTURE.md) for the full taxonomy and naming rules. In short: `academic/` for papers, `whitepapers/` for long-form arguments, `protocols/` for versioned specifications, `references/` for claim-boundary documents, `benchmark/` for the ten-record suite, and `challenge-kit/` for the frozen adversarial challenge.
 
 ## Cite
 

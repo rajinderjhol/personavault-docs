@@ -1,0 +1,919 @@
+{
+  "schema_version": "cdr.v1",
+  "receipt_id": "rcpt-b883b495bfe46d87",
+  "issued_at": "2026-11-09T14:11:07.209729+00:00",
+  "environment_id": "env-default-001",
+  "case": {
+    "case_id": "case-b35a74d3d4a0",
+    "pseudo_id": "P-11h25",
+    "case_type": "clinical_tumor_board"
+  },
+  "chair": {
+    "actor_id": "admin-human",
+    "key_id": "7116eade-513c-4ac0-b97a-017d14cd7576",
+    "public_key_b64": "f31yKyEj/NaBmVKolyIeex/x8bW6gE1QtXszKMNhWC4=",
+    "signature_algorithm": "Ed25519"
+  },
+  "cdo_hash": "011d4341c2a7ffd33e0fc1bf010f10d9c1cbb22294098e44dbad1a4ab815bbcd",
+  "cdo_payload": {
+    "actions": [],
+    "consent": {
+      "scope": "clinical_tumor_board",
+      "period": null,
+      "ref_id": null,
+      "ref_hash": null,
+      "ref_kind": "pack_basis",
+      "subject_id": "P-11h25",
+      "legal_basis": "Institutional deliberation record.",
+      "manager_uri": null,
+      "policy_rule": "oncology-tumor-board-governance",
+      "consenter_id": null,
+      "consenter_role": null,
+      "authority_ref_kind": "pack_basis",
+      "status_at_decision": "active"
+    },
+    "metadata": {
+      "id": "oncology-tumor-board-governance",
+      "name": "Oncology Tumor Board Governance",
+      "pack": "oncology-tumor-board-governance",
+      "count": 3,
+      "packs": [
+        "oncology_tumor_board_governance",
+        "molecular_tumor_board_governance",
+        "robotics"
+      ],
+      "domain": "healthcare",
+      "version": "1.1.1",
+      "model_id": "qwen2.5:1.5b",
+      "provider": "ollama",
+      "subject_type": "subject",
+      "artifact_type": "decision_record"
+    },
+    "ai_bom_ref": {
+      "session_id": "delib-3ec7bac0a2a5",
+      "artifact_id": "aibom-d80b87caec67",
+      "content_hash": "a95b1f288ae75bc33f48d338e587cbe9e5107194037ad0684b72196803fabe56",
+      "schema_version": "2026.1"
+    },
+    "incomplete": null,
+    "environment": {
+      "tenant_name": "Default Sovereign Environment",
+      "tenant_type": "standard",
+      "environment_id": "env-default-001",
+      "parent_environment_id": null
+    },
+    "context_plan": {},
+    "ai_provenance": {
+      "edges": [],
+      "nodes": [
+        {
+          "kind": "generative_model",
+          "model": "qwen2.5:1.5b",
+          "node_id": "gen-1",
+          "provider": "ollama",
+          "invoked_at": "2026-11-09T14:10:50.542810+00:00",
+          "output_hash": "781a968f5b54bc589e6c41a0500ff25b9cb4f15cdb36a5102f32485195396164",
+          "prompt_hash": null,
+          "prompt_chars": 49692,
+          "model_version": null,
+          "completion_chars": 2950
+        }
+      ],
+      "graph_hash": "22763948a4b05d86ca034d3d2d348b3c4ad17ceb53dafeae47f653a3fd9beab1"
+    },
+    "version_chain": {
+      "version": 1,
+      "signed_at": null,
+      "prior_cdo_hash": null,
+      "amendment_reason": null
+    },
+    "human_decision": {
+      "content": {
+        "plan": "restage in 3 months",
+        "adopted_items": [
+          {
+            "kind": "recommendation",
+            "text": "Recommend targeted therapy as the primary treatment option.",
+            "item_id": "p1-i1",
+            "decision": "adopt",
+            "ai_proposal_seq": 3
+          }
+        ],
+        "recommendation": "adjuvant",
+        "decision_details": {
+          "regimen": {
+            "name": "carboplatin",
+            "intent": "adjuvant",
+            "cycles_planned": 4,
+            "expected_start": "2027-03-01",
+            "expected_duration_days": 40
+          },
+          "recommended_at": "2026-11-09T14:11:07.032350+00:00",
+          "structured_order": {
+            "priority": "urgent",
+            "fhir_code": null,
+            "care_setting": "inpatient",
+            "fhir_resource_type": "MedicationRequest"
+          },
+          "expected_outcomes": [
+            {
+              "what": "restage in 3 months",
+              "due_by": "2027-02-09",
+              "signal_type": "clinical_observation"
+            }
+          ],
+          "recommended_by_actor_id": "admin-human"
+        }
+      },
+      "decided_at": "2026-11-09T14:11:07.032350+00:00",
+      "approval_type": "approved",
+      "decision_owner_actor_id": "admin-human"
+    },
+    "schema_version": "cdo.v1",
+    "knowledge_state": {
+      "entries": [
+        {
+          "kind": "case_document",
+          "source": "Molecular Tumor Board - referral & imaging summary_long.txt",
+          "version": "",
+          "metadata": {
+            "scope": "case",
+            "ref_id": "5365ee30-99d6-4665-92aa-aca948302af9",
+            "content": "Molecular Tumor Board — Comprehensive Referral Packet\n\nCase ID: MTB-USB-2026-0147\nPatient pseudonym: sub-pseudo-a4f9c2\nDocument type: Referral summary + staging imaging + pathology + comorbidity reconciliation + treatment history + patient preference + trial search\nPrepared by: Dr. M. Chen, Medical Oncology, University Hospital Basel\nPrepared for: Molecular Tumor Board, University Hospital Basel\nDate prepared: 2026-10-14\nPacket version: 3.2 (supersedes v3.1 of 2026-10-13)\nClassification: Internal clinical — not for external distribution\n\n---\n\n Table of contents\n\n1. Reason for referral\n2. Patient summary\n3. Pathology and molecular profiling\n4. Staging imaging\n5. Pulmonary function and organ function\n6. Comorbidity and medication reconciliation\n7. Performance status and functional assessment\n8. Patient preference and goals of care\n9. Treatment history\n10. Points the referring team wants the board to address\n11. Documents available to the board\n12. Explicit uncertainties and gaps\n13. Administrative and trial-search notes\n14. Appendix A: laboratory values\n15. Appendix B: imaging measurements\n16. Appendix C: pathology synoptic report\n17. Appendix D: medication list\n18. Appendix E: patient preference transcript excerpt\n19. Appendix F: trial search preliminary results\n20. Appendix G: contact and scheduling\n\n---\n\n 1. Reason for referral\n\nA 67-year-old male with newly diagnosed lung adenocarcinoma, clinical stage IIIA (cT2a N2 M0), is referred for molecular tumor board review before first-line systemic therapy.\n\nThe pathology report dated 2026-10-08 identifies an EGFR exon 19 deletion with a variant allele frequency (VAF) of 42% and a PD-L1 tumor proportion score (TPS) of 65%. The referring team is uncertain whether the EGFR mutation should take precedence over the high PD-L1 expression in a patient with mediastinal nodal burden, and whether concurrent chemoradiation remains appropriate in the EGFR-mutant setting.\n\nThe referral is prompted by three converging uncertainties:",
+            "authority": "grounding",
+            "episode_id": "857f900b-6459-41b3-a4d7-c82d32076e5a"
+          },
+          "availability": "available",
+          "content_hash": "12f6193068f987fabed62abb1dc6cfa338757d3290b6f793f869193e01e0d88e"
+        },
+        {
+          "kind": "ai_output",
+          "source": "ollama/qwen2.5:1.5b",
+          "version": "",
+          "metadata": {
+            "role": "generator",
+            "content": "```json\n[\n    {\n        \"item_id\": \"p1-i1\",\n        \"kind\": \"recommendation\",\n        \"text\": \"Recommend targeted therapy as the primary treatment option.\",\n        \"evidence_citations\": [\n            \"[5365ee30] Molecular Tumor Board - referral & imaging summary_long.txt\"\n        ],\n        \"confidence\": 0.9,\n        \"alternatives\": []\n    },\n    {\n        \"item_id\": \"p2-i1\",\n        \"kind\": \"alternative\",\n        \"text\": \"Consider immunotherapy in conjunction with targeted therapy for potential synergistic effects and broader response to tumors that may be less responsive to targeted agents alone.\",\n        \"reason_rejected\": \"Immunotherapy has shown promising results in certain tumor types, but its efficacy is not guaranteed across all cases.\"\n    }\n]\n```\n\n### Rationale\nThe patient's primary goal of understanding the strength of different treatment options aligns well with a recommendation towards targeted therapy as the initial approach due to its established effectiveness. The evidence from molecular testing indicates no significant genetic mutations or alterations requiring specific targeted therapies.\n\nHowever, considering the secondary goal of minimizing disruption to work and the tertiary concern about clinical trials available, it might also be prudent to explore immunotherapy if there are any indications that this could potentially offer additional benefits without significantly impacting daily activities. This alternative would provide an option for patients who prefer less invasive treatments while still aiming to achieve optimal outcomes.\n\n### Proposed Plan\nGiven the current lack of histologic confirmation supporting mediastinal nodal involvement (station 4R, SUVmax 6.1), further investigation through EBUS-TBNA is not recommended at this time due to potential risks associated with pneumothorax or bleeding. The patient's preference for minimal disruption aligns well with a recommendation towards targeted therapy as the primary treatment approach. If cli",
+            "license": "unspecified",
+            "model_id": "qwen2.5:1.5b",
+            "provider": "ollama",
+            "invoked_at": "2026-11-09T14:10:50.542810+00:00",
+            "model_class": null,
+            "output_hash": "781a968f5b54bc589e6c41a0500ff25b9cb4f15cdb36a5102f32485195396164",
+            "prompt_chars": 49692,
+            "completion_chars": 2950
+          },
+          "availability": "generated",
+          "content_hash": "781a968f5b54bc589e6c41a0500ff25b9cb4f15cdb36a5102f32485195396164"
+        }
+      ],
+      "captured_at": "2026-11-09T14:10:50.566848+00:00",
+      "snapshot_hash": "bcfdcf6062573bc2a043f47825e697db7c992526173583736bb814e489391769",
+      "declared_universe": {
+        "time_window": {
+          "end": null,
+          "start": null
+        },
+        "record_types": [
+          "source_document"
+        ],
+        "repositories": [
+          "case_documents"
+        ],
+        "available_count": 1,
+        "retrieval_rules": {
+          "scope": "case_documents_joined"
+        },
+        "retrieved_count": 1
+      }
+    },
+    "treatment_intent": {
+      "regimen": {
+        "name": "carboplatin",
+        "intent": "adjuvant",
+        "cycles_planned": 4,
+        "expected_start": "2027-03-01",
+        "expected_duration_days": 40
+      },
+      "recommended_at": "2026-11-09T14:11:07.032350+00:00",
+      "structured_order": {
+        "priority": "urgent",
+        "fhir_code": null,
+        "care_setting": "inpatient",
+        "fhir_resource_type": "MedicationRequest"
+      },
+      "expected_outcomes": [
+        {
+          "what": "restage in 3 months",
+          "due_by": "2027-02-09",
+          "signal_type": "clinical_observation"
+        }
+      ],
+      "recommended_by_actor_id": "admin-human"
+    },
+    "ai_recommendation": {
+      "trace": null,
+      "domain": null,
+      "content": null,
+      "pack_id": "oncology-tumor-board-governance",
+      "signals": {
+        "referral_required": [
+          "Tumor Board",
+          "tumor board",
+          "tumor board"
+        ],
+        "targeted_therapy_proposed": [
+          "targeted therapy"
+        ],
+        "molecular_alteration_identified": [
+          "met"
+        ]
+      },
+      "policies": [
+        {
+          "name": "email_draft_on_referral",
+          "reason": "signals ['referral_required'] present",
+          "actions": [
+            {
+              "action": "draft_email",
+              "message": "Referral email queued for review.",
+              "severity": "medium",
+              "template": "Subject: Referral request — {case_id}\n\nDear {target},\n\nThe oncology tumor board on {session_date} has recommended a\nreferral for the case {case_id}.\n\nReason for referral: {recommendation}\nSupporting evidence: {evidence_excerpt}\nBoard attribution: {attribution}\n\nRegards,\n{chair_name}\nOncology Tumor Board Chair\n"
+            },
+            {
+              "action": "hitl_enqueue",
+              "message": "Referral email queued for human review.",
+              "severity": "medium"
+            }
+          ],
+          "autonomy": {
+            "level": "approve"
+          },
+          "decision": {
+            "type": "draft",
+            "severity": "medium",
+            "explanation": "Draft referral email. Queue for chair review."
+          },
+          "policy_id": "email_draft_on_referral",
+          "confidence_threshold": 0.7
+        },
+        {
+          "name": "record_molecular_alteration",
+          "reason": "signals ['molecular_alteration_identified'] present",
+          "actions": [
+            {
+              "action": "record",
+              "message": "Alteration recorded with evidence excerpt."
+            },
+            {
+              "action": "assert",
+              "assertion": {
+                "object": "{alteration}",
+                "subject": "{case_id}",
+                "predicate": "has_alteration",
+                "confidence": 0.9
+              }
+            }
+          ],
+          "autonomy": {
+            "level": "approve"
+          },
+          "decision": {
+            "type": "record",
+            "severity": "high",
+            "explanation": "Molecular alteration recorded with evidence."
+          },
+          "policy_id": "record_molecular_alteration",
+          "confidence_threshold": 0.7
+        },
+        {
+          "name": "require_organ_function_for_targeted_therapy",
+          "reason": "signals ['targeted_therapy_proposed'] present",
+          "actions": [
+            {
+              "action": "observe",
+              "message": "Verify organ function before targeted therapy."
+            }
+          ],
+          "autonomy": {
+            "level": "observe"
+          },
+          "decision": {
+            "type": "observe",
+            "severity": "medium",
+            "explanation": "Targeted therapy — verify organ function."
+          },
+          "policy_id": "require_organ_function_for_targeted_therapy",
+          "confidence_threshold": 0.6
+        }
+      ],
+      "response": "```json\n[\n    {\n        \"item_id\": \"p1-i1\",\n        \"kind\": \"recommendation\",\n        \"text\": \"Recommend targeted therapy as the primary treatment option.\",\n        \"evidence_citations\": [\n            \"[5365ee30] Molecular Tumor Board - referral & imaging summary_long.txt\"\n        ],\n        \"confidence\": 0.9,\n        \"alternatives\": []\n    },\n    {\n        \"item_id\": \"p2-i1\",\n        \"kind\": \"alternative\",\n        \"text\": \"Consider immunotherapy in conjunction with targeted therapy for potential synergistic effects and broader response to tumors that may be less responsive to targeted agents alone.\",\n        \"reason_rejected\": \"Immunotherapy has shown promising results in certain tumor types, but its efficacy is not guaranteed across all cases.\"\n    }\n]\n```\n\n### Rationale\nThe patient's primary goal of understanding the strength of different treatment options aligns well with a recommendation towards targeted therapy as the initial approach due to its established effectiveness. The evidence from molecular testing indicates no significant genetic mutations or alterations requiring specific targeted therapies.\n\nHowever, considering the secondary goal of minimizing disruption to work and the tertiary concern about clinical trials available, it might also be prudent to explore immunotherapy if there are any indications that this could potentially offer additional benefits without significantly impacting daily activities. This alternative would provide an option for patients who prefer less invasive treatments while still aiming to achieve optimal outcomes.\n\n### Proposed Plan\nGiven the current lack of histologic confirmation supporting mediastinal nodal involvement (station 4R, SUVmax 6.1), further investigation through EBUS-TBNA is not recommended at this time due to potential risks associated with pneumothorax or bleeding. The patient's preference for minimal disruption aligns well with a recommendation towards targeted therapy as the primary treatment approach. If clinical trials become available in the future and immunotherapy proves beneficial based on ongoing research, it can be considered alongside targeted therapies if necessary.\n\nSupporting Evidence:\n- **[5365ee30] Molecular Tumor Board - referral & imaging summary_long.txt**: Indicates no significant genetic mutations requiring specific targeted therapies.\n- **Patient Preferences (2026-10-12)**: Emphasizes understanding of different treatment options without undue disruption from work activities.\n\n### Unresolved Questions\nThe unresolved questions include whether further histologic confirmation is needed for mediastinal nodal involvement or if there are any other factors that could influence the decision regarding clinical trials. Additionally, while immunotherapy shows promise in certain cases, its efficacy remains uncertain across all tumor types and requires ongoing research to confirm its benefits specifically for this patient's condition.",
+      "pack_version": "1.1.1",
+      "provenance_node_ids": [
+        "gen-1"
+      ]
+    },
+    "pre_ai_assessment": {
+      "plan_text": "Harness test plan: review the referral packet, evaluate carboplatin + targeted therapy.",
+      "recorded_at": "2026-11-09T14:10:46.714898+00:00",
+      "schema_version": "pre_ai_assessment.v1",
+      "plan_structured": {},
+      "recorded_by_actor_id": "admin-human"
+    },
+    "pre_ai_commitment": {
+      "metadata": {
+        "plan_hash": "903d10b36bdd250f8250eb74e0541a3c166ef2ff9e3733609043d12fdf548415",
+        "plan_structured": {},
+        "canonicalization": "sorted-keys-compact"
+      },
+      "plan_hash": "903d10b36bdd250f8250eb74e0541a3c166ef2ff9e3733609043d12fdf548415",
+      "committed_at": "2026-11-09T14:10:46.714898+00:00",
+      "schema_version": "pre_ai_commitment.v1",
+      "committed_by_actor_id": "admin-human"
+    },
+    "human_deliberation": {
+      "dissent": [],
+      "follow_up": [],
+      "proposals": [
+        {
+          "seq": null,
+          "content": "Recommend targeted therapy as the primary treatment option.",
+          "proposer": "admin-human",
+          "adopted_from": {
+            "item_id": "p1-i1",
+            "ai_proposal_seq": 3
+          }
+        }
+      ],
+      "rationale": "Harness: adopted the AI's recommendation, added restaging.",
+      "alternatives": [],
+      "participants": [
+        {
+          "name": "Admin User",
+          "role": "owner",
+          "actor_id": "admin-human",
+          "joined_at": "2026-11-09T14:10:46.660805+00:00",
+          "actor_type": "human",
+          "role_in_session": "chair"
+        }
+      ],
+      "transcript_hash": "0b1d509ece654c20eb746da3e54a1f8fd33ab27ffa4cb683b8f600b1c961069c",
+      "transcript_artifact_id": "transcript-f770fd635837"
+    },
+    "deliberation_metrics": {
+      "computed_at": "2026-11-09T14:10:50.599839+00:00",
+      "dissent_rate": 0.0,
+      "dissent_count": 0,
+      "ruling_counts": {},
+      "schema_version": "deliberation_metrics.v1",
+      "ai_failure_rate": 0.0,
+      "ai_failure_count": 0,
+      "ai_response_seconds": {
+        "p95": null,
+        "median": null,
+        "sample_size": 0
+      },
+      "chair_override_rate": 0.0,
+      "ai_contribution_count": 2,
+      "ai_contributions_by_role": {
+        "clinician": 1,
+        "clinician-reasoning": 1
+      },
+      "session_duration_seconds": 3.9
+    }
+  },
+  "flags": [
+    {
+      "flag_id": "30ba549a-8991-4945-bbb4-741fb96c15cf",
+      "severity": "info",
+      "code": "email_draft_on_referral",
+      "message": "Draft referral email. Queue for chair review.",
+      "context": {
+        "actions": [
+          {
+            "action": "draft_email",
+            "message": "Referral email queued for review.",
+            "severity": "medium",
+            "template": "Subject: Referral request — {case_id}\n\nDear {target},\n\nThe oncology tumor board on {session_date} has recommended a\nreferral for the case {case_id}.\n\nReason for referral: {recommendation}\nSupporting evidence: {evidence_excerpt}\nBoard attribution: {attribution}\n\nRegards,\n{chair_name}\nOncology Tumor Board Chair\n"
+          },
+          {
+            "action": "hitl_enqueue",
+            "message": "Referral email queued for human review.",
+            "severity": "medium"
+          }
+        ],
+        "policy_id": "email_draft_on_referral",
+        "policy_name": "email_draft_on_referral",
+        "decision_type": "draft",
+        "decision_severity": "medium"
+      },
+      "resolution_note": null,
+      "resolved_at": null
+    }
+  ],
+  "cdo_payload_canonical": "{\"actions\":[],\"ai_bom_ref\":{\"artifact_id\":\"aibom-d80b87caec67\",\"content_hash\":\"a95b1f288ae75bc33f48d338e587cbe9e5107194037ad0684b72196803fabe56\",\"schema_version\":\"2026.1\",\"session_id\":\"delib-3ec7bac0a2a5\"},\"ai_provenance\":{\"edges\":[],\"graph_hash\":\"22763948a4b05d86ca034d3d2d348b3c4ad17ceb53dafeae47f653a3fd9beab1\",\"nodes\":[{\"completion_chars\":2950,\"invoked_at\":\"2026-11-09T14:10:50.542810+00:00\",\"kind\":\"generative_model\",\"model\":\"qwen2.5:1.5b\",\"model_version\":null,\"node_id\":\"gen-1\",\"output_hash\":\"781a968f5b54bc589e6c41a0500ff25b9cb4f15cdb36a5102f32485195396164\",\"prompt_chars\":49692,\"prompt_hash\":null,\"provider\":\"ollama\"}]},\"ai_recommendation\":{\"content\":null,\"domain\":null,\"pack_id\":\"oncology-tumor-board-governance\",\"pack_version\":\"1.1.1\",\"policies\":[{\"actions\":[{\"action\":\"draft_email\",\"message\":\"Referral email queued for review.\",\"severity\":\"medium\",\"template\":\"Subject: Referral request — {case_id}\\n\\nDear {target},\\n\\nThe oncology tumor board on {session_date} has recommended a\\nreferral for the case {case_id}.\\n\\nReason for referral: {recommendation}\\nSupporting evidence: {evidence_excerpt}\\nBoard attribution: {attribution}\\n\\nRegards,\\n{chair_name}\\nOncology Tumor Board Chair\\n\"},{\"action\":\"hitl_enqueue\",\"message\":\"Referral email queued for human review.\",\"severity\":\"medium\"}],\"autonomy\":{\"level\":\"approve\"},\"confidence_threshold\":0.7,\"decision\":{\"explanation\":\"Draft referral email. Queue for chair review.\",\"severity\":\"medium\",\"type\":\"draft\"},\"name\":\"email_draft_on_referral\",\"policy_id\":\"email_draft_on_referral\",\"reason\":\"signals ['referral_required'] present\"},{\"actions\":[{\"action\":\"record\",\"message\":\"Alteration recorded with evidence excerpt.\"},{\"action\":\"assert\",\"assertion\":{\"confidence\":0.9,\"object\":\"{alteration}\",\"predicate\":\"has_alteration\",\"subject\":\"{case_id}\"}}],\"autonomy\":{\"level\":\"approve\"},\"confidence_threshold\":0.7,\"decision\":{\"explanation\":\"Molecular alteration recorded with evidence.\",\"severity\":\"high\",\"type\":\"record\"},\"name\":\"record_molecular_alteration\",\"policy_id\":\"record_molecular_alteration\",\"reason\":\"signals ['molecular_alteration_identified'] present\"},{\"actions\":[{\"action\":\"observe\",\"message\":\"Verify organ function before targeted therapy.\"}],\"autonomy\":{\"level\":\"observe\"},\"confidence_threshold\":0.6,\"decision\":{\"explanation\":\"Targeted therapy — verify organ function.\",\"severity\":\"medium\",\"type\":\"observe\"},\"name\":\"require_organ_function_for_targeted_therapy\",\"policy_id\":\"require_organ_function_for_targeted_therapy\",\"reason\":\"signals ['targeted_therapy_proposed'] present\"}],\"provenance_node_ids\":[\"gen-1\"],\"response\":\"```json\\n[\\n    {\\n        \\\"item_id\\\": \\\"p1-i1\\\",\\n        \\\"kind\\\": \\\"recommendation\\\",\\n        \\\"text\\\": \\\"Recommend targeted therapy as the primary treatment option.\\\",\\n        \\\"evidence_citations\\\": [\\n            \\\"[5365ee30] Molecular Tumor Board - referral & imaging summary_long.txt\\\"\\n        ],\\n        \\\"confidence\\\": 0.9,\\n        \\\"alternatives\\\": []\\n    },\\n    {\\n        \\\"item_id\\\": \\\"p2-i1\\\",\\n        \\\"kind\\\": \\\"alternative\\\",\\n        \\\"text\\\": \\\"Consider immunotherapy in conjunction with targeted therapy for potential synergistic effects and broader response to tumors that may be less responsive to targeted agents alone.\\\",\\n        \\\"reason_rejected\\\": \\\"Immunotherapy has shown promising results in certain tumor types, but its efficacy is not guaranteed across all cases.\\\"\\n    }\\n]\\n```\\n\\n### Rationale\\nThe patient's primary goal of understanding the strength of different treatment options aligns well with a recommendation towards targeted therapy as the initial approach due to its established effectiveness. The evidence from molecular testing indicates no significant genetic mutations or alterations requiring specific targeted therapies.\\n\\nHowever, considering the secondary goal of minimizing disruption to work and the tertiary concern about clinical trials available, it might also be prudent to explore immunotherapy if there are any indications that this could potentially offer additional benefits without significantly impacting daily activities. This alternative would provide an option for patients who prefer less invasive treatments while still aiming to achieve optimal outcomes.\\n\\n### Proposed Plan\\nGiven the current lack of histologic confirmation supporting mediastinal nodal involvement (station 4R, SUVmax 6.1), further investigation through EBUS-TBNA is not recommended at this time due to potential risks associated with pneumothorax or bleeding. The patient's preference for minimal disruption aligns well with a recommendation towards targeted therapy as the primary treatment approach. If clinical trials become available in the future and immunotherapy proves beneficial based on ongoing research, it can be considered alongside targeted therapies if necessary.\\n\\nSupporting Evidence:\\n- **[5365ee30] Molecular Tumor Board - referral & imaging summary_long.txt**: Indicates no significant genetic mutations requiring specific targeted therapies.\\n- **Patient Preferences (2026-10-12)**: Emphasizes understanding of different treatment options without undue disruption from work activities.\\n\\n### Unresolved Questions\\nThe unresolved questions include whether further histologic confirmation is needed for mediastinal nodal involvement or if there are any other factors that could influence the decision regarding clinical trials. Additionally, while immunotherapy shows promise in certain cases, its efficacy remains uncertain across all tumor types and requires ongoing research to confirm its benefits specifically for this patient's condition.\",\"signals\":{\"molecular_alteration_identified\":[\"met\"],\"referral_required\":[\"Tumor Board\",\"tumor board\",\"tumor board\"],\"targeted_therapy_proposed\":[\"targeted therapy\"]},\"trace\":null},\"consent\":{\"authority_ref_kind\":\"pack_basis\",\"consenter_id\":null,\"consenter_role\":null,\"legal_basis\":\"Institutional deliberation record.\",\"manager_uri\":null,\"period\":null,\"policy_rule\":\"oncology-tumor-board-governance\",\"ref_hash\":null,\"ref_id\":null,\"ref_kind\":\"pack_basis\",\"scope\":\"clinical_tumor_board\",\"status_at_decision\":\"active\",\"subject_id\":\"P-11h25\"},\"context_plan\":{},\"deliberation_metrics\":{\"ai_contribution_count\":2,\"ai_contributions_by_role\":{\"clinician\":1,\"clinician-reasoning\":1},\"ai_failure_count\":0,\"ai_failure_rate\":0.0,\"ai_response_seconds\":{\"median\":null,\"p95\":null,\"sample_size\":0},\"chair_override_rate\":0.0,\"computed_at\":\"2026-11-09T14:10:50.599839+00:00\",\"dissent_count\":0,\"dissent_rate\":0.0,\"ruling_counts\":{},\"schema_version\":\"deliberation_metrics.v1\",\"session_duration_seconds\":3.9},\"environment\":{\"environment_id\":\"env-default-001\",\"parent_environment_id\":null,\"tenant_name\":\"Default Sovereign Environment\",\"tenant_type\":\"standard\"},\"human_decision\":{\"approval_type\":\"approved\",\"content\":{\"adopted_items\":[{\"ai_proposal_seq\":3,\"decision\":\"adopt\",\"item_id\":\"p1-i1\",\"kind\":\"recommendation\",\"text\":\"Recommend targeted therapy as the primary treatment option.\"}],\"decision_details\":{\"expected_outcomes\":[{\"due_by\":\"2027-02-09\",\"signal_type\":\"clinical_observation\",\"what\":\"restage in 3 months\"}],\"recommended_at\":\"2026-11-09T14:11:07.032350+00:00\",\"recommended_by_actor_id\":\"admin-human\",\"regimen\":{\"cycles_planned\":4,\"expected_duration_days\":40,\"expected_start\":\"2027-03-01\",\"intent\":\"adjuvant\",\"name\":\"carboplatin\"},\"structured_order\":{\"care_setting\":\"inpatient\",\"fhir_code\":null,\"fhir_resource_type\":\"MedicationRequest\",\"priority\":\"urgent\"}},\"plan\":\"restage in 3 months\",\"recommendation\":\"adjuvant\"},\"decided_at\":\"2026-11-09T14:11:07.032350+00:00\",\"decision_owner_actor_id\":\"admin-human\"},\"human_deliberation\":{\"alternatives\":[],\"dissent\":[],\"follow_up\":[],\"participants\":[{\"actor_id\":\"admin-human\",\"actor_type\":\"human\",\"joined_at\":\"2026-11-09T14:10:46.660805+00:00\",\"name\":\"Admin User\",\"role\":\"owner\",\"role_in_session\":\"chair\"}],\"proposals\":[{\"adopted_from\":{\"ai_proposal_seq\":3,\"item_id\":\"p1-i1\"},\"content\":\"Recommend targeted therapy as the primary treatment option.\",\"proposer\":\"admin-human\",\"seq\":null}],\"rationale\":\"Harness: adopted the AI's recommendation, added restaging.\",\"transcript_artifact_id\":\"transcript-f770fd635837\",\"transcript_hash\":\"0b1d509ece654c20eb746da3e54a1f8fd33ab27ffa4cb683b8f600b1c961069c\"},\"incomplete\":null,\"knowledge_state\":{\"captured_at\":\"2026-11-09T14:10:50.566848+00:00\",\"declared_universe\":{\"available_count\":1,\"record_types\":[\"source_document\"],\"repositories\":[\"case_documents\"],\"retrieval_rules\":{\"scope\":\"case_documents_joined\"},\"retrieved_count\":1,\"time_window\":{\"end\":null,\"start\":null}},\"entries\":[{\"availability\":\"available\",\"content_hash\":\"12f6193068f987fabed62abb1dc6cfa338757d3290b6f793f869193e01e0d88e\",\"kind\":\"case_document\",\"metadata\":{\"authority\":\"grounding\",\"content\":\"Molecular Tumor Board — Comprehensive Referral Packet\\n\\nCase ID: MTB-USB-2026-0147\\nPatient pseudonym: sub-pseudo-a4f9c2\\nDocument type: Referral summary + staging imaging + pathology + comorbidity reconciliation + treatment history + patient preference + trial search\\nPrepared by: Dr. M. Chen, Medical Oncology, University Hospital Basel\\nPrepared for: Molecular Tumor Board, University Hospital Basel\\nDate prepared: 2026-10-14\\nPacket version: 3.2 (supersedes v3.1 of 2026-10-13)\\nClassification: Internal clinical — not for external distribution\\n\\n---\\n\\n Table of contents\\n\\n1. Reason for referral\\n2. Patient summary\\n3. Pathology and molecular profiling\\n4. Staging imaging\\n5. Pulmonary function and organ function\\n6. Comorbidity and medication reconciliation\\n7. Performance status and functional assessment\\n8. Patient preference and goals of care\\n9. Treatment history\\n10. Points the referring team wants the board to address\\n11. Documents available to the board\\n12. Explicit uncertainties and gaps\\n13. Administrative and trial-search notes\\n14. Appendix A: laboratory values\\n15. Appendix B: imaging measurements\\n16. Appendix C: pathology synoptic report\\n17. Appendix D: medication list\\n18. Appendix E: patient preference transcript excerpt\\n19. Appendix F: trial search preliminary results\\n20. Appendix G: contact and scheduling\\n\\n---\\n\\n 1. Reason for referral\\n\\nA 67-year-old male with newly diagnosed lung adenocarcinoma, clinical stage IIIA (cT2a N2 M0), is referred for molecular tumor board review before first-line systemic therapy.\\n\\nThe pathology report dated 2026-10-08 identifies an EGFR exon 19 deletion with a variant allele frequency (VAF) of 42% and a PD-L1 tumor proportion score (TPS) of 65%. The referring team is uncertain whether the EGFR mutation should take precedence over the high PD-L1 expression in a patient with mediastinal nodal burden, and whether concurrent chemoradiation remains appropriate in the EGFR-mutant setting.\\n\\nThe referral is prompted by three converging uncertainties:\",\"episode_id\":\"857f900b-6459-41b3-a4d7-c82d32076e5a\",\"ref_id\":\"5365ee30-99d6-4665-92aa-aca948302af9\",\"scope\":\"case\"},\"source\":\"Molecular Tumor Board - referral & imaging summary_long.txt\",\"version\":\"\"},{\"availability\":\"generated\",\"content_hash\":\"781a968f5b54bc589e6c41a0500ff25b9cb4f15cdb36a5102f32485195396164\",\"kind\":\"ai_output\",\"metadata\":{\"completion_chars\":2950,\"content\":\"```json\\n[\\n    {\\n        \\\"item_id\\\": \\\"p1-i1\\\",\\n        \\\"kind\\\": \\\"recommendation\\\",\\n        \\\"text\\\": \\\"Recommend targeted therapy as the primary treatment option.\\\",\\n        \\\"evidence_citations\\\": [\\n            \\\"[5365ee30] Molecular Tumor Board - referral & imaging summary_long.txt\\\"\\n        ],\\n        \\\"confidence\\\": 0.9,\\n        \\\"alternatives\\\": []\\n    },\\n    {\\n        \\\"item_id\\\": \\\"p2-i1\\\",\\n        \\\"kind\\\": \\\"alternative\\\",\\n        \\\"text\\\": \\\"Consider immunotherapy in conjunction with targeted therapy for potential synergistic effects and broader response to tumors that may be less responsive to targeted agents alone.\\\",\\n        \\\"reason_rejected\\\": \\\"Immunotherapy has shown promising results in certain tumor types, but its efficacy is not guaranteed across all cases.\\\"\\n    }\\n]\\n```\\n\\n### Rationale\\nThe patient's primary goal of understanding the strength of different treatment options aligns well with a recommendation towards targeted therapy as the initial approach due to its established effectiveness. The evidence from molecular testing indicates no significant genetic mutations or alterations requiring specific targeted therapies.\\n\\nHowever, considering the secondary goal of minimizing disruption to work and the tertiary concern about clinical trials available, it might also be prudent to explore immunotherapy if there are any indications that this could potentially offer additional benefits without significantly impacting daily activities. This alternative would provide an option for patients who prefer less invasive treatments while still aiming to achieve optimal outcomes.\\n\\n### Proposed Plan\\nGiven the current lack of histologic confirmation supporting mediastinal nodal involvement (station 4R, SUVmax 6.1), further investigation through EBUS-TBNA is not recommended at this time due to potential risks associated with pneumothorax or bleeding. The patient's preference for minimal disruption aligns well with a recommendation towards targeted therapy as the primary treatment approach. If cli\",\"invoked_at\":\"2026-11-09T14:10:50.542810+00:00\",\"license\":\"unspecified\",\"model_class\":null,\"model_id\":\"qwen2.5:1.5b\",\"output_hash\":\"781a968f5b54bc589e6c41a0500ff25b9cb4f15cdb36a5102f32485195396164\",\"prompt_chars\":49692,\"provider\":\"ollama\",\"role\":\"generator\"},\"source\":\"ollama/qwen2.5:1.5b\",\"version\":\"\"}],\"snapshot_hash\":\"bcfdcf6062573bc2a043f47825e697db7c992526173583736bb814e489391769\"},\"metadata\":{\"artifact_type\":\"decision_record\",\"count\":3,\"domain\":\"healthcare\",\"id\":\"oncology-tumor-board-governance\",\"model_id\":\"qwen2.5:1.5b\",\"name\":\"Oncology Tumor Board Governance\",\"pack\":\"oncology-tumor-board-governance\",\"packs\":[\"oncology_tumor_board_governance\",\"molecular_tumor_board_governance\",\"robotics\"],\"provider\":\"ollama\",\"subject_type\":\"subject\",\"version\":\"1.1.1\"},\"pre_ai_assessment\":{\"plan_structured\":{},\"plan_text\":\"Harness test plan: review the referral packet, evaluate carboplatin + targeted therapy.\",\"recorded_at\":\"2026-11-09T14:10:46.714898+00:00\",\"recorded_by_actor_id\":\"admin-human\",\"schema_version\":\"pre_ai_assessment.v1\"},\"pre_ai_commitment\":{\"committed_at\":\"2026-11-09T14:10:46.714898+00:00\",\"committed_by_actor_id\":\"admin-human\",\"metadata\":{\"canonicalization\":\"sorted-keys-compact\",\"plan_hash\":\"903d10b36bdd250f8250eb74e0541a3c166ef2ff9e3733609043d12fdf548415\",\"plan_structured\":{}},\"plan_hash\":\"903d10b36bdd250f8250eb74e0541a3c166ef2ff9e3733609043d12fdf548415\",\"schema_version\":\"pre_ai_commitment.v1\"},\"schema_version\":\"cdo.v1\",\"treatment_intent\":{\"expected_outcomes\":[{\"due_by\":\"2027-02-09\",\"signal_type\":\"clinical_observation\",\"what\":\"restage in 3 months\"}],\"recommended_at\":\"2026-11-09T14:11:07.032350+00:00\",\"recommended_by_actor_id\":\"admin-human\",\"regimen\":{\"cycles_planned\":4,\"expected_duration_days\":40,\"expected_start\":\"2027-03-01\",\"intent\":\"adjuvant\",\"name\":\"carboplatin\"},\"structured_order\":{\"care_setting\":\"inpatient\",\"fhir_code\":null,\"fhir_resource_type\":\"MedicationRequest\",\"priority\":\"urgent\"}},\"version_chain\":{\"amendment_reason\":null,\"prior_cdo_hash\":null,\"signed_at\":null,\"version\":1}}",
+  "cdo_payload_canonicalization": "sorted-keys-compact-rfc8785-subset",
+  "transcript": {
+    "artifact_id": "transcript-f770fd635837",
+    "content_hash": "0b1d509ece654c20eb746da3e54a1f8fd33ab27ffa4cb683b8f600b1c961069c",
+    "payload": {
+      "source": "chat",
+      "segments": [
+        {
+          "seq": 2,
+          "role": "participant",
+          "content": "Propose a treatment plan for this tumor board case.",
+          "actor_id": "admin-human",
+          "timestamp": "2026-11-09T14:10:46.793476+00:00"
+        },
+        {
+          "seq": 3,
+          "role": "participant",
+          "content": "```json\n[\n    {\n        \"item_id\": \"p1-i1\",\n        \"kind\": \"recommendation\",\n        \"text\": \"Recommend targeted therapy as the primary treatment option.\",\n        \"evidence_citations\": [\n            \"[5365ee30] Molecular Tumor Board - referral & imaging summary_long.txt\"\n        ],\n        \"confidence\": 0.9,\n        \"alternatives\": []\n    },\n    {\n        \"item_id\": \"p2-i1\",\n        \"kind\": \"alternative\",\n        \"text\": \"Consider immunotherapy in conjunction with targeted therapy for potential synergistic effects and broader response to tumors that may be less responsive to targeted agents alone.\",\n        \"reason_rejected\": \"Immunotherapy has shown promising results in certain tumor types, but its efficacy is not guaranteed across all cases.\"\n    }\n]\n```\n\n### Rationale\nThe patient's primary goal of understanding the strength of different treatment options aligns well with a recommendation towards targeted therapy as the initial approach due to its established effectiveness. The evidence from molecular testing indicates no significant genetic mutations or alterations requiring specific targeted therapies.\n\nHowever, considering the secondary goal of minimizing disruption to work and the tertiary concern about clinical trials available, it might also be prudent to explore immunotherapy if there are any indications that this could potentially offer additional benefits without significantly impacting daily activities. This alternative would provide an option for patients who prefer less invasive treatments while still aiming to achieve optimal outcomes.\n\n### Proposed Plan\nGiven the current lack of histologic confirmation supporting mediastinal nodal involvement (station 4R, SUVmax 6.1), further investigation through EBUS-TBNA is not recommended at this time due to potential risks associated with pneumothorax or bleeding. The patient's preference for minimal disruption aligns well with a recommendation towards targeted therapy as the primary treatment approach. If clinical trials become available in the future and immunotherapy proves beneficial based on ongoing research, it can be considered alongside targeted therapies if necessary.\n\nSupporting Evidence:\n- **[5365ee30] Molecular Tumor Board - referral & imaging summary_long.txt**: Indicates no significant genetic mutations requiring specific targeted therapies.\n- **Patient Preferences (2026-10-12)**: Emphasizes understanding of different treatment options without undue disruption from work activities.\n\n### Unresolved Questions\nThe unresolved questions include whether further histologic confirmation is needed for mediastinal nodal involvement or if there are any other factors that could influence the decision regarding clinical trials. Additionally, while immunotherapy shows promise in certain cases, its efficacy remains uncertain across all tumor types and requires ongoing research to confirm its benefits specifically for this patient's condition.",
+          "actor_id": "ai-clinician",
+          "timestamp": "2026-11-09T14:10:46.800154+00:00"
+        }
+      ],
+      "session_id": "delib-3ec7bac0a2a5",
+      "produced_at": "2026-11-09T14:11:07.070604+00:00",
+      "produced_by": "admin-human",
+      "environment_id": "env-default-001",
+      "schema_version": "transcript.v1"
+    }
+  },
+  "record": {
+    "artifact_id": "artifact-d3e96bdbd967",
+    "content_hash": "011d4341c2a7ffd33e0fc1bf010f10d9c1cbb22294098e44dbad1a4ab815bbcd",
+    "payload": {
+      "actions": [],
+      "consent": {
+        "scope": "clinical_tumor_board",
+        "period": null,
+        "ref_id": null,
+        "ref_hash": null,
+        "ref_kind": "pack_basis",
+        "subject_id": "P-11h25",
+        "legal_basis": "Institutional deliberation record.",
+        "manager_uri": null,
+        "policy_rule": "oncology-tumor-board-governance",
+        "consenter_id": null,
+        "consenter_role": null,
+        "authority_ref_kind": "pack_basis",
+        "status_at_decision": "active"
+      },
+      "metadata": {
+        "id": "oncology-tumor-board-governance",
+        "name": "Oncology Tumor Board Governance",
+        "pack": "oncology-tumor-board-governance",
+        "count": 3,
+        "packs": [
+          "oncology_tumor_board_governance",
+          "molecular_tumor_board_governance",
+          "robotics"
+        ],
+        "domain": "healthcare",
+        "version": "1.1.1",
+        "model_id": "qwen2.5:1.5b",
+        "provider": "ollama",
+        "subject_type": "subject",
+        "artifact_type": "decision_record"
+      },
+      "ai_bom_ref": {
+        "session_id": "delib-3ec7bac0a2a5",
+        "artifact_id": "aibom-d80b87caec67",
+        "content_hash": "a95b1f288ae75bc33f48d338e587cbe9e5107194037ad0684b72196803fabe56",
+        "schema_version": "2026.1"
+      },
+      "incomplete": null,
+      "environment": {
+        "tenant_name": "Default Sovereign Environment",
+        "tenant_type": "standard",
+        "environment_id": "env-default-001",
+        "parent_environment_id": null
+      },
+      "context_plan": {},
+      "ai_provenance": {
+        "edges": [],
+        "nodes": [
+          {
+            "kind": "generative_model",
+            "model": "qwen2.5:1.5b",
+            "node_id": "gen-1",
+            "provider": "ollama",
+            "invoked_at": "2026-11-09T14:10:50.542810+00:00",
+            "output_hash": "781a968f5b54bc589e6c41a0500ff25b9cb4f15cdb36a5102f32485195396164",
+            "prompt_hash": null,
+            "prompt_chars": 49692,
+            "model_version": null,
+            "completion_chars": 2950
+          }
+        ],
+        "graph_hash": "22763948a4b05d86ca034d3d2d348b3c4ad17ceb53dafeae47f653a3fd9beab1"
+      },
+      "version_chain": {
+        "version": 1,
+        "signed_at": null,
+        "prior_cdo_hash": null,
+        "amendment_reason": null
+      },
+      "human_decision": {
+        "content": {
+          "plan": "restage in 3 months",
+          "adopted_items": [
+            {
+              "kind": "recommendation",
+              "text": "Recommend targeted therapy as the primary treatment option.",
+              "item_id": "p1-i1",
+              "decision": "adopt",
+              "ai_proposal_seq": 3
+            }
+          ],
+          "recommendation": "adjuvant",
+          "decision_details": {
+            "regimen": {
+              "name": "carboplatin",
+              "intent": "adjuvant",
+              "cycles_planned": 4,
+              "expected_start": "2027-03-01",
+              "expected_duration_days": 40
+            },
+            "recommended_at": "2026-11-09T14:11:07.032350+00:00",
+            "structured_order": {
+              "priority": "urgent",
+              "fhir_code": null,
+              "care_setting": "inpatient",
+              "fhir_resource_type": "MedicationRequest"
+            },
+            "expected_outcomes": [
+              {
+                "what": "restage in 3 months",
+                "due_by": "2027-02-09",
+                "signal_type": "clinical_observation"
+              }
+            ],
+            "recommended_by_actor_id": "admin-human"
+          }
+        },
+        "decided_at": "2026-11-09T14:11:07.032350+00:00",
+        "approval_type": "approved",
+        "decision_owner_actor_id": "admin-human"
+      },
+      "schema_version": "cdo.v1",
+      "knowledge_state": {
+        "entries": [
+          {
+            "kind": "case_document",
+            "source": "Molecular Tumor Board - referral & imaging summary_long.txt",
+            "version": "",
+            "metadata": {
+              "scope": "case",
+              "ref_id": "5365ee30-99d6-4665-92aa-aca948302af9",
+              "content": "Molecular Tumor Board — Comprehensive Referral Packet\n\nCase ID: MTB-USB-2026-0147\nPatient pseudonym: sub-pseudo-a4f9c2\nDocument type: Referral summary + staging imaging + pathology + comorbidity reconciliation + treatment history + patient preference + trial search\nPrepared by: Dr. M. Chen, Medical Oncology, University Hospital Basel\nPrepared for: Molecular Tumor Board, University Hospital Basel\nDate prepared: 2026-10-14\nPacket version: 3.2 (supersedes v3.1 of 2026-10-13)\nClassification: Internal clinical — not for external distribution\n\n---\n\n Table of contents\n\n1. Reason for referral\n2. Patient summary\n3. Pathology and molecular profiling\n4. Staging imaging\n5. Pulmonary function and organ function\n6. Comorbidity and medication reconciliation\n7. Performance status and functional assessment\n8. Patient preference and goals of care\n9. Treatment history\n10. Points the referring team wants the board to address\n11. Documents available to the board\n12. Explicit uncertainties and gaps\n13. Administrative and trial-search notes\n14. Appendix A: laboratory values\n15. Appendix B: imaging measurements\n16. Appendix C: pathology synoptic report\n17. Appendix D: medication list\n18. Appendix E: patient preference transcript excerpt\n19. Appendix F: trial search preliminary results\n20. Appendix G: contact and scheduling\n\n---\n\n 1. Reason for referral\n\nA 67-year-old male with newly diagnosed lung adenocarcinoma, clinical stage IIIA (cT2a N2 M0), is referred for molecular tumor board review before first-line systemic therapy.\n\nThe pathology report dated 2026-10-08 identifies an EGFR exon 19 deletion with a variant allele frequency (VAF) of 42% and a PD-L1 tumor proportion score (TPS) of 65%. The referring team is uncertain whether the EGFR mutation should take precedence over the high PD-L1 expression in a patient with mediastinal nodal burden, and whether concurrent chemoradiation remains appropriate in the EGFR-mutant setting.\n\nThe referral is prompted by three converging uncertainties:",
+              "authority": "grounding",
+              "episode_id": "857f900b-6459-41b3-a4d7-c82d32076e5a"
+            },
+            "availability": "available",
+            "content_hash": "12f6193068f987fabed62abb1dc6cfa338757d3290b6f793f869193e01e0d88e"
+          },
+          {
+            "kind": "ai_output",
+            "source": "ollama/qwen2.5:1.5b",
+            "version": "",
+            "metadata": {
+              "role": "generator",
+              "content": "```json\n[\n    {\n        \"item_id\": \"p1-i1\",\n        \"kind\": \"recommendation\",\n        \"text\": \"Recommend targeted therapy as the primary treatment option.\",\n        \"evidence_citations\": [\n            \"[5365ee30] Molecular Tumor Board - referral & imaging summary_long.txt\"\n        ],\n        \"confidence\": 0.9,\n        \"alternatives\": []\n    },\n    {\n        \"item_id\": \"p2-i1\",\n        \"kind\": \"alternative\",\n        \"text\": \"Consider immunotherapy in conjunction with targeted therapy for potential synergistic effects and broader response to tumors that may be less responsive to targeted agents alone.\",\n        \"reason_rejected\": \"Immunotherapy has shown promising results in certain tumor types, but its efficacy is not guaranteed across all cases.\"\n    }\n]\n```\n\n### Rationale\nThe patient's primary goal of understanding the strength of different treatment options aligns well with a recommendation towards targeted therapy as the initial approach due to its established effectiveness. The evidence from molecular testing indicates no significant genetic mutations or alterations requiring specific targeted therapies.\n\nHowever, considering the secondary goal of minimizing disruption to work and the tertiary concern about clinical trials available, it might also be prudent to explore immunotherapy if there are any indications that this could potentially offer additional benefits without significantly impacting daily activities. This alternative would provide an option for patients who prefer less invasive treatments while still aiming to achieve optimal outcomes.\n\n### Proposed Plan\nGiven the current lack of histologic confirmation supporting mediastinal nodal involvement (station 4R, SUVmax 6.1), further investigation through EBUS-TBNA is not recommended at this time due to potential risks associated with pneumothorax or bleeding. The patient's preference for minimal disruption aligns well with a recommendation towards targeted therapy as the primary treatment approach. If cli",
+              "license": "unspecified",
+              "model_id": "qwen2.5:1.5b",
+              "provider": "ollama",
+              "invoked_at": "2026-11-09T14:10:50.542810+00:00",
+              "model_class": null,
+              "output_hash": "781a968f5b54bc589e6c41a0500ff25b9cb4f15cdb36a5102f32485195396164",
+              "prompt_chars": 49692,
+              "completion_chars": 2950
+            },
+            "availability": "generated",
+            "content_hash": "781a968f5b54bc589e6c41a0500ff25b9cb4f15cdb36a5102f32485195396164"
+          }
+        ],
+        "captured_at": "2026-11-09T14:10:50.566848+00:00",
+        "snapshot_hash": "bcfdcf6062573bc2a043f47825e697db7c992526173583736bb814e489391769",
+        "declared_universe": {
+          "time_window": {
+            "end": null,
+            "start": null
+          },
+          "record_types": [
+            "source_document"
+          ],
+          "repositories": [
+            "case_documents"
+          ],
+          "available_count": 1,
+          "retrieval_rules": {
+            "scope": "case_documents_joined"
+          },
+          "retrieved_count": 1
+        }
+      },
+      "treatment_intent": {
+        "regimen": {
+          "name": "carboplatin",
+          "intent": "adjuvant",
+          "cycles_planned": 4,
+          "expected_start": "2027-03-01",
+          "expected_duration_days": 40
+        },
+        "recommended_at": "2026-11-09T14:11:07.032350+00:00",
+        "structured_order": {
+          "priority": "urgent",
+          "fhir_code": null,
+          "care_setting": "inpatient",
+          "fhir_resource_type": "MedicationRequest"
+        },
+        "expected_outcomes": [
+          {
+            "what": "restage in 3 months",
+            "due_by": "2027-02-09",
+            "signal_type": "clinical_observation"
+          }
+        ],
+        "recommended_by_actor_id": "admin-human"
+      },
+      "ai_recommendation": {
+        "trace": null,
+        "domain": null,
+        "content": null,
+        "pack_id": "oncology-tumor-board-governance",
+        "signals": {
+          "referral_required": [
+            "Tumor Board",
+            "tumor board",
+            "tumor board"
+          ],
+          "targeted_therapy_proposed": [
+            "targeted therapy"
+          ],
+          "molecular_alteration_identified": [
+            "met"
+          ]
+        },
+        "policies": [
+          {
+            "name": "email_draft_on_referral",
+            "reason": "signals ['referral_required'] present",
+            "actions": [
+              {
+                "action": "draft_email",
+                "message": "Referral email queued for review.",
+                "severity": "medium",
+                "template": "Subject: Referral request — {case_id}\n\nDear {target},\n\nThe oncology tumor board on {session_date} has recommended a\nreferral for the case {case_id}.\n\nReason for referral: {recommendation}\nSupporting evidence: {evidence_excerpt}\nBoard attribution: {attribution}\n\nRegards,\n{chair_name}\nOncology Tumor Board Chair\n"
+              },
+              {
+                "action": "hitl_enqueue",
+                "message": "Referral email queued for human review.",
+                "severity": "medium"
+              }
+            ],
+            "autonomy": {
+              "level": "approve"
+            },
+            "decision": {
+              "type": "draft",
+              "severity": "medium",
+              "explanation": "Draft referral email. Queue for chair review."
+            },
+            "policy_id": "email_draft_on_referral",
+            "confidence_threshold": 0.7
+          },
+          {
+            "name": "record_molecular_alteration",
+            "reason": "signals ['molecular_alteration_identified'] present",
+            "actions": [
+              {
+                "action": "record",
+                "message": "Alteration recorded with evidence excerpt."
+              },
+              {
+                "action": "assert",
+                "assertion": {
+                  "object": "{alteration}",
+                  "subject": "{case_id}",
+                  "predicate": "has_alteration",
+                  "confidence": 0.9
+                }
+              }
+            ],
+            "autonomy": {
+              "level": "approve"
+            },
+            "decision": {
+              "type": "record",
+              "severity": "high",
+              "explanation": "Molecular alteration recorded with evidence."
+            },
+            "policy_id": "record_molecular_alteration",
+            "confidence_threshold": 0.7
+          },
+          {
+            "name": "require_organ_function_for_targeted_therapy",
+            "reason": "signals ['targeted_therapy_proposed'] present",
+            "actions": [
+              {
+                "action": "observe",
+                "message": "Verify organ function before targeted therapy."
+              }
+            ],
+            "autonomy": {
+              "level": "observe"
+            },
+            "decision": {
+              "type": "observe",
+              "severity": "medium",
+              "explanation": "Targeted therapy — verify organ function."
+            },
+            "policy_id": "require_organ_function_for_targeted_therapy",
+            "confidence_threshold": 0.6
+          }
+        ],
+        "response": "```json\n[\n    {\n        \"item_id\": \"p1-i1\",\n        \"kind\": \"recommendation\",\n        \"text\": \"Recommend targeted therapy as the primary treatment option.\",\n        \"evidence_citations\": [\n            \"[5365ee30] Molecular Tumor Board - referral & imaging summary_long.txt\"\n        ],\n        \"confidence\": 0.9,\n        \"alternatives\": []\n    },\n    {\n        \"item_id\": \"p2-i1\",\n        \"kind\": \"alternative\",\n        \"text\": \"Consider immunotherapy in conjunction with targeted therapy for potential synergistic effects and broader response to tumors that may be less responsive to targeted agents alone.\",\n        \"reason_rejected\": \"Immunotherapy has shown promising results in certain tumor types, but its efficacy is not guaranteed across all cases.\"\n    }\n]\n```\n\n### Rationale\nThe patient's primary goal of understanding the strength of different treatment options aligns well with a recommendation towards targeted therapy as the initial approach due to its established effectiveness. The evidence from molecular testing indicates no significant genetic mutations or alterations requiring specific targeted therapies.\n\nHowever, considering the secondary goal of minimizing disruption to work and the tertiary concern about clinical trials available, it might also be prudent to explore immunotherapy if there are any indications that this could potentially offer additional benefits without significantly impacting daily activities. This alternative would provide an option for patients who prefer less invasive treatments while still aiming to achieve optimal outcomes.\n\n### Proposed Plan\nGiven the current lack of histologic confirmation supporting mediastinal nodal involvement (station 4R, SUVmax 6.1), further investigation through EBUS-TBNA is not recommended at this time due to potential risks associated with pneumothorax or bleeding. The patient's preference for minimal disruption aligns well with a recommendation towards targeted therapy as the primary treatment approach. If clinical trials become available in the future and immunotherapy proves beneficial based on ongoing research, it can be considered alongside targeted therapies if necessary.\n\nSupporting Evidence:\n- **[5365ee30] Molecular Tumor Board - referral & imaging summary_long.txt**: Indicates no significant genetic mutations requiring specific targeted therapies.\n- **Patient Preferences (2026-10-12)**: Emphasizes understanding of different treatment options without undue disruption from work activities.\n\n### Unresolved Questions\nThe unresolved questions include whether further histologic confirmation is needed for mediastinal nodal involvement or if there are any other factors that could influence the decision regarding clinical trials. Additionally, while immunotherapy shows promise in certain cases, its efficacy remains uncertain across all tumor types and requires ongoing research to confirm its benefits specifically for this patient's condition.",
+        "pack_version": "1.1.1",
+        "provenance_node_ids": [
+          "gen-1"
+        ]
+      },
+      "pre_ai_assessment": {
+        "plan_text": "Harness test plan: review the referral packet, evaluate carboplatin + targeted therapy.",
+        "recorded_at": "2026-11-09T14:10:46.714898+00:00",
+        "schema_version": "pre_ai_assessment.v1",
+        "plan_structured": {},
+        "recorded_by_actor_id": "admin-human"
+      },
+      "pre_ai_commitment": {
+        "metadata": {
+          "plan_hash": "903d10b36bdd250f8250eb74e0541a3c166ef2ff9e3733609043d12fdf548415",
+          "plan_structured": {},
+          "canonicalization": "sorted-keys-compact"
+        },
+        "plan_hash": "903d10b36bdd250f8250eb74e0541a3c166ef2ff9e3733609043d12fdf548415",
+        "committed_at": "2026-11-09T14:10:46.714898+00:00",
+        "schema_version": "pre_ai_commitment.v1",
+        "committed_by_actor_id": "admin-human"
+      },
+      "human_deliberation": {
+        "dissent": [],
+        "follow_up": [],
+        "proposals": [
+          {
+            "seq": null,
+            "content": "Recommend targeted therapy as the primary treatment option.",
+            "proposer": "admin-human",
+            "adopted_from": {
+              "item_id": "p1-i1",
+              "ai_proposal_seq": 3
+            }
+          }
+        ],
+        "rationale": "Harness: adopted the AI's recommendation, added restaging.",
+        "alternatives": [],
+        "participants": [
+          {
+            "name": "Admin User",
+            "role": "owner",
+            "actor_id": "admin-human",
+            "joined_at": "2026-11-09T14:10:46.660805+00:00",
+            "actor_type": "human",
+            "role_in_session": "chair"
+          }
+        ],
+        "transcript_hash": "0b1d509ece654c20eb746da3e54a1f8fd33ab27ffa4cb683b8f600b1c961069c",
+        "transcript_artifact_id": "transcript-f770fd635837"
+      },
+      "deliberation_metrics": {
+        "computed_at": "2026-11-09T14:10:50.599839+00:00",
+        "dissent_rate": 0.0,
+        "dissent_count": 0,
+        "ruling_counts": {},
+        "schema_version": "deliberation_metrics.v1",
+        "ai_failure_rate": 0.0,
+        "ai_failure_count": 0,
+        "ai_response_seconds": {
+          "p95": null,
+          "median": null,
+          "sample_size": 0
+        },
+        "chair_override_rate": 0.0,
+        "ai_contribution_count": 2,
+        "ai_contributions_by_role": {
+          "clinician": 1,
+          "clinician-reasoning": 1
+        },
+        "session_duration_seconds": 3.9
+      }
+    },
+    "payload_canonical": "{\"actions\":[],\"ai_bom_ref\":{\"artifact_id\":\"aibom-d80b87caec67\",\"content_hash\":\"a95b1f288ae75bc33f48d338e587cbe9e5107194037ad0684b72196803fabe56\",\"schema_version\":\"2026.1\",\"session_id\":\"delib-3ec7bac0a2a5\"},\"ai_provenance\":{\"edges\":[],\"graph_hash\":\"22763948a4b05d86ca034d3d2d348b3c4ad17ceb53dafeae47f653a3fd9beab1\",\"nodes\":[{\"completion_chars\":2950,\"invoked_at\":\"2026-11-09T14:10:50.542810+00:00\",\"kind\":\"generative_model\",\"model\":\"qwen2.5:1.5b\",\"model_version\":null,\"node_id\":\"gen-1\",\"output_hash\":\"781a968f5b54bc589e6c41a0500ff25b9cb4f15cdb36a5102f32485195396164\",\"prompt_chars\":49692,\"prompt_hash\":null,\"provider\":\"ollama\"}]},\"ai_recommendation\":{\"content\":null,\"domain\":null,\"pack_id\":\"oncology-tumor-board-governance\",\"pack_version\":\"1.1.1\",\"policies\":[{\"actions\":[{\"action\":\"draft_email\",\"message\":\"Referral email queued for review.\",\"severity\":\"medium\",\"template\":\"Subject: Referral request — {case_id}\\n\\nDear {target},\\n\\nThe oncology tumor board on {session_date} has recommended a\\nreferral for the case {case_id}.\\n\\nReason for referral: {recommendation}\\nSupporting evidence: {evidence_excerpt}\\nBoard attribution: {attribution}\\n\\nRegards,\\n{chair_name}\\nOncology Tumor Board Chair\\n\"},{\"action\":\"hitl_enqueue\",\"message\":\"Referral email queued for human review.\",\"severity\":\"medium\"}],\"autonomy\":{\"level\":\"approve\"},\"confidence_threshold\":0.7,\"decision\":{\"explanation\":\"Draft referral email. Queue for chair review.\",\"severity\":\"medium\",\"type\":\"draft\"},\"name\":\"email_draft_on_referral\",\"policy_id\":\"email_draft_on_referral\",\"reason\":\"signals ['referral_required'] present\"},{\"actions\":[{\"action\":\"record\",\"message\":\"Alteration recorded with evidence excerpt.\"},{\"action\":\"assert\",\"assertion\":{\"confidence\":0.9,\"object\":\"{alteration}\",\"predicate\":\"has_alteration\",\"subject\":\"{case_id}\"}}],\"autonomy\":{\"level\":\"approve\"},\"confidence_threshold\":0.7,\"decision\":{\"explanation\":\"Molecular alteration recorded with evidence.\",\"severity\":\"high\",\"type\":\"record\"},\"name\":\"record_molecular_alteration\",\"policy_id\":\"record_molecular_alteration\",\"reason\":\"signals ['molecular_alteration_identified'] present\"},{\"actions\":[{\"action\":\"observe\",\"message\":\"Verify organ function before targeted therapy.\"}],\"autonomy\":{\"level\":\"observe\"},\"confidence_threshold\":0.6,\"decision\":{\"explanation\":\"Targeted therapy — verify organ function.\",\"severity\":\"medium\",\"type\":\"observe\"},\"name\":\"require_organ_function_for_targeted_therapy\",\"policy_id\":\"require_organ_function_for_targeted_therapy\",\"reason\":\"signals ['targeted_therapy_proposed'] present\"}],\"provenance_node_ids\":[\"gen-1\"],\"response\":\"```json\\n[\\n    {\\n        \\\"item_id\\\": \\\"p1-i1\\\",\\n        \\\"kind\\\": \\\"recommendation\\\",\\n        \\\"text\\\": \\\"Recommend targeted therapy as the primary treatment option.\\\",\\n        \\\"evidence_citations\\\": [\\n            \\\"[5365ee30] Molecular Tumor Board - referral & imaging summary_long.txt\\\"\\n        ],\\n        \\\"confidence\\\": 0.9,\\n        \\\"alternatives\\\": []\\n    },\\n    {\\n        \\\"item_id\\\": \\\"p2-i1\\\",\\n        \\\"kind\\\": \\\"alternative\\\",\\n        \\\"text\\\": \\\"Consider immunotherapy in conjunction with targeted therapy for potential synergistic effects and broader response to tumors that may be less responsive to targeted agents alone.\\\",\\n        \\\"reason_rejected\\\": \\\"Immunotherapy has shown promising results in certain tumor types, but its efficacy is not guaranteed across all cases.\\\"\\n    }\\n]\\n```\\n\\n### Rationale\\nThe patient's primary goal of understanding the strength of different treatment options aligns well with a recommendation towards targeted therapy as the initial approach due to its established effectiveness. The evidence from molecular testing indicates no significant genetic mutations or alterations requiring specific targeted therapies.\\n\\nHowever, considering the secondary goal of minimizing disruption to work and the tertiary concern about clinical trials available, it might also be prudent to explore immunotherapy if there are any indications that this could potentially offer additional benefits without significantly impacting daily activities. This alternative would provide an option for patients who prefer less invasive treatments while still aiming to achieve optimal outcomes.\\n\\n### Proposed Plan\\nGiven the current lack of histologic confirmation supporting mediastinal nodal involvement (station 4R, SUVmax 6.1), further investigation through EBUS-TBNA is not recommended at this time due to potential risks associated with pneumothorax or bleeding. The patient's preference for minimal disruption aligns well with a recommendation towards targeted therapy as the primary treatment approach. If clinical trials become available in the future and immunotherapy proves beneficial based on ongoing research, it can be considered alongside targeted therapies if necessary.\\n\\nSupporting Evidence:\\n- **[5365ee30] Molecular Tumor Board - referral & imaging summary_long.txt**: Indicates no significant genetic mutations requiring specific targeted therapies.\\n- **Patient Preferences (2026-10-12)**: Emphasizes understanding of different treatment options without undue disruption from work activities.\\n\\n### Unresolved Questions\\nThe unresolved questions include whether further histologic confirmation is needed for mediastinal nodal involvement or if there are any other factors that could influence the decision regarding clinical trials. Additionally, while immunotherapy shows promise in certain cases, its efficacy remains uncertain across all tumor types and requires ongoing research to confirm its benefits specifically for this patient's condition.\",\"signals\":{\"molecular_alteration_identified\":[\"met\"],\"referral_required\":[\"Tumor Board\",\"tumor board\",\"tumor board\"],\"targeted_therapy_proposed\":[\"targeted therapy\"]},\"trace\":null},\"consent\":{\"authority_ref_kind\":\"pack_basis\",\"consenter_id\":null,\"consenter_role\":null,\"legal_basis\":\"Institutional deliberation record.\",\"manager_uri\":null,\"period\":null,\"policy_rule\":\"oncology-tumor-board-governance\",\"ref_hash\":null,\"ref_id\":null,\"ref_kind\":\"pack_basis\",\"scope\":\"clinical_tumor_board\",\"status_at_decision\":\"active\",\"subject_id\":\"P-11h25\"},\"context_plan\":{},\"deliberation_metrics\":{\"ai_contribution_count\":2,\"ai_contributions_by_role\":{\"clinician\":1,\"clinician-reasoning\":1},\"ai_failure_count\":0,\"ai_failure_rate\":0.0,\"ai_response_seconds\":{\"median\":null,\"p95\":null,\"sample_size\":0},\"chair_override_rate\":0.0,\"computed_at\":\"2026-11-09T14:10:50.599839+00:00\",\"dissent_count\":0,\"dissent_rate\":0.0,\"ruling_counts\":{},\"schema_version\":\"deliberation_metrics.v1\",\"session_duration_seconds\":3.9},\"environment\":{\"environment_id\":\"env-default-001\",\"parent_environment_id\":null,\"tenant_name\":\"Default Sovereign Environment\",\"tenant_type\":\"standard\"},\"human_decision\":{\"approval_type\":\"approved\",\"content\":{\"adopted_items\":[{\"ai_proposal_seq\":3,\"decision\":\"adopt\",\"item_id\":\"p1-i1\",\"kind\":\"recommendation\",\"text\":\"Recommend targeted therapy as the primary treatment option.\"}],\"decision_details\":{\"expected_outcomes\":[{\"due_by\":\"2027-02-09\",\"signal_type\":\"clinical_observation\",\"what\":\"restage in 3 months\"}],\"recommended_at\":\"2026-11-09T14:11:07.032350+00:00\",\"recommended_by_actor_id\":\"admin-human\",\"regimen\":{\"cycles_planned\":4,\"expected_duration_days\":40,\"expected_start\":\"2027-03-01\",\"intent\":\"adjuvant\",\"name\":\"carboplatin\"},\"structured_order\":{\"care_setting\":\"inpatient\",\"fhir_code\":null,\"fhir_resource_type\":\"MedicationRequest\",\"priority\":\"urgent\"}},\"plan\":\"restage in 3 months\",\"recommendation\":\"adjuvant\"},\"decided_at\":\"2026-11-09T14:11:07.032350+00:00\",\"decision_owner_actor_id\":\"admin-human\"},\"human_deliberation\":{\"alternatives\":[],\"dissent\":[],\"follow_up\":[],\"participants\":[{\"actor_id\":\"admin-human\",\"actor_type\":\"human\",\"joined_at\":\"2026-11-09T14:10:46.660805+00:00\",\"name\":\"Admin User\",\"role\":\"owner\",\"role_in_session\":\"chair\"}],\"proposals\":[{\"adopted_from\":{\"ai_proposal_seq\":3,\"item_id\":\"p1-i1\"},\"content\":\"Recommend targeted therapy as the primary treatment option.\",\"proposer\":\"admin-human\",\"seq\":null}],\"rationale\":\"Harness: adopted the AI's recommendation, added restaging.\",\"transcript_artifact_id\":\"transcript-f770fd635837\",\"transcript_hash\":\"0b1d509ece654c20eb746da3e54a1f8fd33ab27ffa4cb683b8f600b1c961069c\"},\"incomplete\":null,\"knowledge_state\":{\"captured_at\":\"2026-11-09T14:10:50.566848+00:00\",\"declared_universe\":{\"available_count\":1,\"record_types\":[\"source_document\"],\"repositories\":[\"case_documents\"],\"retrieval_rules\":{\"scope\":\"case_documents_joined\"},\"retrieved_count\":1,\"time_window\":{\"end\":null,\"start\":null}},\"entries\":[{\"availability\":\"available\",\"content_hash\":\"12f6193068f987fabed62abb1dc6cfa338757d3290b6f793f869193e01e0d88e\",\"kind\":\"case_document\",\"metadata\":{\"authority\":\"grounding\",\"content\":\"Molecular Tumor Board — Comprehensive Referral Packet\\n\\nCase ID: MTB-USB-2026-0147\\nPatient pseudonym: sub-pseudo-a4f9c2\\nDocument type: Referral summary + staging imaging + pathology + comorbidity reconciliation + treatment history + patient preference + trial search\\nPrepared by: Dr. M. Chen, Medical Oncology, University Hospital Basel\\nPrepared for: Molecular Tumor Board, University Hospital Basel\\nDate prepared: 2026-10-14\\nPacket version: 3.2 (supersedes v3.1 of 2026-10-13)\\nClassification: Internal clinical — not for external distribution\\n\\n---\\n\\n Table of contents\\n\\n1. Reason for referral\\n2. Patient summary\\n3. Pathology and molecular profiling\\n4. Staging imaging\\n5. Pulmonary function and organ function\\n6. Comorbidity and medication reconciliation\\n7. Performance status and functional assessment\\n8. Patient preference and goals of care\\n9. Treatment history\\n10. Points the referring team wants the board to address\\n11. Documents available to the board\\n12. Explicit uncertainties and gaps\\n13. Administrative and trial-search notes\\n14. Appendix A: laboratory values\\n15. Appendix B: imaging measurements\\n16. Appendix C: pathology synoptic report\\n17. Appendix D: medication list\\n18. Appendix E: patient preference transcript excerpt\\n19. Appendix F: trial search preliminary results\\n20. Appendix G: contact and scheduling\\n\\n---\\n\\n 1. Reason for referral\\n\\nA 67-year-old male with newly diagnosed lung adenocarcinoma, clinical stage IIIA (cT2a N2 M0), is referred for molecular tumor board review before first-line systemic therapy.\\n\\nThe pathology report dated 2026-10-08 identifies an EGFR exon 19 deletion with a variant allele frequency (VAF) of 42% and a PD-L1 tumor proportion score (TPS) of 65%. The referring team is uncertain whether the EGFR mutation should take precedence over the high PD-L1 expression in a patient with mediastinal nodal burden, and whether concurrent chemoradiation remains appropriate in the EGFR-mutant setting.\\n\\nThe referral is prompted by three converging uncertainties:\",\"episode_id\":\"857f900b-6459-41b3-a4d7-c82d32076e5a\",\"ref_id\":\"5365ee30-99d6-4665-92aa-aca948302af9\",\"scope\":\"case\"},\"source\":\"Molecular Tumor Board - referral & imaging summary_long.txt\",\"version\":\"\"},{\"availability\":\"generated\",\"content_hash\":\"781a968f5b54bc589e6c41a0500ff25b9cb4f15cdb36a5102f32485195396164\",\"kind\":\"ai_output\",\"metadata\":{\"completion_chars\":2950,\"content\":\"```json\\n[\\n    {\\n        \\\"item_id\\\": \\\"p1-i1\\\",\\n        \\\"kind\\\": \\\"recommendation\\\",\\n        \\\"text\\\": \\\"Recommend targeted therapy as the primary treatment option.\\\",\\n        \\\"evidence_citations\\\": [\\n            \\\"[5365ee30] Molecular Tumor Board - referral & imaging summary_long.txt\\\"\\n        ],\\n        \\\"confidence\\\": 0.9,\\n        \\\"alternatives\\\": []\\n    },\\n    {\\n        \\\"item_id\\\": \\\"p2-i1\\\",\\n        \\\"kind\\\": \\\"alternative\\\",\\n        \\\"text\\\": \\\"Consider immunotherapy in conjunction with targeted therapy for potential synergistic effects and broader response to tumors that may be less responsive to targeted agents alone.\\\",\\n        \\\"reason_rejected\\\": \\\"Immunotherapy has shown promising results in certain tumor types, but its efficacy is not guaranteed across all cases.\\\"\\n    }\\n]\\n```\\n\\n### Rationale\\nThe patient's primary goal of understanding the strength of different treatment options aligns well with a recommendation towards targeted therapy as the initial approach due to its established effectiveness. The evidence from molecular testing indicates no significant genetic mutations or alterations requiring specific targeted therapies.\\n\\nHowever, considering the secondary goal of minimizing disruption to work and the tertiary concern about clinical trials available, it might also be prudent to explore immunotherapy if there are any indications that this could potentially offer additional benefits without significantly impacting daily activities. This alternative would provide an option for patients who prefer less invasive treatments while still aiming to achieve optimal outcomes.\\n\\n### Proposed Plan\\nGiven the current lack of histologic confirmation supporting mediastinal nodal involvement (station 4R, SUVmax 6.1), further investigation through EBUS-TBNA is not recommended at this time due to potential risks associated with pneumothorax or bleeding. The patient's preference for minimal disruption aligns well with a recommendation towards targeted therapy as the primary treatment approach. If cli\",\"invoked_at\":\"2026-11-09T14:10:50.542810+00:00\",\"license\":\"unspecified\",\"model_class\":null,\"model_id\":\"qwen2.5:1.5b\",\"output_hash\":\"781a968f5b54bc589e6c41a0500ff25b9cb4f15cdb36a5102f32485195396164\",\"prompt_chars\":49692,\"provider\":\"ollama\",\"role\":\"generator\"},\"source\":\"ollama/qwen2.5:1.5b\",\"version\":\"\"}],\"snapshot_hash\":\"bcfdcf6062573bc2a043f47825e697db7c992526173583736bb814e489391769\"},\"metadata\":{\"artifact_type\":\"decision_record\",\"count\":3,\"domain\":\"healthcare\",\"id\":\"oncology-tumor-board-governance\",\"model_id\":\"qwen2.5:1.5b\",\"name\":\"Oncology Tumor Board Governance\",\"pack\":\"oncology-tumor-board-governance\",\"packs\":[\"oncology_tumor_board_governance\",\"molecular_tumor_board_governance\",\"robotics\"],\"provider\":\"ollama\",\"subject_type\":\"subject\",\"version\":\"1.1.1\"},\"pre_ai_assessment\":{\"plan_structured\":{},\"plan_text\":\"Harness test plan: review the referral packet, evaluate carboplatin + targeted therapy.\",\"recorded_at\":\"2026-11-09T14:10:46.714898+00:00\",\"recorded_by_actor_id\":\"admin-human\",\"schema_version\":\"pre_ai_assessment.v1\"},\"pre_ai_commitment\":{\"committed_at\":\"2026-11-09T14:10:46.714898+00:00\",\"committed_by_actor_id\":\"admin-human\",\"metadata\":{\"canonicalization\":\"sorted-keys-compact\",\"plan_hash\":\"903d10b36bdd250f8250eb74e0541a3c166ef2ff9e3733609043d12fdf548415\",\"plan_structured\":{}},\"plan_hash\":\"903d10b36bdd250f8250eb74e0541a3c166ef2ff9e3733609043d12fdf548415\",\"schema_version\":\"pre_ai_commitment.v1\"},\"schema_version\":\"cdo.v1\",\"treatment_intent\":{\"expected_outcomes\":[{\"due_by\":\"2027-02-09\",\"signal_type\":\"clinical_observation\",\"what\":\"restage in 3 months\"}],\"recommended_at\":\"2026-11-09T14:11:07.032350+00:00\",\"recommended_by_actor_id\":\"admin-human\",\"regimen\":{\"cycles_planned\":4,\"expected_duration_days\":40,\"expected_start\":\"2027-03-01\",\"intent\":\"adjuvant\",\"name\":\"carboplatin\"},\"structured_order\":{\"care_setting\":\"inpatient\",\"fhir_code\":null,\"fhir_resource_type\":\"MedicationRequest\",\"priority\":\"urgent\"}},\"version_chain\":{\"amendment_reason\":null,\"prior_cdo_hash\":null,\"signed_at\":null,\"version\":1}}",
+    "payload_canonicalization": "sorted-keys-compact-rfc8785-subset"
+  },
+  "attestation": {
+    "signed_payload_hash": "011d4341c2a7ffd33e0fc1bf010f10d9c1cbb22294098e44dbad1a4ab815bbcd",
+    "signature_b64": "UhBgBtwi3ENvZ2VKa7H3wsHSPTueHrhxCGKKyR4B4/OdnhfrjnJqZNmcVbJ16Y5fCKkG+V7IP3qJbFyicY1cCg==",
+    "attested_at": "2026-11-09T14:11:07.216522+00:00"
+  },
+  "version_chain": {
+    "version": 1,
+    "signed_at": "2026-11-09T14:11:07.216522+00:00",
+    "prior_cdo_hash": null,
+    "amendment_reason": null
+  },
+  "dqi": {
+    "version": "dqi.v1",
+    "score": 0.9043,
+    "components": {
+      "completeness": 0.8571,
+      "coherence": 1.0,
+      "documented_disagreement": 1.0,
+      "rationale_depth": 0.6,
+      "temporal_integrity": 1.0,
+      "knowledge_adequacy": 1.0,
+      "pre_commitment_integrity": 1.0
+    },
+    "computed_at": "2026-11-19T16:44:44.497673+00:00",
+    "frozen": false,
+    "snapshot_hash": null
+  },
+  "dqi_snapshot": null,
+  "audio_manifest": null,
+  "outcome_receipt": null,
+  "system_receipt": {
+    "body": {
+      "proof": {
+        "algorithm": "Ed25519",
+        "signature": "ed25519:1STbXhQSg3xX+iJaUyJ1AHeaYPi8j9DRtDy8R5L79kEJ5Z3f4DBHslUkGNO85OGS4+syjMTOfDO+yfFFDc6vCw==",
+        "merkle_root": "7fff452bff79d90ed7edff19eb653bee51d96566423308a72fb48bd1429cb391",
+        "canonical_hash": "721b8b40bac11ac466a95764b6d95993e05ff117e7168fc06882b90df8d1d22f",
+        "signer_public_key": "ycAENBJ0On9wyWdW5e5TuTTee1aArv7jyWPLdqovt7c="
+      },
+      "action": {
+        "type": "governance_deliberation",
+        "input_hash": "011d4341c2a7ffd33e0fc1bf010f10d9c1cbb22294098e44dbad1a4ab815bbcd"
+      },
+      "context": {
+        "policy_id": "oncology-tumor-board-governance",
+        "timestamp": "2026-11-09T14:11:07.208980+00:00",
+        "actor_type": "deliberation_chair",
+        "actor_id_hash": "1852b4a7ee3876e73b04d791d130b753ee3ae96593fa384a8ebde3c3d9ac9d10"
+      },
+      "version": "1.0",
+      "decision": {
+        "verdict": "attested",
+        "confidence": 1.0
+      },
+      "evidence": {
+        "aibom_hash": "a95b1f288ae75bc33f48d338e587cbe9e5107194037ad0684b72196803fabe56",
+        "artifact_id": "artifact-d3e96bdbd967",
+        "artifact_hash": "011d4341c2a7ffd33e0fc1bf010f10d9c1cbb22294098e44dbad1a4ab815bbcd"
+      },
+      "extensions": {
+        "key_id": "7116eade-513c-4ac0-b97a-017d14cd7576",
+        "case_id": "case-b35a74d3d4a0",
+        "actor_id": "admin-human",
+        "metadata": {
+          "signed_by_chair": true
+        },
+        "trace_id": "9b74ae3a-0f60-4092-a7b8-d81c103227e6",
+        "policy_id": "oncology-tumor-board-governance",
+        "session_id": "delib-3ec7bac0a2a5",
+        "subject_id": "P-11h25",
+        "artifact_id": "artifact-d3e96bdbd967",
+        "environment_id": "env-default-001",
+        "transcript_hash": "0b1d509ece654c20eb746da3e54a1f8fd33ab27ffa4cb683b8f600b1c961069c",
+        "audio_manifest_hash": null
+      },
+      "receipt_id": "rcpt-b883b495bfe46d87",
+      "system_state": {
+        "aibom_id": "aibom-a95b1f28",
+        "model_hash": "a95b1f288ae75bc3",
+        "model_name": "personavault-sovereign",
+        "agent_version": "2026.1"
+      }
+    },
+    "body_canonical": "{\"action\":{\"input_hash\":\"011d4341c2a7ffd33e0fc1bf010f10d9c1cbb22294098e44dbad1a4ab815bbcd\",\"type\":\"governance_deliberation\"},\"context\":{\"actor_id_hash\":\"1852b4a7ee3876e73b04d791d130b753ee3ae96593fa384a8ebde3c3d9ac9d10\",\"actor_type\":\"deliberation_chair\",\"policy_id\":\"oncology-tumor-board-governance\",\"timestamp\":\"2026-11-09T14:11:07.208980+00:00\"},\"decision\":{\"confidence\":1.0,\"verdict\":\"attested\"},\"evidence\":{\"aibom_hash\":\"a95b1f288ae75bc33f48d338e587cbe9e5107194037ad0684b72196803fabe56\",\"artifact_hash\":\"011d4341c2a7ffd33e0fc1bf010f10d9c1cbb22294098e44dbad1a4ab815bbcd\",\"artifact_id\":\"artifact-d3e96bdbd967\"},\"extensions\":{\"actor_id\":\"admin-human\",\"artifact_id\":\"artifact-d3e96bdbd967\",\"audio_manifest_hash\":null,\"case_id\":\"case-b35a74d3d4a0\",\"environment_id\":\"env-default-001\",\"key_id\":\"7116eade-513c-4ac0-b97a-017d14cd7576\",\"metadata\":{\"signed_by_chair\":true},\"policy_id\":\"oncology-tumor-board-governance\",\"session_id\":\"delib-3ec7bac0a2a5\",\"subject_id\":\"P-11h25\",\"trace_id\":\"9b74ae3a-0f60-4092-a7b8-d81c103227e6\",\"transcript_hash\":\"0b1d509ece654c20eb746da3e54a1f8fd33ab27ffa4cb683b8f600b1c961069c\"},\"receipt_id\":\"rcpt-b883b495bfe46d87\",\"system_state\":{\"agent_version\":\"2026.1\",\"aibom_id\":\"aibom-a95b1f28\",\"model_hash\":\"a95b1f288ae75bc3\",\"model_name\":\"personavault-sovereign\"},\"version\":\"1.0\"}",
+    "signature": "ed25519:1STbXhQSg3xX+iJaUyJ1AHeaYPi8j9DRtDy8R5L79kEJ5Z3f4DBHslUkGNO85OGS4+syjMTOfDO+yfFFDc6vCw==",
+    "signer_public_key": "ycAENBJ0On9wyWdW5e5TuTTee1aArv7jyWPLdqovt7c=",
+    "algorithm": "Ed25519"
+  },
+  "mandate": null,
+  "ai_participants": [
+    {
+      "model_id": "qwen2.5:1.5b",
+      "role": "generator",
+      "provider": "ollama",
+      "model_class": null,
+      "model_version": null,
+      "license": "unspecified"
+    }
+  ],
+  "outcome": null,
+  "verification": {
+    "instructions": "Run tools/verify_cdr.py on this file. Exit 0 means valid.",
+    "verifier_version": "cdr.v1"
+  }
+}
