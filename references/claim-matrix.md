@@ -8,6 +8,7 @@ is not a claim. Limits are part of the claim, not an afterthought.
 | Claim | Proof | Limit |
 |---|---|---|
 | A third party can verify a CDR offline: no account, network, database or platform trust | `tools/verify_cdr.py`, `tools/verify_cdr_standalone.html`, `challenge-kit/` (3 files); `tests/test_challenge_kit.py` | Verifies bytes and signatures, not clinical truth |
+| A verifier can check the signing key's asserted owner/institution binding from a supplied anchor | `tools/verify_cdr.py --anchor`, browser verifier, `tests/test_signer_anchor_verification.py` | Anchor is published by the issuing installation; receiver must obtain it via a trusted channel. Not an external root of trust or identity proof |
 | A one-byte content change fails verification | `receipt-tampered.json` → FAIL at `knowledge_state.entry.content_hash`; `tests/test_challenge_kit.py` | Not replay defense; a receipt cannot prove it wasn't made for a different execution |
 | Python and browser verifiers agree | `tests/test_browser_verifier_parity.py`, `tests/test_verifier_import_identity.py`, `tests/test_studio_verifier_sync.py` | Parity covers the shipped checks; new checks need new parity tests |
 | A one-page human-readable report can be generated offline | `tools/cdr_report.py`, `tests/test_cdr_report.py`; **Report** button in the Governance Library calls `/receipts/{id}/report` | The report is a view over the verifier, not an additional authority |

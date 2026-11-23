@@ -44,7 +44,7 @@ The pilot attestation originally mapped PersonaVault to EU AI Act Arts. 6/12/14/
 
 ## How to verify rather than trust
 
-1. Run the [challenge kit](../challenge-kit/README.md): the valid receipt verifies, the one-character tampered receipt fails. This checks bytes and signatures, nothing else.
+1. Run the [challenge kit](../challenge-kit/README.md): the valid receipt verifies, the one-character tampered receipt fails. This checks bytes and signatures. To check the signer binding as well, pass an anchor document (`python3 tools/verify_cdr.py receipt.json --anchor anchor.json`); the kit itself is frozen and runs without one.
 2. Run the [ten-record benchmark](../benchmark/README.md): it shows which artifact classes pass which checks, including the case that passes every check without an authority block.
 3. Open `exhibits/exhibit-b-override.cdr.json` in the paper's appendix and verify it offline: it binds a reasoned override with sequence, provenance, and authority in one record.
 4. Ask for a run of the implementation's full verifier if you need checks beyond the frozen kit.
@@ -52,8 +52,9 @@ The pilot attestation originally mapped PersonaVault to EU AI Act Arts. 6/12/14/
 ## Boundaries
 
 - **No external certification** is claimed. ARAS covariates, SCITT, W3C DID interoperability, and any cross-system conformance are forward-looking.
-- **No transparency log, external trust anchor, or notarization** is implemented. A signed receipt is not a timestamped public anchor.
+- **Disclosure views are derived, not signed independently.** An evidentiary or minimal projection omits narrative and source content and is bound to the original receipt by hashes. A receiver must verify the original and the projection; the view alone is not a new attestation.
+- **No transparency log, external root of trust, or notarization** is implemented. A published `signer-anchor.v1` registry binds keys to owners and institutions, and the offline verifier can check that binding when an anchor document is supplied. The anchor is published by the same installation that signs the receipt, so a receiver must obtain it through a channel it already trusts. A signed receipt is not a timestamped public anchor.
 - **Execution evidence**: the CDR proves *attested*, not *executed*. The separate execution-evidence verifier specified in ADR 0030 does not exist. The current verifier's "Execution evidence" check reads an embedded assessment inside the CDO, which is a different thing.
-- **Offline verification cannot check the evidence universe**, the truth of the AI's claims, the real-world identity behind a key, or whether the decision was clinically correct.
+- **Offline verification cannot check the evidence universe**, the truth of the AI's claims, or whether the decision was clinically correct. With an anchor document it can check the asserted owner/institution binding for the signing key — but the binding is an assertion by the issuing installation, not an independently verified identity.
 - **No interoperation with VeriLinkOS** is defined or claimed; the systems have separate evidence models and separate test suites.
 - **Privacy**: see the implemented / specified / absent distinction in [Implementation status](../STATUS.md). Do not infer crypto-erasure or per-session pseudonymization from design documents.

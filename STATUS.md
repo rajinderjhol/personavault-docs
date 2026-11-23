@@ -14,6 +14,17 @@ Last reviewed: 2026-11-23
   (2026-11-22, private implementation repository).
 - Offline verification: the current Python verifier reports `VALID` for the
   frozen kit's valid receipt and `INVALID` for the tampered receipt.
+- **Disclosure profiles:** a signed receipt can be projected into an
+  evidentiary or minimal view that keeps hashes, signature and structured
+  dispositions but withholds transcripts, narrative and source documents.
+  The view is bound to the original by `source_receipt_hash` and a redaction
+  manifest; it is not a second signature and must be checked against the
+  original receipt.
+- **Signer binding:** a published `signer-anchor.v1` document at
+  `/.well-known/personavault-trust-anchor.json` binds signing keys to owners
+  and institutions. The Python and browser verifiers accept it with
+  `--anchor` / an optional argument and report a `Signer anchor` check.
+  Without an anchor the check is skipped, so existing receipts are unchanged.
 - **Verifier parity:** the current Python and browser verifiers both report
   `DECISION INTEGRITY: VALID` with 17 pass-labels for the signed override
   exhibit. Whole-number floats in the frozen DQI snapshot are normalized at
