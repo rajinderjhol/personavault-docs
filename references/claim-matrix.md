@@ -3,6 +3,11 @@
 Every claim below is tied to shipped code and a test. A claim without a proof
 is not a claim. Limits are part of the claim, not an afterthought.
 
+For the same mitigations reported by actor, timing, mechanism and linked
+interventions, see the [PRIMER mitigation register](mitigation-register.md).
+It reports implemented and piloted controls only; this matrix remains the
+authority on limits.
+
 ## Independent verification
 
 | Claim | Proof | Limit |

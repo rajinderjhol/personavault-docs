@@ -17,6 +17,7 @@ This repository is the **public evidence layer** for PersonaVault: the papers, s
 | Understand the product and its domains | [Packs and Domain Intelligence Units](enterprise/packs-and-dius.md) |
 | Check regulatory alignment | [Conformance self-assessment](enterprise/conformance.md) |
 | See what a receipt proves and does not | [The horizontal claim](references/claim-boundaries.md) and [claim matrix](references/claim-matrix.md) |
+| See which AI-risk mitigations we report | [Mitigation register (PRIMER)](references/mitigation-register.md) |
 | Verify something yourself | [Run the benchmark](#run-the-benchmark) or [challenge the verifier](#challenge-the-verifier) |
 | Read the argument | [Beyond AI Audit Trails](#papers) |
 
@@ -35,6 +36,7 @@ This repository is the **public evidence layer** for PersonaVault: the papers, s
 
 - [CDR 1.0 specification](protocols/cdr/v1/specification.md)
 - [Claim matrix — what we can say, and what proves it](references/claim-matrix.md)
+- [Mitigation register — PRIMER reporting view](references/mitigation-register.md)
 - [The horizontal claim — what the CDR proves and does not prove](references/claim-boundaries.md)
 
 ## Run the benchmark
