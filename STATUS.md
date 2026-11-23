@@ -1,6 +1,6 @@
 # Implementation Status — PersonaVault
 
-Last reviewed: 2026-11-22
+Last reviewed: 2026-11-23
 
 > This page records what the PersonaVault implementation actually does today.
 > It is a separate system from VeriLinkOS: there is no defined interoperation,
@@ -12,7 +12,13 @@ Last reviewed: 2026-11-22
 
 - Full implementation suite: **897 passed, 10 skipped, 2 xfailed, 1 xpassed**
   (2026-11-22, private implementation repository).
-- Offline CDR verifier parity: browser and standalone verifier agree.
+- Offline verification: the current Python verifier reports `VALID` for the
+  frozen kit's valid receipt and `INVALID` for the tampered receipt.
+- **Verifier parity:** the current Python and browser verifiers both report
+  `DECISION INTEGRITY: VALID` with 17 pass-labels for the signed override
+  exhibit. Whole-number floats in the frozen DQI snapshot are normalized at
+  signing so both implementations hash the same bytes. Earlier receipts are
+  unchanged.
 - Challenge kit: **3 files** — `receipt-valid.json`, `receipt-tampered.json`,
   `verify_cdr_standalone.html`. The valid receipt passes all checks; the
   tampered receipt fails. The kit is frozen.
@@ -27,6 +33,13 @@ Last reviewed: 2026-11-22
   items, and a transcript hash bound into the signed decision.
 - **Authority integrity:** the chair signs with an enrolled key; consent is
   recorded with a reference kind and status at decision time.
+- **Defensible override path:** the deliberation room records per-item
+  adopt/edit/reject/defer dispositions with reasons, a structured
+  `override_reason_code` bound to each divergence field, and a pre-sign
+  panel showing sealed divergences and evidence contradictions.
+- **Tool perimeter at the HTTP boundary:** direct tool-execution routes
+  enforce the pack's allowed/denied tools; denied and undeclared tools are
+  refused and irreversible tools require human approval.
 - **Advisory DQI v2 (`dqi.v2`):** consent quality, alternatives considered,
   evidence hierarchy, dissent integration, follow-up commitment and temporal
   integrity. It exists in code and tests as a documentation-quality measure;
@@ -51,6 +64,9 @@ Last reviewed: 2026-11-22
 - **The offline verifier cannot check the evidence universe.** It can check
   that the declared universe was recorded and attested; it cannot check that
   the declaration was complete or that the right evidence was available.
+- **Verifier parity is artifact-scoped.** Parity is demonstrated for the
+  frozen kit and the signed override exhibit; it is not a proof that every
+  future receipt will agree across implementations.
 - **No external certification is claimed.** ARAS covariates, SCITT, W3C DID
   interoperability and any cross-system conformance remain forward-looking.
 - **No interoperation with VeriLinkOS is defined or claimed.** The two systems

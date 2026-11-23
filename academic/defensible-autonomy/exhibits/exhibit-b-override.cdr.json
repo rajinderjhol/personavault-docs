@@ -1,20 +1,20 @@
 {
   "schema_version": "cdr.v1",
-  "receipt_id": "rcpt-034a8d0b55e5ccf5",
-  "issued_at": "2026-11-23T10:33:45.411611+00:00",
+  "receipt_id": "rcpt-08c340638636a4ca",
+  "issued_at": "2026-11-23T11:36:30.373077+00:00",
   "environment_id": "env-default-001",
   "case": {
-    "case_id": "adv-case-07f59ddf",
-    "pseudo_id": "P-07f59ddf",
+    "case_id": "adv-case-950579f7",
+    "pseudo_id": "P-950579f7",
     "case_type": "clinical_tumor_board"
   },
   "chair": {
-    "actor_id": "adv-chair-07f59ddf",
-    "key_id": "518fa505-7840-4795-b44b-2e3bdad10ac9",
-    "public_key_b64": "eUx9PNp2CRBrnrZDs0l12u6nRV7DtJZFQauXK0/8F0o=",
+    "actor_id": "adv-chair-950579f7",
+    "key_id": "4a2f92bc-308f-473d-b5ba-52761c3767f9",
+    "public_key_b64": "JCEYaUclY9BRbLclgxBGU+yhVEs/peSyI5B7rDOV6eQ=",
     "signature_algorithm": "Ed25519"
   },
-  "cdo_hash": "055968d62f180a4a9708d28331df8f1e120c6ecc798c55531d563d0df7083e0c",
+  "cdo_hash": "abe68136605013893d6bf63aa73b83e04a7a5538739068f2db3e45d0a1d42cf4",
   "cdo_payload": {
     "actions": [],
     "consent": {
@@ -23,7 +23,7 @@
       "ref_id": null,
       "ref_hash": null,
       "ref_kind": "pack_basis",
-      "subject_id": "P-07f59ddf",
+      "subject_id": "P-950579f7",
       "legal_basis": "Patient consent to treatment (informed consent record)",
       "manager_uri": null,
       "policy_rule": "oncology-tumor-board-governance",
@@ -77,12 +77,12 @@
         ],
         "require_prior": false
       },
-      "chain_id": "9a68aa1111df6075afbdee5ae3204c89f912710a6c75887ca7725042da5c65de",
+      "chain_id": "07a1d03b470984cae080c461940748eaa418e94afecec0a98b13a6cae80ca82d",
       "relation": null,
       "sequence": 1,
       "chain_key": {
-        "case_id": "adv-case-07f59ddf",
-        "subject_id": "P-07f59ddf",
+        "case_id": "adv-case-950579f7",
+        "subject_id": "P-950579f7",
         "environment_id": "env-default-001"
       },
       "prior_cdo_hash": null
@@ -125,7 +125,7 @@
             }
           ],
           "recommendation": "adjuvant",
-          "recommended_at": "2026-11-23T10:33:45.228870+00:00",
+          "recommended_at": "2026-11-23T11:36:30.219186+00:00",
           "structured_order": {
             "priority": "routine"
           },
@@ -157,14 +157,14 @@
                 "severity": "high",
                 "evidence_ref": {
                   "source": "adv-referral-packet.txt",
-                  "episode_id": "8537307c-985a-4934-9222-06c36493d8c7",
-                  "document_id": "3003a3f5-fe91-4d7a-b4e2-961447f6a694"
+                  "episode_id": "933af8ae-98d0-4dca-b3b2-564742a73103",
+                  "document_id": "69d08687-43bf-448b-8eb0-0d442bdd85db"
                 },
                 "evidence_claim": "ge IIIA (cT2a N2 M0).\n\nPathology (2026-10-08): EGFR exon 19 deletion, VAF 42%,\nTier I actionable. PD-L1 TPS 65%.\n\nImaging: RUL mass 4.2 x 3.8 x 3.1 cm, SUVmax 11.8.\nStation 4R node"
               }
             ]
           },
-          "recommended_by_actor_id": "adv-chair-07f59ddf"
+          "recommended_by_actor_id": "adv-chair-950579f7"
         },
         "divergence_from_ai": {
           "fields": [
@@ -187,17 +187,17 @@
               "severity": "high",
               "evidence_ref": {
                 "source": "adv-referral-packet.txt",
-                "episode_id": "8537307c-985a-4934-9222-06c36493d8c7",
-                "document_id": "3003a3f5-fe91-4d7a-b4e2-961447f6a694"
+                "episode_id": "933af8ae-98d0-4dca-b3b2-564742a73103",
+                "document_id": "69d08687-43bf-448b-8eb0-0d442bdd85db"
               },
               "evidence_claim": "ge IIIA (cT2a N2 M0).\n\nPathology (2026-10-08): EGFR exon 19 deletion, VAF 42%,\nTier I actionable. PD-L1 TPS 65%.\n\nImaging: RUL mass 4.2 x 3.8 x 3.1 cm, SUVmax 11.8.\nStation 4R node"
             }
           ]
         }
       },
-      "decided_at": "2026-11-23T10:33:45.228870+00:00",
+      "decided_at": "2026-11-23T11:36:30.219186+00:00",
       "approval_type": "approved",
-      "decision_owner_actor_id": "adv-chair-07f59ddf"
+      "decision_owner_actor_id": "adv-chair-950579f7"
     },
     "schema_version": "cdo.v1",
     "knowledge_state": {
@@ -207,19 +207,19 @@
           "source": "case_documents",
           "version": "",
           "metadata": {
-            "id": "doc-3003a3f5-fe91-4d7a-b4e2-961447f6a694",
+            "id": "doc-69d08687-43bf-448b-8eb0-0d442bdd85db",
             "status": "complete",
-            "case_id": "adv-case-07f59ddf",
+            "case_id": "adv-case-950579f7",
             "filename": "adv-referral-packet.txt",
-            "attached_at": "2026-11-23T10:33:43.963036+00:00",
-            "attached_by": "adv-chair-07f59ddf",
-            "document_id": "3003a3f5-fe91-4d7a-b4e2-961447f6a694"
+            "attached_at": "2026-11-23T11:36:29.289918+00:00",
+            "attached_by": "adv-chair-950579f7",
+            "document_id": "69d08687-43bf-448b-8eb0-0d442bdd85db"
           },
           "availability": "available",
           "content_hash": "e9f0b988eb99ec92267a2aa0cd9e3116b953b838e988da8757e30b073159accd"
         }
       ],
-      "captured_at": "2026-11-23T10:33:43.992324+00:00",
+      "captured_at": "2026-11-23T11:36:29.339243+00:00",
       "snapshot_hash": "478d1aa2df76b7537398690d24031a4d53251dade7810af3e6f166b757fb3202",
       "declared_universe": {
         "sources": [
@@ -254,7 +254,7 @@
         "expected_start": "2027-03-01",
         "expected_duration_days": 60
       },
-      "recommended_at": "2026-11-23T10:33:45.228870+00:00",
+      "recommended_at": "2026-11-23T11:36:30.219186+00:00",
       "structured_order": {
         "priority": "routine"
       },
@@ -265,7 +265,7 @@
           "signal_type": "clinical_observation"
         }
       ],
-      "recommended_by_actor_id": "adv-chair-07f59ddf"
+      "recommended_by_actor_id": "adv-chair-950579f7"
     },
     "ai_recommendation": {
       "domain": "healthcare",
@@ -312,7 +312,7 @@
       "plan_structured": {
         "summary": "seed pre-AI assessment plan"
       },
-      "recorded_by_actor_id": "adv-chair-07f59ddf"
+      "recorded_by_actor_id": "adv-chair-950579f7"
     },
     "pre_ai_commitment": {
       "metadata": {
@@ -323,9 +323,9 @@
         "unstructured_plan_acknowledged": false
       },
       "plan_hash": "15a27124e99dfd1db07b4a06584d0edbb6ad03239e6e7320d987f81b133e3a0a",
-      "committed_at": "2026-11-23T10:33:43.960646+00:00",
+      "committed_at": "2026-11-23T11:36:29.280198+00:00",
       "schema_version": "pre_ai_commitment.v1",
-      "committed_by_actor_id": "adv-chair-07f59ddf"
+      "committed_by_actor_id": "adv-chair-950579f7"
     },
     "human_deliberation": {
       "dissent": [
@@ -333,8 +333,8 @@
           "seq": 3,
           "grounds": "I dissent from the proposed chemoradiation/durvalumab plan. The referral reports an EGFR exon 19 deletion at VAF 42%; the AI's claim that no actionable mutation exists conflicts with that source. I will use an EGFR-directed regimen and document the conflict.",
           "evidence": {},
-          "dissenter": "adv-chair-07f59ddf",
-          "recorded_at": "2026-11-23T10:33:43.970911+00:00"
+          "dissenter": "adv-chair-950579f7",
+          "recorded_at": "2026-11-23T11:36:29.311288+00:00"
         }
       ],
       "follow_up": [],
@@ -342,7 +342,7 @@
         {
           "seq": null,
           "content": "Recommend concurrent chemoradiation followed by durvalumab.",
-          "proposer": "adv-chair-07f59ddf",
+          "proposer": "adv-chair-950579f7",
           "adopted_from": {
             "item_id": "p1-i1",
             "ai_proposal_seq": 2
@@ -358,8 +358,8 @@
         }
       ],
       "participants": [],
-      "transcript_hash": "12fb1733145f0e5e6d8679f0eef94c2c0507d78e7d983b6c01fd47a1c9907632",
-      "transcript_artifact_id": "transcript-1fe1a7c8737b"
+      "transcript_hash": "18eb8638d4459bb5ad04f3f604649f1cde8a07eeb474835a0ba50403d861084a",
+      "transcript_artifact_id": "transcript-19fe96c6fe83"
     },
     "verifier_requirements": {
       "transcript_required": false,
@@ -368,11 +368,11 @@
     }
   },
   "flags": [],
-  "cdo_payload_canonical": "{\"actions\":[],\"ai_provenance\":{\"edges\":[],\"graph_hash\":\"\",\"nodes\":[]},\"ai_recommendation\":{\"content\":{\"explanation\":\"Molecular target recorded.\",\"severity\":\"high\",\"type\":\"record\"},\"domain\":\"healthcare\",\"pack_id\":\"oncology-tumor-board-governance\",\"pack_version\":\"1.1.1\",\"policies\":[{\"actions\":[{\"action\":\"record\",\"message\":\"Molecular target recorded with evidence.\"}],\"autonomy\":{\"level\":\"approve\"},\"confidence_threshold\":0.75,\"decision\":{\"explanation\":\"Molecular target recorded.\",\"severity\":\"high\",\"type\":\"record\"},\"name\":\"record_molecular_target\",\"policy_id\":\"record_molecular_target\",\"reason\":\"signals ['molecular_target_identified'] present\"}],\"provenance_node_ids\":[],\"response\":\"The patient has no significant genetic mutations requiring targeted therapy. Recommend concurrent chemoradiation followed by durvalumab consolidation.\",\"signals\":{\"molecular_target_identified\":[\"EGFR exon 19 deletion\"]}},\"consent\":{\"authority_ref_kind\":\"pack_basis\",\"consenter_id\":null,\"consenter_role\":null,\"legal_basis\":\"Patient consent to treatment (informed consent record)\",\"manager_uri\":null,\"period\":null,\"policy_rule\":\"oncology-tumor-board-governance\",\"ref_hash\":null,\"ref_id\":null,\"ref_kind\":\"pack_basis\",\"scope\":\"clinical_tumor_board\",\"status_at_decision\":\"active\",\"subject_id\":\"P-07f59ddf\"},\"decision_chain\":{\"chain_id\":\"9a68aa1111df6075afbdee5ae3204c89f912710a6c75887ca7725042da5c65de\",\"chain_key\":{\"case_id\":\"adv-case-07f59ddf\",\"environment_id\":\"env-default-001\",\"subject_id\":\"P-07f59ddf\"},\"prior_cdo_hash\":null,\"relation\":null,\"schema\":{\"chain_key\":[\"environment_id\",\"case_id\",\"subject_id\"],\"relations\":[\"follows\",\"reconsiders\"],\"require_prior\":false},\"sequence\":1},\"decision_plan\":{\"treatment_intent\":null},\"environment\":{\"environment_id\":\"env-default-001\",\"parent_environment_id\":null,\"tenant_name\":\"Default Sovereign Environment\",\"tenant_type\":\"standard\"},\"human_decision\":{\"approval_type\":\"approved\",\"content\":{\"adopted_items\":[{\"ai_proposal_seq\":2,\"decision\":\"reject\",\"evidence_citations\":[\"adv-referral-packet.txt\"],\"item_id\":\"p1-i1\",\"kind\":\"recommendation\",\"text\":\"Recommend concurrent chemoradiation followed by durvalumab.\"}],\"decision_details\":{\"adopted_items\":[{\"ai_proposal_seq\":2,\"decision\":\"reject\",\"evidence_citations\":[\"adv-referral-packet.txt\"],\"item_id\":\"p1-i1\",\"kind\":\"recommendation\",\"text\":\"Recommend concurrent chemoradiation followed by durvalumab.\"}],\"divergence_from_ai\":{\"detected\":true,\"fields\":[{\"ai_value\":\"durvalumab\",\"field\":\"regimen_name\",\"human_value\":\"EGFR-directed therapy\",\"rationale\":\"EGFR exon 19 deletion (VAF 42%) makes an EGFR-directed regimen the appropriate first-line choice.\",\"reason_code\":\"ai_hallucination\"}]},\"evidence_contradiction\":{\"contradictions\":[{\"ai_claim\":\"no significant genetic mutations\",\"evidence_claim\":\"ge IIIA (cT2a N2 M0).\\n\\nPathology (2026-10-08): EGFR exon 19 deletion, VAF 42%,\\nTier I actionable. PD-L1 TPS 65%.\\n\\nImaging: RUL mass 4.2 x 3.8 x 3.1 cm, SUVmax 11.8.\\nStation 4R node\",\"evidence_ref\":{\"document_id\":\"3003a3f5-fe91-4d7a-b4e2-961447f6a694\",\"episode_id\":\"8537307c-985a-4934-9222-06c36493d8c7\",\"source\":\"adv-referral-packet.txt\"},\"severity\":\"high\"}],\"detected\":true},\"expected_outcomes\":[{\"due_by\":\"2027-06-01\",\"signal_type\":\"clinical_observation\",\"what\":\"restage in 3 months\"}],\"override_reason_code\":\"ai_hallucination\",\"plan\":\"EGFR-directed therapy; restage in 3 months\",\"recommendation\":\"adjuvant\",\"recommended_at\":\"2026-11-23T10:33:45.228870+00:00\",\"recommended_by_actor_id\":\"adv-chair-07f59ddf\",\"regimen\":{\"cycles_planned\":4,\"expected_duration_days\":60,\"expected_start\":\"2027-03-01\",\"intent\":\"adjuvant\",\"name\":\"EGFR-directed therapy\"},\"structured_order\":{\"priority\":\"routine\"}},\"divergence_from_ai\":{\"detected\":true,\"fields\":[{\"ai_value\":\"durvalumab\",\"field\":\"regimen_name\",\"human_value\":\"EGFR-directed therapy\",\"rationale\":\"EGFR exon 19 deletion (VAF 42%) makes an EGFR-directed regimen the appropriate first-line choice.\",\"reason_code\":\"ai_hallucination\"}]},\"evidence_contradiction\":{\"contradictions\":[{\"ai_claim\":\"no significant genetic mutations\",\"evidence_claim\":\"ge IIIA (cT2a N2 M0).\\n\\nPathology (2026-10-08): EGFR exon 19 deletion, VAF 42%,\\nTier I actionable. PD-L1 TPS 65%.\\n\\nImaging: RUL mass 4.2 x 3.8 x 3.1 cm, SUVmax 11.8.\\nStation 4R node\",\"evidence_ref\":{\"document_id\":\"3003a3f5-fe91-4d7a-b4e2-961447f6a694\",\"episode_id\":\"8537307c-985a-4934-9222-06c36493d8c7\",\"source\":\"adv-referral-packet.txt\"},\"severity\":\"high\"}],\"detected\":true},\"override_reason_code\":\"ai_hallucination\",\"plan\":\"EGFR-directed therapy; restage in 3 months\",\"recommendation\":\"adjuvant\"},\"decided_at\":\"2026-11-23T10:33:45.228870+00:00\",\"decision_owner_actor_id\":\"adv-chair-07f59ddf\"},\"human_deliberation\":{\"alternatives\":[{\"alternative_id\":\"alt-1\",\"content\":\"Concurrent chemoradiation followed by durvalumab\",\"reason_rejected\":\"Conflicts with the documented EGFR driver mutation.\"}],\"dissent\":[{\"dissenter\":\"adv-chair-07f59ddf\",\"evidence\":{},\"grounds\":\"I dissent from the proposed chemoradiation/durvalumab plan. The referral reports an EGFR exon 19 deletion at VAF 42%; the AI's claim that no actionable mutation exists conflicts with that source. I will use an EGFR-directed regimen and document the conflict.\",\"recorded_at\":\"2026-11-23T10:33:43.970911+00:00\",\"seq\":3}],\"follow_up\":[],\"participants\":[],\"proposals\":[{\"adopted_from\":{\"ai_proposal_seq\":2,\"item_id\":\"p1-i1\"},\"content\":\"Recommend concurrent chemoradiation followed by durvalumab.\",\"proposer\":\"adv-chair-07f59ddf\",\"seq\":null}],\"rationale\":\"Override: the AI asserted no significant actionable mutation while the referral packet reports an EGFR exon 19 deletion at VAF 42%. Chosen regimen follows the documented molecular finding.\",\"transcript_artifact_id\":\"transcript-1fe1a7c8737b\",\"transcript_hash\":\"12fb1733145f0e5e6d8679f0eef94c2c0507d78e7d983b6c01fd47a1c9907632\"},\"knowledge_state\":{\"captured_at\":\"2026-11-23T10:33:43.992324+00:00\",\"declared_universe\":{\"available_count\":3,\"retrieved_count\":0,\"sources\":[{\"id\":\"ESMO-NSCLC-2024\",\"kind\":\"guideline\",\"title\":\"ESMO Clinical Practice Guidelines \u2014 Non-Small-Cell Lung Cancer\",\"version\":\"2024\"},{\"id\":\"NCCN-NSCLC-v3.2025\",\"kind\":\"guideline\",\"title\":\"NCCN Guidelines \u2014 Non-Small Cell Lung Cancer\",\"version\":\"3.2025\"},{\"id\":\"USB-LOCAL-PROTOCOL-v12\",\"kind\":\"guideline\",\"title\":\"USB Local Oncology Protocol\",\"version\":\"12\"}]},\"entries\":[{\"availability\":\"available\",\"content_hash\":\"e9f0b988eb99ec92267a2aa0cd9e3116b953b838e988da8757e30b073159accd\",\"kind\":\"case_document\",\"metadata\":{\"attached_at\":\"2026-11-23T10:33:43.963036+00:00\",\"attached_by\":\"adv-chair-07f59ddf\",\"case_id\":\"adv-case-07f59ddf\",\"document_id\":\"3003a3f5-fe91-4d7a-b4e2-961447f6a694\",\"filename\":\"adv-referral-packet.txt\",\"id\":\"doc-3003a3f5-fe91-4d7a-b4e2-961447f6a694\",\"status\":\"complete\"},\"source\":\"case_documents\",\"version\":\"\"}],\"snapshot_hash\":\"478d1aa2df76b7537398690d24031a4d53251dade7810af3e6f166b757fb3202\"},\"metadata\":{\"artifact_type\":\"decision_record\",\"domain\":\"healthcare\",\"id\":\"oncology-tumor-board-governance\",\"name\":\"oncology-tumor-board-governance\",\"pack\":\"oncology-tumor-board-governance\",\"packs\":[\"oncology-tumor-board-governance\"],\"subject_type\":\"subject\",\"version\":\"1.1.1\"},\"pre_ai_assessment\":{\"plan_structured\":{\"summary\":\"seed pre-AI assessment plan\"},\"plan_text\":\"Test pre-AI assessment plan\",\"recorded_by_actor_id\":\"adv-chair-07f59ddf\",\"schema_version\":\"pre_ai_assessment.v1\"},\"pre_ai_commitment\":{\"committed_at\":\"2026-11-23T10:33:43.960646+00:00\",\"committed_by_actor_id\":\"adv-chair-07f59ddf\",\"metadata\":{\"plan_hash\":\"15a27124e99dfd1db07b4a06584d0edbb6ad03239e6e7320d987f81b133e3a0a\",\"plan_structured\":{\"summary\":\"seed pre-AI assessment plan\"},\"unstructured_plan_acknowledged\":false},\"plan_hash\":\"15a27124e99dfd1db07b4a06584d0edbb6ad03239e6e7320d987f81b133e3a0a\",\"schema_version\":\"pre_ai_commitment.v1\"},\"schema_version\":\"cdo.v1\",\"treatment_intent\":{\"expected_outcomes\":[{\"due_by\":\"2027-06-01\",\"signal_type\":\"clinical_observation\",\"what\":\"restage in 3 months\"}],\"recommended_at\":\"2026-11-23T10:33:45.228870+00:00\",\"recommended_by_actor_id\":\"adv-chair-07f59ddf\",\"regimen\":{\"cycles_planned\":4,\"expected_duration_days\":60,\"expected_start\":\"2027-03-01\",\"intent\":\"adjuvant\",\"name\":\"EGFR-directed therapy\"},\"structured_order\":{\"priority\":\"routine\"}},\"verifier_requirements\":{\"ai_policies_required\":true,\"pre_ai_plan_required\":true,\"transcript_required\":false},\"version_chain\":{\"amendment_reason\":null,\"prior_cdo_hash\":null,\"signed_at\":null,\"version\":1}}",
+  "cdo_payload_canonical": "{\"actions\":[],\"ai_provenance\":{\"edges\":[],\"graph_hash\":\"\",\"nodes\":[]},\"ai_recommendation\":{\"content\":{\"explanation\":\"Molecular target recorded.\",\"severity\":\"high\",\"type\":\"record\"},\"domain\":\"healthcare\",\"pack_id\":\"oncology-tumor-board-governance\",\"pack_version\":\"1.1.1\",\"policies\":[{\"actions\":[{\"action\":\"record\",\"message\":\"Molecular target recorded with evidence.\"}],\"autonomy\":{\"level\":\"approve\"},\"confidence_threshold\":0.75,\"decision\":{\"explanation\":\"Molecular target recorded.\",\"severity\":\"high\",\"type\":\"record\"},\"name\":\"record_molecular_target\",\"policy_id\":\"record_molecular_target\",\"reason\":\"signals ['molecular_target_identified'] present\"}],\"provenance_node_ids\":[],\"response\":\"The patient has no significant genetic mutations requiring targeted therapy. Recommend concurrent chemoradiation followed by durvalumab consolidation.\",\"signals\":{\"molecular_target_identified\":[\"EGFR exon 19 deletion\"]}},\"consent\":{\"authority_ref_kind\":\"pack_basis\",\"consenter_id\":null,\"consenter_role\":null,\"legal_basis\":\"Patient consent to treatment (informed consent record)\",\"manager_uri\":null,\"period\":null,\"policy_rule\":\"oncology-tumor-board-governance\",\"ref_hash\":null,\"ref_id\":null,\"ref_kind\":\"pack_basis\",\"scope\":\"clinical_tumor_board\",\"status_at_decision\":\"active\",\"subject_id\":\"P-950579f7\"},\"decision_chain\":{\"chain_id\":\"07a1d03b470984cae080c461940748eaa418e94afecec0a98b13a6cae80ca82d\",\"chain_key\":{\"case_id\":\"adv-case-950579f7\",\"environment_id\":\"env-default-001\",\"subject_id\":\"P-950579f7\"},\"prior_cdo_hash\":null,\"relation\":null,\"schema\":{\"chain_key\":[\"environment_id\",\"case_id\",\"subject_id\"],\"relations\":[\"follows\",\"reconsiders\"],\"require_prior\":false},\"sequence\":1},\"decision_plan\":{\"treatment_intent\":null},\"environment\":{\"environment_id\":\"env-default-001\",\"parent_environment_id\":null,\"tenant_name\":\"Default Sovereign Environment\",\"tenant_type\":\"standard\"},\"human_decision\":{\"approval_type\":\"approved\",\"content\":{\"adopted_items\":[{\"ai_proposal_seq\":2,\"decision\":\"reject\",\"evidence_citations\":[\"adv-referral-packet.txt\"],\"item_id\":\"p1-i1\",\"kind\":\"recommendation\",\"text\":\"Recommend concurrent chemoradiation followed by durvalumab.\"}],\"decision_details\":{\"adopted_items\":[{\"ai_proposal_seq\":2,\"decision\":\"reject\",\"evidence_citations\":[\"adv-referral-packet.txt\"],\"item_id\":\"p1-i1\",\"kind\":\"recommendation\",\"text\":\"Recommend concurrent chemoradiation followed by durvalumab.\"}],\"divergence_from_ai\":{\"detected\":true,\"fields\":[{\"ai_value\":\"durvalumab\",\"field\":\"regimen_name\",\"human_value\":\"EGFR-directed therapy\",\"rationale\":\"EGFR exon 19 deletion (VAF 42%) makes an EGFR-directed regimen the appropriate first-line choice.\",\"reason_code\":\"ai_hallucination\"}]},\"evidence_contradiction\":{\"contradictions\":[{\"ai_claim\":\"no significant genetic mutations\",\"evidence_claim\":\"ge IIIA (cT2a N2 M0).\\n\\nPathology (2026-10-08): EGFR exon 19 deletion, VAF 42%,\\nTier I actionable. PD-L1 TPS 65%.\\n\\nImaging: RUL mass 4.2 x 3.8 x 3.1 cm, SUVmax 11.8.\\nStation 4R node\",\"evidence_ref\":{\"document_id\":\"69d08687-43bf-448b-8eb0-0d442bdd85db\",\"episode_id\":\"933af8ae-98d0-4dca-b3b2-564742a73103\",\"source\":\"adv-referral-packet.txt\"},\"severity\":\"high\"}],\"detected\":true},\"expected_outcomes\":[{\"due_by\":\"2027-06-01\",\"signal_type\":\"clinical_observation\",\"what\":\"restage in 3 months\"}],\"override_reason_code\":\"ai_hallucination\",\"plan\":\"EGFR-directed therapy; restage in 3 months\",\"recommendation\":\"adjuvant\",\"recommended_at\":\"2026-11-23T11:36:30.219186+00:00\",\"recommended_by_actor_id\":\"adv-chair-950579f7\",\"regimen\":{\"cycles_planned\":4,\"expected_duration_days\":60,\"expected_start\":\"2027-03-01\",\"intent\":\"adjuvant\",\"name\":\"EGFR-directed therapy\"},\"structured_order\":{\"priority\":\"routine\"}},\"divergence_from_ai\":{\"detected\":true,\"fields\":[{\"ai_value\":\"durvalumab\",\"field\":\"regimen_name\",\"human_value\":\"EGFR-directed therapy\",\"rationale\":\"EGFR exon 19 deletion (VAF 42%) makes an EGFR-directed regimen the appropriate first-line choice.\",\"reason_code\":\"ai_hallucination\"}]},\"evidence_contradiction\":{\"contradictions\":[{\"ai_claim\":\"no significant genetic mutations\",\"evidence_claim\":\"ge IIIA (cT2a N2 M0).\\n\\nPathology (2026-10-08): EGFR exon 19 deletion, VAF 42%,\\nTier I actionable. PD-L1 TPS 65%.\\n\\nImaging: RUL mass 4.2 x 3.8 x 3.1 cm, SUVmax 11.8.\\nStation 4R node\",\"evidence_ref\":{\"document_id\":\"69d08687-43bf-448b-8eb0-0d442bdd85db\",\"episode_id\":\"933af8ae-98d0-4dca-b3b2-564742a73103\",\"source\":\"adv-referral-packet.txt\"},\"severity\":\"high\"}],\"detected\":true},\"override_reason_code\":\"ai_hallucination\",\"plan\":\"EGFR-directed therapy; restage in 3 months\",\"recommendation\":\"adjuvant\"},\"decided_at\":\"2026-11-23T11:36:30.219186+00:00\",\"decision_owner_actor_id\":\"adv-chair-950579f7\"},\"human_deliberation\":{\"alternatives\":[{\"alternative_id\":\"alt-1\",\"content\":\"Concurrent chemoradiation followed by durvalumab\",\"reason_rejected\":\"Conflicts with the documented EGFR driver mutation.\"}],\"dissent\":[{\"dissenter\":\"adv-chair-950579f7\",\"evidence\":{},\"grounds\":\"I dissent from the proposed chemoradiation/durvalumab plan. The referral reports an EGFR exon 19 deletion at VAF 42%; the AI's claim that no actionable mutation exists conflicts with that source. I will use an EGFR-directed regimen and document the conflict.\",\"recorded_at\":\"2026-11-23T11:36:29.311288+00:00\",\"seq\":3}],\"follow_up\":[],\"participants\":[],\"proposals\":[{\"adopted_from\":{\"ai_proposal_seq\":2,\"item_id\":\"p1-i1\"},\"content\":\"Recommend concurrent chemoradiation followed by durvalumab.\",\"proposer\":\"adv-chair-950579f7\",\"seq\":null}],\"rationale\":\"Override: the AI asserted no significant actionable mutation while the referral packet reports an EGFR exon 19 deletion at VAF 42%. Chosen regimen follows the documented molecular finding.\",\"transcript_artifact_id\":\"transcript-19fe96c6fe83\",\"transcript_hash\":\"18eb8638d4459bb5ad04f3f604649f1cde8a07eeb474835a0ba50403d861084a\"},\"knowledge_state\":{\"captured_at\":\"2026-11-23T11:36:29.339243+00:00\",\"declared_universe\":{\"available_count\":3,\"retrieved_count\":0,\"sources\":[{\"id\":\"ESMO-NSCLC-2024\",\"kind\":\"guideline\",\"title\":\"ESMO Clinical Practice Guidelines \u2014 Non-Small-Cell Lung Cancer\",\"version\":\"2024\"},{\"id\":\"NCCN-NSCLC-v3.2025\",\"kind\":\"guideline\",\"title\":\"NCCN Guidelines \u2014 Non-Small Cell Lung Cancer\",\"version\":\"3.2025\"},{\"id\":\"USB-LOCAL-PROTOCOL-v12\",\"kind\":\"guideline\",\"title\":\"USB Local Oncology Protocol\",\"version\":\"12\"}]},\"entries\":[{\"availability\":\"available\",\"content_hash\":\"e9f0b988eb99ec92267a2aa0cd9e3116b953b838e988da8757e30b073159accd\",\"kind\":\"case_document\",\"metadata\":{\"attached_at\":\"2026-11-23T11:36:29.289918+00:00\",\"attached_by\":\"adv-chair-950579f7\",\"case_id\":\"adv-case-950579f7\",\"document_id\":\"69d08687-43bf-448b-8eb0-0d442bdd85db\",\"filename\":\"adv-referral-packet.txt\",\"id\":\"doc-69d08687-43bf-448b-8eb0-0d442bdd85db\",\"status\":\"complete\"},\"source\":\"case_documents\",\"version\":\"\"}],\"snapshot_hash\":\"478d1aa2df76b7537398690d24031a4d53251dade7810af3e6f166b757fb3202\"},\"metadata\":{\"artifact_type\":\"decision_record\",\"domain\":\"healthcare\",\"id\":\"oncology-tumor-board-governance\",\"name\":\"oncology-tumor-board-governance\",\"pack\":\"oncology-tumor-board-governance\",\"packs\":[\"oncology-tumor-board-governance\"],\"subject_type\":\"subject\",\"version\":\"1.1.1\"},\"pre_ai_assessment\":{\"plan_structured\":{\"summary\":\"seed pre-AI assessment plan\"},\"plan_text\":\"Test pre-AI assessment plan\",\"recorded_by_actor_id\":\"adv-chair-950579f7\",\"schema_version\":\"pre_ai_assessment.v1\"},\"pre_ai_commitment\":{\"committed_at\":\"2026-11-23T11:36:29.280198+00:00\",\"committed_by_actor_id\":\"adv-chair-950579f7\",\"metadata\":{\"plan_hash\":\"15a27124e99dfd1db07b4a06584d0edbb6ad03239e6e7320d987f81b133e3a0a\",\"plan_structured\":{\"summary\":\"seed pre-AI assessment plan\"},\"unstructured_plan_acknowledged\":false},\"plan_hash\":\"15a27124e99dfd1db07b4a06584d0edbb6ad03239e6e7320d987f81b133e3a0a\",\"schema_version\":\"pre_ai_commitment.v1\"},\"schema_version\":\"cdo.v1\",\"treatment_intent\":{\"expected_outcomes\":[{\"due_by\":\"2027-06-01\",\"signal_type\":\"clinical_observation\",\"what\":\"restage in 3 months\"}],\"recommended_at\":\"2026-11-23T11:36:30.219186+00:00\",\"recommended_by_actor_id\":\"adv-chair-950579f7\",\"regimen\":{\"cycles_planned\":4,\"expected_duration_days\":60,\"expected_start\":\"2027-03-01\",\"intent\":\"adjuvant\",\"name\":\"EGFR-directed therapy\"},\"structured_order\":{\"priority\":\"routine\"}},\"verifier_requirements\":{\"ai_policies_required\":true,\"pre_ai_plan_required\":true,\"transcript_required\":false},\"version_chain\":{\"amendment_reason\":null,\"prior_cdo_hash\":null,\"signed_at\":null,\"version\":1}}",
   "cdo_payload_canonicalization": "sorted-keys-compact-rfc8785-subset",
   "transcript": {
-    "artifact_id": "transcript-1fe1a7c8737b",
-    "content_hash": "12fb1733145f0e5e6d8679f0eef94c2c0507d78e7d983b6c01fd47a1c9907632",
+    "artifact_id": "transcript-19fe96c6fe83",
+    "content_hash": "18eb8638d4459bb5ad04f3f604649f1cde8a07eeb474835a0ba50403d861084a",
     "payload": {
       "source": "chat",
       "segments": [
@@ -381,19 +381,19 @@
           "role": "participant",
           "content": "## Rationale\nThe patient has no significant genetic mutations requiring\ntargeted therapy. Given the high PD-L1 expression (65%)\nand stage IIIA disease, I recommend concurrent chemoradiation\nfollowed by durvalumab consolidation per the PACIFIC trial.\n\n```json\n[{\"item_id\": \"p1-i1\", \"kind\": \"recommendation\",\n  \"text\": \"Recommend concurrent chemoradiation followed by durvalumab.\",\n  \"structured\": {\"regimen_name\": \"durvalumab\", \"drug_class\": \"immunotherapy\", \"intent\": \"adjuvant\"},\n  \"evidence_citations\": [\"adv-referral-packet.txt\"],\n  \"confidence\": 0.9, \"alternatives\": []}]\n```\n",
           "actor_id": "ai-clinician",
-          "timestamp": "2026-11-23T10:33:43.968023+00:00"
+          "timestamp": "2026-11-23T11:36:29.306333+00:00"
         }
       ],
-      "session_id": "adv-sess-07f59ddf",
-      "produced_at": "2026-11-23T10:33:45.253929+00:00",
-      "produced_by": "adv-chair-07f59ddf",
+      "session_id": "adv-sess-950579f7",
+      "produced_at": "2026-11-23T11:36:30.238953+00:00",
+      "produced_by": "adv-chair-950579f7",
       "environment_id": "env-default-001",
       "schema_version": "transcript.v1"
     }
   },
   "record": {
-    "artifact_id": "artifact-4fc1b5cb5321",
-    "content_hash": "055968d62f180a4a9708d28331df8f1e120c6ecc798c55531d563d0df7083e0c",
+    "artifact_id": "artifact-69c29d2cb5f2",
+    "content_hash": "abe68136605013893d6bf63aa73b83e04a7a5538739068f2db3e45d0a1d42cf4",
     "payload": {
       "actions": [],
       "consent": {
@@ -402,7 +402,7 @@
         "ref_id": null,
         "ref_hash": null,
         "ref_kind": "pack_basis",
-        "subject_id": "P-07f59ddf",
+        "subject_id": "P-950579f7",
         "legal_basis": "Patient consent to treatment (informed consent record)",
         "manager_uri": null,
         "policy_rule": "oncology-tumor-board-governance",
@@ -456,12 +456,12 @@
           ],
           "require_prior": false
         },
-        "chain_id": "9a68aa1111df6075afbdee5ae3204c89f912710a6c75887ca7725042da5c65de",
+        "chain_id": "07a1d03b470984cae080c461940748eaa418e94afecec0a98b13a6cae80ca82d",
         "relation": null,
         "sequence": 1,
         "chain_key": {
-          "case_id": "adv-case-07f59ddf",
-          "subject_id": "P-07f59ddf",
+          "case_id": "adv-case-950579f7",
+          "subject_id": "P-950579f7",
           "environment_id": "env-default-001"
         },
         "prior_cdo_hash": null
@@ -504,7 +504,7 @@
               }
             ],
             "recommendation": "adjuvant",
-            "recommended_at": "2026-11-23T10:33:45.228870+00:00",
+            "recommended_at": "2026-11-23T11:36:30.219186+00:00",
             "structured_order": {
               "priority": "routine"
             },
@@ -536,14 +536,14 @@
                   "severity": "high",
                   "evidence_ref": {
                     "source": "adv-referral-packet.txt",
-                    "episode_id": "8537307c-985a-4934-9222-06c36493d8c7",
-                    "document_id": "3003a3f5-fe91-4d7a-b4e2-961447f6a694"
+                    "episode_id": "933af8ae-98d0-4dca-b3b2-564742a73103",
+                    "document_id": "69d08687-43bf-448b-8eb0-0d442bdd85db"
                   },
                   "evidence_claim": "ge IIIA (cT2a N2 M0).\n\nPathology (2026-10-08): EGFR exon 19 deletion, VAF 42%,\nTier I actionable. PD-L1 TPS 65%.\n\nImaging: RUL mass 4.2 x 3.8 x 3.1 cm, SUVmax 11.8.\nStation 4R node"
                 }
               ]
             },
-            "recommended_by_actor_id": "adv-chair-07f59ddf"
+            "recommended_by_actor_id": "adv-chair-950579f7"
           },
           "divergence_from_ai": {
             "fields": [
@@ -566,17 +566,17 @@
                 "severity": "high",
                 "evidence_ref": {
                   "source": "adv-referral-packet.txt",
-                  "episode_id": "8537307c-985a-4934-9222-06c36493d8c7",
-                  "document_id": "3003a3f5-fe91-4d7a-b4e2-961447f6a694"
+                  "episode_id": "933af8ae-98d0-4dca-b3b2-564742a73103",
+                  "document_id": "69d08687-43bf-448b-8eb0-0d442bdd85db"
                 },
                 "evidence_claim": "ge IIIA (cT2a N2 M0).\n\nPathology (2026-10-08): EGFR exon 19 deletion, VAF 42%,\nTier I actionable. PD-L1 TPS 65%.\n\nImaging: RUL mass 4.2 x 3.8 x 3.1 cm, SUVmax 11.8.\nStation 4R node"
               }
             ]
           }
         },
-        "decided_at": "2026-11-23T10:33:45.228870+00:00",
+        "decided_at": "2026-11-23T11:36:30.219186+00:00",
         "approval_type": "approved",
-        "decision_owner_actor_id": "adv-chair-07f59ddf"
+        "decision_owner_actor_id": "adv-chair-950579f7"
       },
       "schema_version": "cdo.v1",
       "knowledge_state": {
@@ -586,19 +586,19 @@
             "source": "case_documents",
             "version": "",
             "metadata": {
-              "id": "doc-3003a3f5-fe91-4d7a-b4e2-961447f6a694",
+              "id": "doc-69d08687-43bf-448b-8eb0-0d442bdd85db",
               "status": "complete",
-              "case_id": "adv-case-07f59ddf",
+              "case_id": "adv-case-950579f7",
               "filename": "adv-referral-packet.txt",
-              "attached_at": "2026-11-23T10:33:43.963036+00:00",
-              "attached_by": "adv-chair-07f59ddf",
-              "document_id": "3003a3f5-fe91-4d7a-b4e2-961447f6a694"
+              "attached_at": "2026-11-23T11:36:29.289918+00:00",
+              "attached_by": "adv-chair-950579f7",
+              "document_id": "69d08687-43bf-448b-8eb0-0d442bdd85db"
             },
             "availability": "available",
             "content_hash": "e9f0b988eb99ec92267a2aa0cd9e3116b953b838e988da8757e30b073159accd"
           }
         ],
-        "captured_at": "2026-11-23T10:33:43.992324+00:00",
+        "captured_at": "2026-11-23T11:36:29.339243+00:00",
         "snapshot_hash": "478d1aa2df76b7537398690d24031a4d53251dade7810af3e6f166b757fb3202",
         "declared_universe": {
           "sources": [
@@ -633,7 +633,7 @@
           "expected_start": "2027-03-01",
           "expected_duration_days": 60
         },
-        "recommended_at": "2026-11-23T10:33:45.228870+00:00",
+        "recommended_at": "2026-11-23T11:36:30.219186+00:00",
         "structured_order": {
           "priority": "routine"
         },
@@ -644,7 +644,7 @@
             "signal_type": "clinical_observation"
           }
         ],
-        "recommended_by_actor_id": "adv-chair-07f59ddf"
+        "recommended_by_actor_id": "adv-chair-950579f7"
       },
       "ai_recommendation": {
         "domain": "healthcare",
@@ -691,7 +691,7 @@
         "plan_structured": {
           "summary": "seed pre-AI assessment plan"
         },
-        "recorded_by_actor_id": "adv-chair-07f59ddf"
+        "recorded_by_actor_id": "adv-chair-950579f7"
       },
       "pre_ai_commitment": {
         "metadata": {
@@ -702,9 +702,9 @@
           "unstructured_plan_acknowledged": false
         },
         "plan_hash": "15a27124e99dfd1db07b4a06584d0edbb6ad03239e6e7320d987f81b133e3a0a",
-        "committed_at": "2026-11-23T10:33:43.960646+00:00",
+        "committed_at": "2026-11-23T11:36:29.280198+00:00",
         "schema_version": "pre_ai_commitment.v1",
-        "committed_by_actor_id": "adv-chair-07f59ddf"
+        "committed_by_actor_id": "adv-chair-950579f7"
       },
       "human_deliberation": {
         "dissent": [
@@ -712,8 +712,8 @@
             "seq": 3,
             "grounds": "I dissent from the proposed chemoradiation/durvalumab plan. The referral reports an EGFR exon 19 deletion at VAF 42%; the AI's claim that no actionable mutation exists conflicts with that source. I will use an EGFR-directed regimen and document the conflict.",
             "evidence": {},
-            "dissenter": "adv-chair-07f59ddf",
-            "recorded_at": "2026-11-23T10:33:43.970911+00:00"
+            "dissenter": "adv-chair-950579f7",
+            "recorded_at": "2026-11-23T11:36:29.311288+00:00"
           }
         ],
         "follow_up": [],
@@ -721,7 +721,7 @@
           {
             "seq": null,
             "content": "Recommend concurrent chemoradiation followed by durvalumab.",
-            "proposer": "adv-chair-07f59ddf",
+            "proposer": "adv-chair-950579f7",
             "adopted_from": {
               "item_id": "p1-i1",
               "ai_proposal_seq": 2
@@ -737,8 +737,8 @@
           }
         ],
         "participants": [],
-        "transcript_hash": "12fb1733145f0e5e6d8679f0eef94c2c0507d78e7d983b6c01fd47a1c9907632",
-        "transcript_artifact_id": "transcript-1fe1a7c8737b"
+        "transcript_hash": "18eb8638d4459bb5ad04f3f604649f1cde8a07eeb474835a0ba50403d861084a",
+        "transcript_artifact_id": "transcript-19fe96c6fe83"
       },
       "verifier_requirements": {
         "transcript_required": false,
@@ -746,17 +746,17 @@
         "pre_ai_plan_required": true
       }
     },
-    "payload_canonical": "{\"actions\":[],\"ai_provenance\":{\"edges\":[],\"graph_hash\":\"\",\"nodes\":[]},\"ai_recommendation\":{\"content\":{\"explanation\":\"Molecular target recorded.\",\"severity\":\"high\",\"type\":\"record\"},\"domain\":\"healthcare\",\"pack_id\":\"oncology-tumor-board-governance\",\"pack_version\":\"1.1.1\",\"policies\":[{\"actions\":[{\"action\":\"record\",\"message\":\"Molecular target recorded with evidence.\"}],\"autonomy\":{\"level\":\"approve\"},\"confidence_threshold\":0.75,\"decision\":{\"explanation\":\"Molecular target recorded.\",\"severity\":\"high\",\"type\":\"record\"},\"name\":\"record_molecular_target\",\"policy_id\":\"record_molecular_target\",\"reason\":\"signals ['molecular_target_identified'] present\"}],\"provenance_node_ids\":[],\"response\":\"The patient has no significant genetic mutations requiring targeted therapy. Recommend concurrent chemoradiation followed by durvalumab consolidation.\",\"signals\":{\"molecular_target_identified\":[\"EGFR exon 19 deletion\"]}},\"consent\":{\"authority_ref_kind\":\"pack_basis\",\"consenter_id\":null,\"consenter_role\":null,\"legal_basis\":\"Patient consent to treatment (informed consent record)\",\"manager_uri\":null,\"period\":null,\"policy_rule\":\"oncology-tumor-board-governance\",\"ref_hash\":null,\"ref_id\":null,\"ref_kind\":\"pack_basis\",\"scope\":\"clinical_tumor_board\",\"status_at_decision\":\"active\",\"subject_id\":\"P-07f59ddf\"},\"decision_chain\":{\"chain_id\":\"9a68aa1111df6075afbdee5ae3204c89f912710a6c75887ca7725042da5c65de\",\"chain_key\":{\"case_id\":\"adv-case-07f59ddf\",\"environment_id\":\"env-default-001\",\"subject_id\":\"P-07f59ddf\"},\"prior_cdo_hash\":null,\"relation\":null,\"schema\":{\"chain_key\":[\"environment_id\",\"case_id\",\"subject_id\"],\"relations\":[\"follows\",\"reconsiders\"],\"require_prior\":false},\"sequence\":1},\"decision_plan\":{\"treatment_intent\":null},\"environment\":{\"environment_id\":\"env-default-001\",\"parent_environment_id\":null,\"tenant_name\":\"Default Sovereign Environment\",\"tenant_type\":\"standard\"},\"human_decision\":{\"approval_type\":\"approved\",\"content\":{\"adopted_items\":[{\"ai_proposal_seq\":2,\"decision\":\"reject\",\"evidence_citations\":[\"adv-referral-packet.txt\"],\"item_id\":\"p1-i1\",\"kind\":\"recommendation\",\"text\":\"Recommend concurrent chemoradiation followed by durvalumab.\"}],\"decision_details\":{\"adopted_items\":[{\"ai_proposal_seq\":2,\"decision\":\"reject\",\"evidence_citations\":[\"adv-referral-packet.txt\"],\"item_id\":\"p1-i1\",\"kind\":\"recommendation\",\"text\":\"Recommend concurrent chemoradiation followed by durvalumab.\"}],\"divergence_from_ai\":{\"detected\":true,\"fields\":[{\"ai_value\":\"durvalumab\",\"field\":\"regimen_name\",\"human_value\":\"EGFR-directed therapy\",\"rationale\":\"EGFR exon 19 deletion (VAF 42%) makes an EGFR-directed regimen the appropriate first-line choice.\",\"reason_code\":\"ai_hallucination\"}]},\"evidence_contradiction\":{\"contradictions\":[{\"ai_claim\":\"no significant genetic mutations\",\"evidence_claim\":\"ge IIIA (cT2a N2 M0).\\n\\nPathology (2026-10-08): EGFR exon 19 deletion, VAF 42%,\\nTier I actionable. PD-L1 TPS 65%.\\n\\nImaging: RUL mass 4.2 x 3.8 x 3.1 cm, SUVmax 11.8.\\nStation 4R node\",\"evidence_ref\":{\"document_id\":\"3003a3f5-fe91-4d7a-b4e2-961447f6a694\",\"episode_id\":\"8537307c-985a-4934-9222-06c36493d8c7\",\"source\":\"adv-referral-packet.txt\"},\"severity\":\"high\"}],\"detected\":true},\"expected_outcomes\":[{\"due_by\":\"2027-06-01\",\"signal_type\":\"clinical_observation\",\"what\":\"restage in 3 months\"}],\"override_reason_code\":\"ai_hallucination\",\"plan\":\"EGFR-directed therapy; restage in 3 months\",\"recommendation\":\"adjuvant\",\"recommended_at\":\"2026-11-23T10:33:45.228870+00:00\",\"recommended_by_actor_id\":\"adv-chair-07f59ddf\",\"regimen\":{\"cycles_planned\":4,\"expected_duration_days\":60,\"expected_start\":\"2027-03-01\",\"intent\":\"adjuvant\",\"name\":\"EGFR-directed therapy\"},\"structured_order\":{\"priority\":\"routine\"}},\"divergence_from_ai\":{\"detected\":true,\"fields\":[{\"ai_value\":\"durvalumab\",\"field\":\"regimen_name\",\"human_value\":\"EGFR-directed therapy\",\"rationale\":\"EGFR exon 19 deletion (VAF 42%) makes an EGFR-directed regimen the appropriate first-line choice.\",\"reason_code\":\"ai_hallucination\"}]},\"evidence_contradiction\":{\"contradictions\":[{\"ai_claim\":\"no significant genetic mutations\",\"evidence_claim\":\"ge IIIA (cT2a N2 M0).\\n\\nPathology (2026-10-08): EGFR exon 19 deletion, VAF 42%,\\nTier I actionable. PD-L1 TPS 65%.\\n\\nImaging: RUL mass 4.2 x 3.8 x 3.1 cm, SUVmax 11.8.\\nStation 4R node\",\"evidence_ref\":{\"document_id\":\"3003a3f5-fe91-4d7a-b4e2-961447f6a694\",\"episode_id\":\"8537307c-985a-4934-9222-06c36493d8c7\",\"source\":\"adv-referral-packet.txt\"},\"severity\":\"high\"}],\"detected\":true},\"override_reason_code\":\"ai_hallucination\",\"plan\":\"EGFR-directed therapy; restage in 3 months\",\"recommendation\":\"adjuvant\"},\"decided_at\":\"2026-11-23T10:33:45.228870+00:00\",\"decision_owner_actor_id\":\"adv-chair-07f59ddf\"},\"human_deliberation\":{\"alternatives\":[{\"alternative_id\":\"alt-1\",\"content\":\"Concurrent chemoradiation followed by durvalumab\",\"reason_rejected\":\"Conflicts with the documented EGFR driver mutation.\"}],\"dissent\":[{\"dissenter\":\"adv-chair-07f59ddf\",\"evidence\":{},\"grounds\":\"I dissent from the proposed chemoradiation/durvalumab plan. The referral reports an EGFR exon 19 deletion at VAF 42%; the AI's claim that no actionable mutation exists conflicts with that source. I will use an EGFR-directed regimen and document the conflict.\",\"recorded_at\":\"2026-11-23T10:33:43.970911+00:00\",\"seq\":3}],\"follow_up\":[],\"participants\":[],\"proposals\":[{\"adopted_from\":{\"ai_proposal_seq\":2,\"item_id\":\"p1-i1\"},\"content\":\"Recommend concurrent chemoradiation followed by durvalumab.\",\"proposer\":\"adv-chair-07f59ddf\",\"seq\":null}],\"rationale\":\"Override: the AI asserted no significant actionable mutation while the referral packet reports an EGFR exon 19 deletion at VAF 42%. Chosen regimen follows the documented molecular finding.\",\"transcript_artifact_id\":\"transcript-1fe1a7c8737b\",\"transcript_hash\":\"12fb1733145f0e5e6d8679f0eef94c2c0507d78e7d983b6c01fd47a1c9907632\"},\"knowledge_state\":{\"captured_at\":\"2026-11-23T10:33:43.992324+00:00\",\"declared_universe\":{\"available_count\":3,\"retrieved_count\":0,\"sources\":[{\"id\":\"ESMO-NSCLC-2024\",\"kind\":\"guideline\",\"title\":\"ESMO Clinical Practice Guidelines \u2014 Non-Small-Cell Lung Cancer\",\"version\":\"2024\"},{\"id\":\"NCCN-NSCLC-v3.2025\",\"kind\":\"guideline\",\"title\":\"NCCN Guidelines \u2014 Non-Small Cell Lung Cancer\",\"version\":\"3.2025\"},{\"id\":\"USB-LOCAL-PROTOCOL-v12\",\"kind\":\"guideline\",\"title\":\"USB Local Oncology Protocol\",\"version\":\"12\"}]},\"entries\":[{\"availability\":\"available\",\"content_hash\":\"e9f0b988eb99ec92267a2aa0cd9e3116b953b838e988da8757e30b073159accd\",\"kind\":\"case_document\",\"metadata\":{\"attached_at\":\"2026-11-23T10:33:43.963036+00:00\",\"attached_by\":\"adv-chair-07f59ddf\",\"case_id\":\"adv-case-07f59ddf\",\"document_id\":\"3003a3f5-fe91-4d7a-b4e2-961447f6a694\",\"filename\":\"adv-referral-packet.txt\",\"id\":\"doc-3003a3f5-fe91-4d7a-b4e2-961447f6a694\",\"status\":\"complete\"},\"source\":\"case_documents\",\"version\":\"\"}],\"snapshot_hash\":\"478d1aa2df76b7537398690d24031a4d53251dade7810af3e6f166b757fb3202\"},\"metadata\":{\"artifact_type\":\"decision_record\",\"domain\":\"healthcare\",\"id\":\"oncology-tumor-board-governance\",\"name\":\"oncology-tumor-board-governance\",\"pack\":\"oncology-tumor-board-governance\",\"packs\":[\"oncology-tumor-board-governance\"],\"subject_type\":\"subject\",\"version\":\"1.1.1\"},\"pre_ai_assessment\":{\"plan_structured\":{\"summary\":\"seed pre-AI assessment plan\"},\"plan_text\":\"Test pre-AI assessment plan\",\"recorded_by_actor_id\":\"adv-chair-07f59ddf\",\"schema_version\":\"pre_ai_assessment.v1\"},\"pre_ai_commitment\":{\"committed_at\":\"2026-11-23T10:33:43.960646+00:00\",\"committed_by_actor_id\":\"adv-chair-07f59ddf\",\"metadata\":{\"plan_hash\":\"15a27124e99dfd1db07b4a06584d0edbb6ad03239e6e7320d987f81b133e3a0a\",\"plan_structured\":{\"summary\":\"seed pre-AI assessment plan\"},\"unstructured_plan_acknowledged\":false},\"plan_hash\":\"15a27124e99dfd1db07b4a06584d0edbb6ad03239e6e7320d987f81b133e3a0a\",\"schema_version\":\"pre_ai_commitment.v1\"},\"schema_version\":\"cdo.v1\",\"treatment_intent\":{\"expected_outcomes\":[{\"due_by\":\"2027-06-01\",\"signal_type\":\"clinical_observation\",\"what\":\"restage in 3 months\"}],\"recommended_at\":\"2026-11-23T10:33:45.228870+00:00\",\"recommended_by_actor_id\":\"adv-chair-07f59ddf\",\"regimen\":{\"cycles_planned\":4,\"expected_duration_days\":60,\"expected_start\":\"2027-03-01\",\"intent\":\"adjuvant\",\"name\":\"EGFR-directed therapy\"},\"structured_order\":{\"priority\":\"routine\"}},\"verifier_requirements\":{\"ai_policies_required\":true,\"pre_ai_plan_required\":true,\"transcript_required\":false},\"version_chain\":{\"amendment_reason\":null,\"prior_cdo_hash\":null,\"signed_at\":null,\"version\":1}}",
+    "payload_canonical": "{\"actions\":[],\"ai_provenance\":{\"edges\":[],\"graph_hash\":\"\",\"nodes\":[]},\"ai_recommendation\":{\"content\":{\"explanation\":\"Molecular target recorded.\",\"severity\":\"high\",\"type\":\"record\"},\"domain\":\"healthcare\",\"pack_id\":\"oncology-tumor-board-governance\",\"pack_version\":\"1.1.1\",\"policies\":[{\"actions\":[{\"action\":\"record\",\"message\":\"Molecular target recorded with evidence.\"}],\"autonomy\":{\"level\":\"approve\"},\"confidence_threshold\":0.75,\"decision\":{\"explanation\":\"Molecular target recorded.\",\"severity\":\"high\",\"type\":\"record\"},\"name\":\"record_molecular_target\",\"policy_id\":\"record_molecular_target\",\"reason\":\"signals ['molecular_target_identified'] present\"}],\"provenance_node_ids\":[],\"response\":\"The patient has no significant genetic mutations requiring targeted therapy. Recommend concurrent chemoradiation followed by durvalumab consolidation.\",\"signals\":{\"molecular_target_identified\":[\"EGFR exon 19 deletion\"]}},\"consent\":{\"authority_ref_kind\":\"pack_basis\",\"consenter_id\":null,\"consenter_role\":null,\"legal_basis\":\"Patient consent to treatment (informed consent record)\",\"manager_uri\":null,\"period\":null,\"policy_rule\":\"oncology-tumor-board-governance\",\"ref_hash\":null,\"ref_id\":null,\"ref_kind\":\"pack_basis\",\"scope\":\"clinical_tumor_board\",\"status_at_decision\":\"active\",\"subject_id\":\"P-950579f7\"},\"decision_chain\":{\"chain_id\":\"07a1d03b470984cae080c461940748eaa418e94afecec0a98b13a6cae80ca82d\",\"chain_key\":{\"case_id\":\"adv-case-950579f7\",\"environment_id\":\"env-default-001\",\"subject_id\":\"P-950579f7\"},\"prior_cdo_hash\":null,\"relation\":null,\"schema\":{\"chain_key\":[\"environment_id\",\"case_id\",\"subject_id\"],\"relations\":[\"follows\",\"reconsiders\"],\"require_prior\":false},\"sequence\":1},\"decision_plan\":{\"treatment_intent\":null},\"environment\":{\"environment_id\":\"env-default-001\",\"parent_environment_id\":null,\"tenant_name\":\"Default Sovereign Environment\",\"tenant_type\":\"standard\"},\"human_decision\":{\"approval_type\":\"approved\",\"content\":{\"adopted_items\":[{\"ai_proposal_seq\":2,\"decision\":\"reject\",\"evidence_citations\":[\"adv-referral-packet.txt\"],\"item_id\":\"p1-i1\",\"kind\":\"recommendation\",\"text\":\"Recommend concurrent chemoradiation followed by durvalumab.\"}],\"decision_details\":{\"adopted_items\":[{\"ai_proposal_seq\":2,\"decision\":\"reject\",\"evidence_citations\":[\"adv-referral-packet.txt\"],\"item_id\":\"p1-i1\",\"kind\":\"recommendation\",\"text\":\"Recommend concurrent chemoradiation followed by durvalumab.\"}],\"divergence_from_ai\":{\"detected\":true,\"fields\":[{\"ai_value\":\"durvalumab\",\"field\":\"regimen_name\",\"human_value\":\"EGFR-directed therapy\",\"rationale\":\"EGFR exon 19 deletion (VAF 42%) makes an EGFR-directed regimen the appropriate first-line choice.\",\"reason_code\":\"ai_hallucination\"}]},\"evidence_contradiction\":{\"contradictions\":[{\"ai_claim\":\"no significant genetic mutations\",\"evidence_claim\":\"ge IIIA (cT2a N2 M0).\\n\\nPathology (2026-10-08): EGFR exon 19 deletion, VAF 42%,\\nTier I actionable. PD-L1 TPS 65%.\\n\\nImaging: RUL mass 4.2 x 3.8 x 3.1 cm, SUVmax 11.8.\\nStation 4R node\",\"evidence_ref\":{\"document_id\":\"69d08687-43bf-448b-8eb0-0d442bdd85db\",\"episode_id\":\"933af8ae-98d0-4dca-b3b2-564742a73103\",\"source\":\"adv-referral-packet.txt\"},\"severity\":\"high\"}],\"detected\":true},\"expected_outcomes\":[{\"due_by\":\"2027-06-01\",\"signal_type\":\"clinical_observation\",\"what\":\"restage in 3 months\"}],\"override_reason_code\":\"ai_hallucination\",\"plan\":\"EGFR-directed therapy; restage in 3 months\",\"recommendation\":\"adjuvant\",\"recommended_at\":\"2026-11-23T11:36:30.219186+00:00\",\"recommended_by_actor_id\":\"adv-chair-950579f7\",\"regimen\":{\"cycles_planned\":4,\"expected_duration_days\":60,\"expected_start\":\"2027-03-01\",\"intent\":\"adjuvant\",\"name\":\"EGFR-directed therapy\"},\"structured_order\":{\"priority\":\"routine\"}},\"divergence_from_ai\":{\"detected\":true,\"fields\":[{\"ai_value\":\"durvalumab\",\"field\":\"regimen_name\",\"human_value\":\"EGFR-directed therapy\",\"rationale\":\"EGFR exon 19 deletion (VAF 42%) makes an EGFR-directed regimen the appropriate first-line choice.\",\"reason_code\":\"ai_hallucination\"}]},\"evidence_contradiction\":{\"contradictions\":[{\"ai_claim\":\"no significant genetic mutations\",\"evidence_claim\":\"ge IIIA (cT2a N2 M0).\\n\\nPathology (2026-10-08): EGFR exon 19 deletion, VAF 42%,\\nTier I actionable. PD-L1 TPS 65%.\\n\\nImaging: RUL mass 4.2 x 3.8 x 3.1 cm, SUVmax 11.8.\\nStation 4R node\",\"evidence_ref\":{\"document_id\":\"69d08687-43bf-448b-8eb0-0d442bdd85db\",\"episode_id\":\"933af8ae-98d0-4dca-b3b2-564742a73103\",\"source\":\"adv-referral-packet.txt\"},\"severity\":\"high\"}],\"detected\":true},\"override_reason_code\":\"ai_hallucination\",\"plan\":\"EGFR-directed therapy; restage in 3 months\",\"recommendation\":\"adjuvant\"},\"decided_at\":\"2026-11-23T11:36:30.219186+00:00\",\"decision_owner_actor_id\":\"adv-chair-950579f7\"},\"human_deliberation\":{\"alternatives\":[{\"alternative_id\":\"alt-1\",\"content\":\"Concurrent chemoradiation followed by durvalumab\",\"reason_rejected\":\"Conflicts with the documented EGFR driver mutation.\"}],\"dissent\":[{\"dissenter\":\"adv-chair-950579f7\",\"evidence\":{},\"grounds\":\"I dissent from the proposed chemoradiation/durvalumab plan. The referral reports an EGFR exon 19 deletion at VAF 42%; the AI's claim that no actionable mutation exists conflicts with that source. I will use an EGFR-directed regimen and document the conflict.\",\"recorded_at\":\"2026-11-23T11:36:29.311288+00:00\",\"seq\":3}],\"follow_up\":[],\"participants\":[],\"proposals\":[{\"adopted_from\":{\"ai_proposal_seq\":2,\"item_id\":\"p1-i1\"},\"content\":\"Recommend concurrent chemoradiation followed by durvalumab.\",\"proposer\":\"adv-chair-950579f7\",\"seq\":null}],\"rationale\":\"Override: the AI asserted no significant actionable mutation while the referral packet reports an EGFR exon 19 deletion at VAF 42%. Chosen regimen follows the documented molecular finding.\",\"transcript_artifact_id\":\"transcript-19fe96c6fe83\",\"transcript_hash\":\"18eb8638d4459bb5ad04f3f604649f1cde8a07eeb474835a0ba50403d861084a\"},\"knowledge_state\":{\"captured_at\":\"2026-11-23T11:36:29.339243+00:00\",\"declared_universe\":{\"available_count\":3,\"retrieved_count\":0,\"sources\":[{\"id\":\"ESMO-NSCLC-2024\",\"kind\":\"guideline\",\"title\":\"ESMO Clinical Practice Guidelines \u2014 Non-Small-Cell Lung Cancer\",\"version\":\"2024\"},{\"id\":\"NCCN-NSCLC-v3.2025\",\"kind\":\"guideline\",\"title\":\"NCCN Guidelines \u2014 Non-Small Cell Lung Cancer\",\"version\":\"3.2025\"},{\"id\":\"USB-LOCAL-PROTOCOL-v12\",\"kind\":\"guideline\",\"title\":\"USB Local Oncology Protocol\",\"version\":\"12\"}]},\"entries\":[{\"availability\":\"available\",\"content_hash\":\"e9f0b988eb99ec92267a2aa0cd9e3116b953b838e988da8757e30b073159accd\",\"kind\":\"case_document\",\"metadata\":{\"attached_at\":\"2026-11-23T11:36:29.289918+00:00\",\"attached_by\":\"adv-chair-950579f7\",\"case_id\":\"adv-case-950579f7\",\"document_id\":\"69d08687-43bf-448b-8eb0-0d442bdd85db\",\"filename\":\"adv-referral-packet.txt\",\"id\":\"doc-69d08687-43bf-448b-8eb0-0d442bdd85db\",\"status\":\"complete\"},\"source\":\"case_documents\",\"version\":\"\"}],\"snapshot_hash\":\"478d1aa2df76b7537398690d24031a4d53251dade7810af3e6f166b757fb3202\"},\"metadata\":{\"artifact_type\":\"decision_record\",\"domain\":\"healthcare\",\"id\":\"oncology-tumor-board-governance\",\"name\":\"oncology-tumor-board-governance\",\"pack\":\"oncology-tumor-board-governance\",\"packs\":[\"oncology-tumor-board-governance\"],\"subject_type\":\"subject\",\"version\":\"1.1.1\"},\"pre_ai_assessment\":{\"plan_structured\":{\"summary\":\"seed pre-AI assessment plan\"},\"plan_text\":\"Test pre-AI assessment plan\",\"recorded_by_actor_id\":\"adv-chair-950579f7\",\"schema_version\":\"pre_ai_assessment.v1\"},\"pre_ai_commitment\":{\"committed_at\":\"2026-11-23T11:36:29.280198+00:00\",\"committed_by_actor_id\":\"adv-chair-950579f7\",\"metadata\":{\"plan_hash\":\"15a27124e99dfd1db07b4a06584d0edbb6ad03239e6e7320d987f81b133e3a0a\",\"plan_structured\":{\"summary\":\"seed pre-AI assessment plan\"},\"unstructured_plan_acknowledged\":false},\"plan_hash\":\"15a27124e99dfd1db07b4a06584d0edbb6ad03239e6e7320d987f81b133e3a0a\",\"schema_version\":\"pre_ai_commitment.v1\"},\"schema_version\":\"cdo.v1\",\"treatment_intent\":{\"expected_outcomes\":[{\"due_by\":\"2027-06-01\",\"signal_type\":\"clinical_observation\",\"what\":\"restage in 3 months\"}],\"recommended_at\":\"2026-11-23T11:36:30.219186+00:00\",\"recommended_by_actor_id\":\"adv-chair-950579f7\",\"regimen\":{\"cycles_planned\":4,\"expected_duration_days\":60,\"expected_start\":\"2027-03-01\",\"intent\":\"adjuvant\",\"name\":\"EGFR-directed therapy\"},\"structured_order\":{\"priority\":\"routine\"}},\"verifier_requirements\":{\"ai_policies_required\":true,\"pre_ai_plan_required\":true,\"transcript_required\":false},\"version_chain\":{\"amendment_reason\":null,\"prior_cdo_hash\":null,\"signed_at\":null,\"version\":1}}",
     "payload_canonicalization": "sorted-keys-compact-rfc8785-subset"
   },
   "attestation": {
-    "signed_payload_hash": "055968d62f180a4a9708d28331df8f1e120c6ecc798c55531d563d0df7083e0c",
-    "signature_b64": "bAhJJmV++u4RgAY9gBW5MCRMl7ybFBm2/pb3OuXi716dKkHa5qbcl4SX2b8FpTUJOX8bM0x5mOzNJSDmCYRgDw==",
-    "attested_at": "2026-11-23T10:33:45.404651+00:00"
+    "signed_payload_hash": "abe68136605013893d6bf63aa73b83e04a7a5538739068f2db3e45d0a1d42cf4",
+    "signature_b64": "u3cUaFc5vEWp/Ht14oWpECmBPcvq42dWCEgOrgursA89/En/x5pTmG6EQuFn1Ck8H/mP+M6/vGfI35W/ElXOAQ==",
+    "attested_at": "2026-11-23T11:36:30.367299+00:00"
   },
   "version_chain": {
     "version": 1,
-    "signed_at": "2026-11-23T10:33:45.404651+00:00",
+    "signed_at": "2026-11-23T11:36:30.367299+00:00",
     "prior_cdo_hash": null,
     "amendment_reason": null
   },
@@ -764,38 +764,38 @@
     "version": "dqi.v1",
     "score": 0.8643,
     "components": {
-      "coherence": 1.0,
+      "coherence": 1,
       "completeness": 0.8571,
-      "rationale_depth": 1.0,
-      "knowledge_adequacy": 0.0,
-      "temporal_integrity": 1.0,
-      "documented_disagreement": 1.0,
-      "pre_commitment_integrity": 1.0
+      "rationale_depth": 1,
+      "knowledge_adequacy": 0,
+      "temporal_integrity": 1,
+      "documented_disagreement": 1,
+      "pre_commitment_integrity": 1
     },
-    "computed_at": "2026-11-23T10:33:45.404821+00:00",
+    "computed_at": "2026-11-23T11:36:30.367420+00:00",
     "frozen": true,
-    "snapshot_hash": "5a92d83fdb8e8da6cf10dd37d15b16aa64ed6cfed86037a5eba40f819bb6a200"
+    "snapshot_hash": "5109505ade743fd321781a072b9bff68e40b900afece0a9823331f0d4ebba9a7"
   },
   "dqi_snapshot": {
-    "artifact_id": "dqi-d5027976b0b44dee",
-    "content_hash": "5a92d83fdb8e8da6cf10dd37d15b16aa64ed6cfed86037a5eba40f819bb6a200",
+    "artifact_id": "dqi-3b957d50597641e6",
+    "content_hash": "5109505ade743fd321781a072b9bff68e40b900afece0a9823331f0d4ebba9a7",
     "payload": {
       "score": 0.8643,
       "version": "dqi.v1",
-      "frozen_at": "2026-11-23T10:33:45.404651+00:00",
+      "frozen_at": "2026-11-23T11:36:30.367299+00:00",
       "components": {
-        "coherence": 1.0,
+        "coherence": 1,
         "completeness": 0.8571,
-        "rationale_depth": 1.0,
-        "knowledge_adequacy": 0.0,
-        "temporal_integrity": 1.0,
-        "documented_disagreement": 1.0,
-        "pre_commitment_integrity": 1.0
+        "rationale_depth": 1,
+        "knowledge_adequacy": 0,
+        "temporal_integrity": 1,
+        "documented_disagreement": 1,
+        "pre_commitment_integrity": 1
       },
-      "input_hash": "055968d62f180a4a9708d28331df8f1e120c6ecc798c55531d563d0df7083e0c",
-      "computed_at": "2026-11-23T10:33:45.404821+00:00",
+      "input_hash": "abe68136605013893d6bf63aa73b83e04a7a5538739068f2db3e45d0a1d42cf4",
+      "computed_at": "2026-11-23T11:36:30.367420+00:00",
       "schema_version": "dqi_snapshot.v1",
-      "artifact_id_signed": "artifact-4fc1b5cb5321"
+      "artifact_id_signed": "artifact-69c29d2cb5f2"
     }
   },
   "audio_manifest": null,
@@ -804,20 +804,20 @@
     "body": {
       "proof": {
         "algorithm": "Ed25519",
-        "signature": "ed25519:jI7Q4bfJuNE4Lh1aRxUuUz0JvrGX4XCQbwCbl1r9B6SWOQcREB7in3iXUEYpeaHc3sClV2at3qoqKgE3if88DQ==",
-        "merkle_root": "448b7b4a0ef284fe019563b3b44b554ca4569137d57f7a418d2ecd8c566eb92c",
-        "canonical_hash": "0e96553780298315e9a1caa12931248e7a2f0c32a298fdc847d09e05b8433239",
-        "signer_public_key": "01mtYkVevmTi5nNqUGe6OYv1qHz6XRMEfH4rpU0HD44="
+        "signature": "ed25519:ppTXOtig4cVoJi5idUH+envE1AQ4aWarqRTD/qXRB00hHxTW3ctOBXezeVEnsInYEp7z9iZDrgpzN33HVj8YCQ==",
+        "merkle_root": "154ed5fd0de77898bc1bcaab7fcf821ef97422890ac4713514a00adaa454076c",
+        "canonical_hash": "56e4447ac92a27ce4f3cf58f064d73c995ac69db54dc27268f6187f466cb0a76",
+        "signer_public_key": "atX66C2XlgDq5rwmuCFfoEWYFA6JIqRafZqClvVv1V0="
       },
       "action": {
         "type": "governance_deliberation",
-        "input_hash": "055968d62f180a4a9708d28331df8f1e120c6ecc798c55531d563d0df7083e0c"
+        "input_hash": "abe68136605013893d6bf63aa73b83e04a7a5538739068f2db3e45d0a1d42cf4"
       },
       "context": {
         "policy_id": "oncology-tumor-board-governance",
-        "timestamp": "2026-11-23T10:33:45.410580+00:00",
+        "timestamp": "2026-11-23T11:36:30.372515+00:00",
         "actor_type": "deliberation_chair",
-        "actor_id_hash": "3c3f3d8ff76cc4f87ea7c411618091c016b05ea6886295cd0774274f28139db9"
+        "actor_id_hash": "87cda7f6786267b5038b6a864d26940bdedee19bb199d8a2c861e42a68d0c830"
       },
       "version": "1.0",
       "decision": {
@@ -826,28 +826,28 @@
       },
       "evidence": {
         "aibom_hash": "",
-        "artifact_id": "artifact-4fc1b5cb5321",
-        "artifact_hash": "055968d62f180a4a9708d28331df8f1e120c6ecc798c55531d563d0df7083e0c"
+        "artifact_id": "artifact-69c29d2cb5f2",
+        "artifact_hash": "abe68136605013893d6bf63aa73b83e04a7a5538739068f2db3e45d0a1d42cf4"
       },
       "extensions": {
-        "key_id": "518fa505-7840-4795-b44b-2e3bdad10ac9",
-        "case_id": "adv-case-07f59ddf",
-        "actor_id": "adv-chair-07f59ddf",
+        "key_id": "4a2f92bc-308f-473d-b5ba-52761c3767f9",
+        "case_id": "adv-case-950579f7",
+        "actor_id": "adv-chair-950579f7",
         "metadata": {
           "signed_by_chair": true,
-          "dqi_snapshot_hash": "5a92d83fdb8e8da6cf10dd37d15b16aa64ed6cfed86037a5eba40f819bb6a200",
-          "completeness_attestation_hash": "36f8663fd53d0289c863d876ea993067dc4a6e63cadace693ad7d2a45e89bdf0"
+          "dqi_snapshot_hash": "5109505ade743fd321781a072b9bff68e40b900afece0a9823331f0d4ebba9a7",
+          "completeness_attestation_hash": "6b1cc8ecff6a703f64dcfa6db62e95dd3ffbb96dcd264be8d7cb9f475ed17beb"
         },
-        "trace_id": "713c5b8f-772b-4606-a6af-11dba015584c",
+        "trace_id": "3fe95939-2bee-4b44-a442-8dd9d1166aff",
         "policy_id": "oncology-tumor-board-governance",
-        "session_id": "adv-sess-07f59ddf",
-        "subject_id": "P-07f59ddf",
-        "artifact_id": "artifact-4fc1b5cb5321",
+        "session_id": "adv-sess-950579f7",
+        "subject_id": "P-950579f7",
+        "artifact_id": "artifact-69c29d2cb5f2",
         "environment_id": "env-default-001",
-        "transcript_hash": "12fb1733145f0e5e6d8679f0eef94c2c0507d78e7d983b6c01fd47a1c9907632",
+        "transcript_hash": "18eb8638d4459bb5ad04f3f604649f1cde8a07eeb474835a0ba50403d861084a",
         "audio_manifest_hash": null
       },
-      "receipt_id": "rcpt-034a8d0b55e5ccf5",
+      "receipt_id": "rcpt-08c340638636a4ca",
       "system_state": {
         "aibom_id": "aibom-",
         "model_hash": "",
@@ -855,9 +855,9 @@
         "agent_version": "2026.1"
       }
     },
-    "body_canonical": "{\"action\":{\"input_hash\":\"055968d62f180a4a9708d28331df8f1e120c6ecc798c55531d563d0df7083e0c\",\"type\":\"governance_deliberation\"},\"context\":{\"actor_id_hash\":\"3c3f3d8ff76cc4f87ea7c411618091c016b05ea6886295cd0774274f28139db9\",\"actor_type\":\"deliberation_chair\",\"policy_id\":\"oncology-tumor-board-governance\",\"timestamp\":\"2026-11-23T10:33:45.410580+00:00\"},\"decision\":{\"confidence\":1.0,\"verdict\":\"attested\"},\"evidence\":{\"aibom_hash\":\"\",\"artifact_hash\":\"055968d62f180a4a9708d28331df8f1e120c6ecc798c55531d563d0df7083e0c\",\"artifact_id\":\"artifact-4fc1b5cb5321\"},\"extensions\":{\"actor_id\":\"adv-chair-07f59ddf\",\"artifact_id\":\"artifact-4fc1b5cb5321\",\"audio_manifest_hash\":null,\"case_id\":\"adv-case-07f59ddf\",\"environment_id\":\"env-default-001\",\"key_id\":\"518fa505-7840-4795-b44b-2e3bdad10ac9\",\"metadata\":{\"completeness_attestation_hash\":\"36f8663fd53d0289c863d876ea993067dc4a6e63cadace693ad7d2a45e89bdf0\",\"dqi_snapshot_hash\":\"5a92d83fdb8e8da6cf10dd37d15b16aa64ed6cfed86037a5eba40f819bb6a200\",\"signed_by_chair\":true},\"policy_id\":\"oncology-tumor-board-governance\",\"session_id\":\"adv-sess-07f59ddf\",\"subject_id\":\"P-07f59ddf\",\"trace_id\":\"713c5b8f-772b-4606-a6af-11dba015584c\",\"transcript_hash\":\"12fb1733145f0e5e6d8679f0eef94c2c0507d78e7d983b6c01fd47a1c9907632\"},\"receipt_id\":\"rcpt-034a8d0b55e5ccf5\",\"system_state\":{\"agent_version\":\"2026.1\",\"aibom_id\":\"aibom-\",\"model_hash\":\"\",\"model_name\":\"personavault-sovereign\"},\"version\":\"1.0\"}",
-    "signature": "ed25519:jI7Q4bfJuNE4Lh1aRxUuUz0JvrGX4XCQbwCbl1r9B6SWOQcREB7in3iXUEYpeaHc3sClV2at3qoqKgE3if88DQ==",
-    "signer_public_key": "01mtYkVevmTi5nNqUGe6OYv1qHz6XRMEfH4rpU0HD44=",
+    "body_canonical": "{\"action\":{\"input_hash\":\"abe68136605013893d6bf63aa73b83e04a7a5538739068f2db3e45d0a1d42cf4\",\"type\":\"governance_deliberation\"},\"context\":{\"actor_id_hash\":\"87cda7f6786267b5038b6a864d26940bdedee19bb199d8a2c861e42a68d0c830\",\"actor_type\":\"deliberation_chair\",\"policy_id\":\"oncology-tumor-board-governance\",\"timestamp\":\"2026-11-23T11:36:30.372515+00:00\"},\"decision\":{\"confidence\":1.0,\"verdict\":\"attested\"},\"evidence\":{\"aibom_hash\":\"\",\"artifact_hash\":\"abe68136605013893d6bf63aa73b83e04a7a5538739068f2db3e45d0a1d42cf4\",\"artifact_id\":\"artifact-69c29d2cb5f2\"},\"extensions\":{\"actor_id\":\"adv-chair-950579f7\",\"artifact_id\":\"artifact-69c29d2cb5f2\",\"audio_manifest_hash\":null,\"case_id\":\"adv-case-950579f7\",\"environment_id\":\"env-default-001\",\"key_id\":\"4a2f92bc-308f-473d-b5ba-52761c3767f9\",\"metadata\":{\"completeness_attestation_hash\":\"6b1cc8ecff6a703f64dcfa6db62e95dd3ffbb96dcd264be8d7cb9f475ed17beb\",\"dqi_snapshot_hash\":\"5109505ade743fd321781a072b9bff68e40b900afece0a9823331f0d4ebba9a7\",\"signed_by_chair\":true},\"policy_id\":\"oncology-tumor-board-governance\",\"session_id\":\"adv-sess-950579f7\",\"subject_id\":\"P-950579f7\",\"trace_id\":\"3fe95939-2bee-4b44-a442-8dd9d1166aff\",\"transcript_hash\":\"18eb8638d4459bb5ad04f3f604649f1cde8a07eeb474835a0ba50403d861084a\"},\"receipt_id\":\"rcpt-08c340638636a4ca\",\"system_state\":{\"agent_version\":\"2026.1\",\"aibom_id\":\"aibom-\",\"model_hash\":\"\",\"model_name\":\"personavault-sovereign\"},\"version\":\"1.0\"}",
+    "signature": "ed25519:ppTXOtig4cVoJi5idUH+envE1AQ4aWarqRTD/qXRB00hHxTW3ctOBXezeVEnsInYEp7z9iZDrgpzN33HVj8YCQ==",
+    "signer_public_key": "atX66C2XlgDq5rwmuCFfoEWYFA6JIqRafZqClvVv1V0=",
     "algorithm": "Ed25519"
   },
   "mandate": null,
