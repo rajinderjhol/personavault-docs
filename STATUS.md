@@ -72,6 +72,15 @@ Last reviewed: 2026-11-23
   clinically appropriate; a conforming record can document a poor decision.
 - **Learning and calibration are advisory only.** No outcome, DQI score or
   replay report changes an integrity check, an approval or enforcement.
+- **Learning decisions are inspectable.** Each decision trace records which
+  patterns were retrieved, which entered the mutation path, and the exact
+  before/after weight delta with the signal's source (user correction or
+  judge verdict). This is an audit chain, not proof that a learned pattern
+  improved a decision.
+- **Cohort calibration is descriptive.** An environment-level summary reports
+  counts and success rates for attested outcomes with their DQI bands; it
+  makes no causal claim and excludes simulation and prediction-evaluation
+  outcomes.
 - **Sequence integrity is not independent cognition.** Cryptography proves a
   commitment was recorded before the AI output and that the record was not
   altered. It cannot prove the human actually formed an independent judgment.
