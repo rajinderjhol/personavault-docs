@@ -122,11 +122,22 @@ Last reviewed: 2026-11-23
 - **No interoperation with VeriLinkOS is defined or claimed.** The two systems
   are separate repositories with separate evidence models and separate suites.
 
+## Shipped since the last status review
+
+- **Portable offline verification bundle.** A customer-retained zip with the
+  receipt, optional signer anchor, verified execution evidence and a read-only
+  knowledge-provenance projection, plus a hash manifest and a standalone
+  verifier that needs no PersonaVault connection or application imports. The
+  export records a verification preflight so a failing receipt is visible.
+  Legacy receipts with malformed evidence kinds are reported by that
+  preflight and must be repaired at ingestion.
+
 ## Forward-looking only (not present as shipped or Roadmap)
 
 - A Python SDK wrapping the offline CDR verifier for payer/auditor integration.
-- A signed, self-contained CDR verification bundle equivalent to VeriLinkOS's
-  offline bundle.
+- A bundle with VeriLinkOS-equivalent current-authority semantics. The shipped
+  bundle proves **historical** integrity; revocation and current authority
+  still require a fresh anchor obtained through a trusted channel.
 - Conformance vectors for the CDR verifier (browser parity tests exist today).
 - External audit or accreditation of any kind.
 - Validation of clinical outcome correlation — an open empirical question, not
