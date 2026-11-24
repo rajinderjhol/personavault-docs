@@ -46,6 +46,7 @@ The manifest has sixteen top-level keys, enforced at load time:
 | `belief` | Verification rules and contradiction detection |
 | `autonomy` | Autonomy level and escalation rules |
 | `metadata` | Author, homepage, license |
+| `actions` | Decision options the AI may offer: description, capability, confidence (optional boost), linked policy ids |
 
 A pack directory contains `pack.yaml`, `extraction/` (entity schema and signals), `policies/`, `persona/`, and a compiler-generated `compiled/` directory holding the Python module and manifest.
 
@@ -95,7 +96,10 @@ to a **pack contract** in addition to schema validation: every allowed tool
 must have a real implementation, declared governance fields must be ones the
 runtime actually reads, block policies must carry a block action, and DQI
 weights must sum to 1. Older packs are reported as warnings rather than build
-failures. Run `python scripts/check_packs.py --strict` in the implementation
+failures. A pack's `actions:` section declares the decision options the AI may
+offer; each must resolve to a real capability, and the router reads them
+directly — adding a pack requires no application code change. Run
+`python scripts/check_packs.py --strict` in the implementation
 repository to see the catalogue's declaration status — several legacy packs
 still declare tools that have no handler.
 
