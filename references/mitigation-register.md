@@ -50,6 +50,7 @@
 | 14 | Sovereign deployments fail closed | Core | AI system security vulnerabilities; governance failure | Security & Access Control | Technical Artifacts; Internal Policies | Deployer | Deploy | Implemented |
 | 15 | Local companion as the evidence boundary (local-only proof approval) | Core | Compromise of privacy | Privacy & Data Protection; End-use Governance | Technical Artifacts; Practices & Processes | Deployer; User | Outside Lifecycle | Implemented |
 | 16 | Test-data isolation and clean-checkout verification gate | Enabling | Governance failure | Security & Access Control; Risk Management & Assurance | Practices & Processes; Technical Artifacts | Developer | Outside Lifecycle | Implemented |
+| 17 | Append-only subject contestations (backend primitive) | Core | Overreliance & unsafe use; loss of human agency | End-use Governance; Human Oversight & Agentic Control | Technical Artifacts; Practices & Processes | Deployer | Operate & Monitor | Implemented — backend only |
 
 ## Proof, observability and linked mitigations
 
@@ -116,6 +117,13 @@
     *Deployment posture*; `scripts/verify.sh` and CI (private). Observable as
     a clean-checkout verification run. This is an enabling condition, not a
     product control. Linked to 5, 14.
+17. **Subject contestations** — Proof: append-only v2
+    `/subjects/{id}/contestations` endpoints and
+    `tests/test_subject_contestation.py` (private). Observable as a chain of
+    revisions whose statement hash never changes. Limit: **backend only** —
+    the filing actor is recorded, so staff file on a subject's behalf; there
+    is no subject login, patient-facing surface or subject-held receipt.
+    Linked to 2, 4, 9.
 
 ## What this register does not report
 
@@ -127,8 +135,9 @@
 - **Neglected mitigation domains.** Against the source taxonomy PersonaVault
   reports nothing under Training & Capacity-building, Integrity & Ethics,
   Societal Resilience & Recovery, or Ecosystem Coordination. End-use
-  Governance is reported only through consent and the local companion; there
-  is no subject-facing contestability control.
+  Governance is reported through consent, the local companion and the
+  contestation primitive — but there is still no subject-facing surface:
+  no subject login, patient portal, subject-held receipt or opt-out.
 - **Effectiveness.** No mitigation here has a measured effect on clinical
   outcomes or decision quality. See [STATUS.md](../STATUS.md) *Claim
   boundaries*.

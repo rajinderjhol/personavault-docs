@@ -48,6 +48,11 @@ Last reviewed: 2026-11-23
   adopt/edit/reject/defer dispositions with reasons, a structured
   `override_reason_code` bound to each divergence field, and a pre-sign
   panel showing sealed divergences and evidence contradictions.
+- **Subject contestations (backend only):** a subject's challenge to a
+  recorded decision can be filed, listed and transitioned through an
+  append-only, hash-bound revision chain. The filing actor is recorded, so
+  staff can file on a subject's behalf. There is **no** subject login, patient
+  portal, subject-held receipt or opt-out.
 - **Tool perimeter at the HTTP boundary:** direct tool-execution routes
   enforce the pack's allowed/denied tools; denied and undeclared tools are
   refused and irreversible tools require human approval.

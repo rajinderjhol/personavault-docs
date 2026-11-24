@@ -2,6 +2,12 @@
 
 **This is a vendor self-assessment, not a certification, not legal advice, and not a regulatory determination.** It maps what the implementation actually records to the obligations a regulated deployer is likely to ask about. Every row should be verified against the running system and the public verifier rather than trusted from this table. Last reviewed 2026-11-22 against implementation commit `99ad38f4`.
 
+For an auditor's own test plan, see the [third-party audit path](third-party-audit-path.md).
+For procurement reviews framed around sovereignty or hospital sourcing
+requirements, see the [sovereign decision evidence pack](sovereign-decision-evidence.md).
+It maps the same artifacts to the Commission's eight sovereignty objectives
+and to T-CAIREM Appendix G; it makes no SEAL or certification claim.
+
 ## Classification argument (self-assessment)
 
 For the evaluated pilot configuration, PersonaVault is assessed as:
