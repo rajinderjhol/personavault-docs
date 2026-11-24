@@ -127,7 +127,7 @@ We state the boundaries before a reviewer finds them:
 
 1. **Clinical correctness.** A signature proves a payload did not change; it does not prove the decision was right.
 2. **Signer identity.** The receipt names a key; key enrollment and revocation are a separate trust question.
-3. **Execution.** The receipt proves *attested*, not *executed*. A second verifier for execution evidence is not implemented.
+3. **Execution.** The receipt proves *attested*, not *executed*. A separate execution-evidence artifact and standalone verifier (ADR 0030) are now implemented, bound to the decision by hash and requiring an independent performer; the CDR itself is unchanged.
 4. **Completeness.** Completeness is attested relative to a *declared* universe; it is not proof that the universe was complete.
 5. **Automation-bias prevention.** A divergence field records an outcome; it does not produce critical scrutiny. Presentation attestation proves exposure, not attention. Prevention is a workflow and training question.
 6. **Court admissibility.** No court-admissibility package is built or validated. "Evidentiary bridge" is a design metaphor and a research hypothesis, not a legal conclusion.

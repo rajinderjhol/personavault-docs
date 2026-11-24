@@ -105,8 +105,10 @@ The CDR does **not** prove:
 3. **Execution.** That the treatment was administered, the
    contract was signed, the policy was issued, the robot
    performed the action. This is ADR 0030's execution-evidence
-   gap. **The second verifier (`tools/verify_execution_evidence.py`)
-   does not exist.** The CDR proves *attested*, not *executed*.
+   gap. A separate verifier (`tools/verify_execution_evidence.py`)
+   now exists and checks a signed artifact from an independent
+   performer, bound to the decision by hash. The CDR itself still
+   proves *attested*, not *executed*.
 4. **Completeness.** That every relevant piece of evidence was
    seen by the board. The CDR records what was referenced; it
    does not guarantee that nothing was missed.
@@ -197,8 +199,8 @@ semantic_patterns table has 2 ice, 1 liquid, and 2
 transitions. No page shows them.
 
 verify_execution_evidence.py — ADR 0030's second
-verifier. Does not exist. Without it, the CDR proves attested,
-not executed.
+verifier. Exists as a standalone offline tool for a separate
+artifact. The CDR alone still proves attested, not executed.
 
 Missing from the product entirely:
 
@@ -297,7 +299,7 @@ The CDR proves what it claims
 
 Two of five entities have no UI surface
 
-The execution-evidence chain is specified but not built
+The execution-evidence chain is built but needs an independent performer to record evidence
 
 The multi-pack demonstration is not yet a page
 
@@ -310,7 +312,7 @@ ADR 0028 — canonical serialization for signing
 
 ADR 0029 — attestation timestamps
 
-ADR 0030 — the execution-evidence gap (implementation pending)
+ADR 0030 — the execution-evidence gap (artifact and verifier shipped; client recording flow pending)
 
 docs/BACKEND_WIRING_PLAN.md — the live wiring state
 

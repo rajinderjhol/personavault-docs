@@ -158,7 +158,10 @@ Stated plainly so they are found here rather than in diligence:
   health-checked reconnection and an hourly retention sweep. A full network
   partition or database failover exercise has not been run.
 - **No clinical outcome evidence.** Decision quality and "better decisions"
-  remain unproven; DQI is documentation quality.
+  remain unproven; DQI is documentation quality. A separate execution-evidence
+  artifact and verifier (ADR 0030) can prove an action was performed by an
+  independent party, but a performer must actually record it, and verified
+  execution is not proof of a better decision.
 - **No external root of trust.** The signer anchor is published by the same
   installation that signs receipts.
 - **Incident, retention-policy and exit-rehearsal artifacts are not shipped.**
