@@ -18,6 +18,7 @@ This repository is the **public evidence layer** for PersonaVault: the papers, s
 | Check regulatory alignment | [Conformance self-assessment](enterprise/conformance.md) |
 | Answer a sovereign / hospital procurement review | [Sovereign decision evidence pack](enterprise/sovereign-decision-evidence.md) |
 | Give an auditor something to test | [Third-party audit path](enterprise/third-party-audit-path.md) |
+| Trace how a learned belief came to exist | [Knowledge Provenance Graph](references/knowledge-provenance.md) |
 | See what a receipt proves and does not | [The horizontal claim](references/claim-boundaries.md) and [claim matrix](references/claim-matrix.md) |
 | See which AI-risk mitigations we report | [Mitigation register (PRIMER)](references/mitigation-register.md) |
 | Verify something yourself | [Run the benchmark](#run-the-benchmark) or [challenge the verifier](#challenge-the-verifier) |

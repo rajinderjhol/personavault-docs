@@ -17,7 +17,7 @@ where each PersonaVault artifact sits:
 
 | Tier | Meaning | PersonaVault artifacts |
 |---|---|---|
-| **T1** | Primary verified operating evidence: automated logs, immutable decision trails, access records | Signed CDRs, governance event ledger, append-only disclosure views, append-only subject contestations, frozen challenge kit |
+| **T1** | Primary verified operating evidence: automated logs, immutable decision trails, access records | Signed CDRs, governance event ledger, append-only disclosure views, append-only subject contestations, append-only reinforcement/compensation events, verified execution evidence, the read-only Knowledge Provenance Graph projection, frozen challenge kit |
 | **T2** | Independent or second-line verified evidence: model-risk validation, internal audit, privacy/legal/security review | **None supplied by PersonaVault.** This is the auditor's own work product |
 | **T3** | Controlled simulation / adversarial exercise | Challenge kit's one-character tampered twin; the 10-record benchmark with its known `KIT-001` caveat |
 | **T4** | Vendor benchmarks, papers, white papers | Everything in `academic/` and `whitepapers/` — useful framing, insufficient alone |
