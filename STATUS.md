@@ -77,6 +77,18 @@ Last reviewed: 2026-11-23
   before/after weight delta with the signal's source (user correction or
   judge verdict). This is an audit chain, not proof that a learned pattern
   improved a decision.
+- **Pattern mutation can be governed.** An environment may opt in so weight
+  changes become hash-bound proposals accepted or rejected by a named human
+  actor. Proposals are append-only, and acceptance uses the same mutation
+  engine as the default path. Structural maturity and empirical validation
+  remain separate. The Learning workspace shows pending proposals and each
+  pattern's validation status.
+- **Counterfactual mechanism, not a causal result.** A decision's recorded
+  pattern retrieval can be reconstructed with one pattern removed; the report
+  shows whether guidance candidates change and whether the pattern's weight
+  has drifted since decision time. It cannot show the human's answer would
+  have changed. A study-readiness endpoint reports cohort counts and refuses
+  an effect size from an underpowered sample. No holdout study has been run.
 - **Cohort calibration is descriptive.** An environment-level summary reports
   counts and success rates for attested outcomes with their DQI bands; it
   makes no causal claim and excludes simulation and prediction-evaluation
