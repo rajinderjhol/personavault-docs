@@ -6,13 +6,21 @@ This document describes what ships today. For the theory of why the receipt is p
 
 ## The pack catalogue
 
-Thirteen packs declare a `pack.yaml` and compile successfully. They are organised by the work they govern:
+Fifteen packs declare a `pack.yaml` and compile successfully. They are organised by the work they govern:
 
 | Domain | Packs |
 |---|---|
 | Clinical | `oncology-tumor-board-governance`, `molecular-tumor-board-governance`, `infection-control-governance`, `ethics-committee-governance` |
 | Legal | `contract`, `contract-ch`, `contract-eu` |
 | Risk and compliance | `compliance`, `insurance`, `security`, `procurement`, `swiss-tax-advisory`, `robotics` |
+| Employment and education | `employment-governance`, `education-governance` |
+
+The last two target the Annex III high-risk categories that take effect on
+**2 December 2027** under the EU AI Act as amended by Regulation (EU)
+2026/1744 (employment, workers management, and education). They are governed
+record packs, **not** conformity assessments, certifications or legal advice.
+See the [third-party audit path](third-party-audit-path.md) for what a buyer
+can independently verify.
 
 A pack changes the entire working environment: the sidebar's decision and receipt labels, the chair's form, the AI's proposal kinds, and the weights used by the decision-quality index. Switching packs switches the vocabulary, not the underlying record.
 
@@ -52,6 +60,8 @@ The model field is always `subject_id` / `subject_type`. The pack chooses the la
 | Account / Policy | Insurance, tax advisory |
 | Supplier | Procurement |
 | Case / Incident / Event | Compliance, security, robotics |
+| Employment matter | Employment governance |
+| Student matter | Education governance |
 
 The sign guard reads the pack's `human_decision_schema` and refuses to sign unless the pack declares at least one required field and the chair has populated it. Verifier requirements are likewise pack-declared: a check can be mandatory for one pack and optional for another. This prevents a generic "signed blob" from counting as a domain decision.
 
@@ -61,6 +71,37 @@ The sign guard reads the pack's `human_decision_schema` and refuses to sign unle
 - **Save endpoint** `POST /compiler/save/{pack_id}` validates the merged manifest — pack plus extraction and policies — before an atomic write.
 - **CLI** `scripts/compile_packs.py` for pipeline use.
 - **Pack signing**: when `PACK_SIGNING_KEY` is configured, compilation writes a `<pack>_SIGNATURE` sidecar containing an Ed25519 signature over `pack_hash` with a stable signer key id. Verify offline with `python3 tools/verify_pack.py packs/<id>/compiled/<id>_pack.py`. Without a key, compilation succeeds but the pack is honestly unsigned; there is no ephemeral fallback key.
+
+## What makes the employment and education packs governed
+
+Each of the two Annex III packs declares, beyond vocabulary and form:
+
+- **16 policies**, including block rules for decisions with no stated reason,
+  no named decision maker, no rubric/policy version, and automated adverse
+  actions;
+- a **tool perimeter** denying consequential write and notification actions
+  (for example `ams.reject_candidate`, `sis.write_grade`, and email/SMS sends);
+- **evidence rules** requiring an excerpt for every recorded entity;
+- an **appeal route and deadline** field in the chair's decision schema;
+- an explicit **legal consent basis** and four escalation rules.
+
+These are pack declarations enforced by the substrate's sign gate and HTTP
+tool perimeter. They are what separates a governed pack from a scaffold that
+merely compiles. A minimal manifest with identity, keywords and persona
+validates in milliseconds; it would have none of the above.
+
+Both packs declare `contract_version: 2`, which makes the compiler hold them
+to a **pack contract** in addition to schema validation: every allowed tool
+must have a real implementation, declared governance fields must be ones the
+runtime actually reads, block policies must carry a block action, and DQI
+weights must sum to 1. Older packs are reported as warnings rather than build
+failures. Run `python scripts/check_packs.py --strict` in the implementation
+repository to see the catalogue's declaration status — several legacy packs
+still declare tools that have no handler.
+
+Both packs compiled **unsigned** in development because no `PACK_SIGNING_KEY`
+was configured. Compilation without a key succeeds and is reported honestly;
+no ephemeral fallback key is generated.
 
 ## Marketplace — what it actually is
 
