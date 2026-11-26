@@ -35,6 +35,8 @@ This repository is the **public evidence layer** for PersonaVault: the papers, s
 - [A Verifiable Decision Layer for Clinical AI](whitepapers/verifiable-decision-layer-for-clinical-ai.md)
 - [Measuring Clinical Judgment](whitepapers/measuring-clinical-judgment.md)
 
+- [Sovereignty Claims Need Evidence](whitepapers/sovereignty-claims-need-evidence.md)
+
 ## Specification and boundaries
 
 - [CDR 1.0 specification](protocols/cdr/v1/specification.md)
