@@ -55,6 +55,36 @@ product. The common gap is the same: none of these layers is, by design, a
 
 That boundary is where a governed decision becomes a record rather than a log.
 
+The same gap is easier to see on an execution timeline. Each category sits at a
+different point; only one of them is a pre-execution admission boundary for the
+proposal itself.
+
+```mermaid
+flowchart LR
+    subgraph Before["Before the model acts"]
+        ORCH[Agent orchestration<br/>state and tool wiring]
+        IAM[API gateway / IAM<br/>caller identity]
+    end
+    subgraph Around["Around the model"]
+        GUARD[Probabilistic guardrails<br/>classify prompt and output]
+    end
+    subgraph Boundary["At the admission boundary"]
+        CP[Deterministic control plane<br/>closed registry · evidence universe<br/>mandate / RBAC · verdict kernel]
+    end
+    subgraph After["After execution"]
+        OBS[Observability and eval<br/>traces · scores · drift]
+    end
+    ORCH --> M[Model proposal]
+    IAM --> M
+    M --> GUARD --> CP
+    CP -->|admitted| REC[Signed decision record]
+    CP -->|refused| NO[No governed action]
+    REC --> OBS
+```
+
+This is a category map, not a benchmark result. It shows where each class of
+tool acts; it makes no claim about any named product.
+
 ---
 
 ### 2. Architecture: the control plane
@@ -62,6 +92,23 @@ That boundary is where a governed decision becomes a record rather than a log.
 The governing rule is one sentence:
 
 > **Models propose; the control plane admits, authorizes, signs and records.**
+
+```mermaid
+flowchart LR
+    M[Model or agent] -->|proposal: fields, evidence refs, model version| A{Admission gate}
+    A -->|not in closed registry| R[Refuse: no governed action]
+    A -->|evidence outside declared universe| R
+    A -->|mandate or RBAC denied| R
+    A -->|admitted| K[Deterministic kernel]
+    K --> V[Verdict + canonical hash]
+    V --> S[Chair signature]
+    S --> C[Signed decision record<br/>AIBOM hash + connectivity mode]
+    C --> O[Offline verifier]
+```
+
+The refusal paths are the point: an unadmitted proposal does not become a
+governed action or a signed record. The kernel establishes contract conformance,
+not truth.
 
 It has five parts.
 
