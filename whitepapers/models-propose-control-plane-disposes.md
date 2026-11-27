@@ -122,11 +122,17 @@ audit opinion.
 | The layer proves | The layer does not prove |
 |---|---|
 | Exact bytes were signed by the enrolled key | That the decision was clinically or financially correct |
-| Admitted fields passed the deterministic kernel | That the underlying evidence was true or complete |
+| Admitted fields passed the deterministic kernel | That the underlying evidence was true or externally complete |
 | A model composition and pack version were recorded | That the model behaves identically after a swap |
 | A connectivity mode was declared at signing time | That no data left the host |
 | A contestation or override was recorded | That the challenge was correct or the outcome better |
 | Verifiers recompute hashes and signature offline | That an external auditor accredited the system |
+
+"Externally complete" is deliberate. A signed completeness attestation covers
+the **declared** evidence universe: the document ids the record says it
+expected. The offline verifier can check fail-closed missing references inside
+that universe. It cannot know whether a clinician forgot to upload a scan, or
+whether a real-world source existed outside the declaration.
 
 This boundary is not a disclaimer added at the end. It is the design
 constraint. A governance layer that claims more than its artifacts prove is a
@@ -184,10 +190,10 @@ not make an organisation compliant. It is the part we build.
 
 ---
 
-**References (internal):** `docs/CORE_INVARIANT.md`, `docs/CLAIM_MATRIX.md`,
-`docs/CONTROL_EFFECTIVENESS.md`, `docs/REGULATORY_POSITION_IG_EHEALTH.md`,
-`docs/IBM_DIGITAL_SOVEREIGNTY_INDEX.md`,
-`docs/AI_SOVEREIGNTY_IN_POLICY_DISCOURSE.md`, `docs/EXTERNAL_AUDIT_SCOPE.md`.
+**Supporting technical artifacts available during diligence:** Core Invariant
+Specification, Claim Matrix, Control Effectiveness Brief, Regulatory Position
+(IG eHealth), IBM Digital Sovereignty Index mapping, AI Sovereignty in Policy
+Discourse mapping, and External Audit Scope.
 
 **No certification, external assurance, clinical validation or competitive
 superiority is claimed by this document.**
