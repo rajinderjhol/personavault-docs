@@ -40,6 +40,36 @@ compliance. Publishing that boundary is part of the design.
 
 ### 1. The gap between capability and governability
 
+#### 1.1 The problem: the liability deadlock
+
+Regulated institutions face a structural deadlock when moving language models
+from experimentation into production. Models are capable enough to draft clinical
+plans, analyse contracts and prepare financial commitments — yet organisations
+cannot commit their outputs to systems of record without accepting operational
+and legal exposure that is difficult to evidence or insure.
+
+The bottleneck is rarely model intelligence. It is evidentiary accountability:
+
+- For the accountable decision-maker — a tumour board chair, a managing partner,
+  a credit officer — signing off on a probabilistic output without knowing
+  whether every cited fact came from admitted case records creates personal and
+  professional exposure.
+- For risk, legal and security leaders, allowing an agent to act — or letting a
+  human rubber-stamp an AI draft — can fail demonstrable human-oversight
+  expectations.
+- For auditors and counterparties, vendor-hosted application logs are not
+  independently verifiable proof. Years after a decision, an institution must
+  be able to show which evidence was admitted at the time, which rules governed
+  the act and who authorised it — without relying on a third-party vendor portal.
+
+Existing AI tooling does not resolve the deadlock because it treats governance
+as filtering or logging rather than pre-execution admission.
+
+The deadlock is not a model problem. It is an evidentiary one — and that is
+where the control plane sits.
+
+#### 1.2 Where current tooling sits
+
 Four categories dominate the current market conversation.
 
 | Category | What it does | Category limitation |
