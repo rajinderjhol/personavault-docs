@@ -163,9 +163,11 @@ extractor validation **failed**; we did not relax its criteria. Model-swap
 invariance remains unproven, and a later swap result passed only at the
 boundary with zero margin in-sample. The controlled reinforcement evaluation is
 preregistered but **unrun** because no independent outcome data exists. A
-restore drill was attempted and **failed** because orphaned foreign-key rows in
-the source database blocked restoration. No external audit opinion,
-accreditation or ethics approval exists.
+restore drills were attempted twice and **failed** because orphaned
+foreign-key rows in the source database blocked restoration; after those
+orphans were removed, a third drill restored 119 tables to a scratch database
+and was recorded. That is one successful drill, not a cadence. No external
+audit opinion, accreditation or ethics approval exists.
 
 These are not footnotes. They are the reason the remaining claim boundary is
 credible. A governance layer that reports only successes is a marketing layer.
