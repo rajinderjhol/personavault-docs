@@ -1,6 +1,8 @@
 # Implementation Status — PersonaVault
 
-Last reviewed: 2026-11-23
+Last reviewed: 2026-11-27
+
+> **DIU pack papers:** [Robotics Intelligence](diu-packs/robotics/paper.md) and [Contract Intelligence — Swiss Law](diu-packs/contract-ch/paper.md) are evidence-led pack papers. Both describe strict-v2, signed packs and their proof boundaries; neither claims hardware control, legal advice, certification, or admissibility.
 
 > This page records what the PersonaVault implementation actually does today.
 > It is a separate system from VeriLinkOS: there is no defined interoperation,

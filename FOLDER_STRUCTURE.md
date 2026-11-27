@@ -60,6 +60,8 @@ This repository follows the same documentation taxonomy as `verilinkos-docs`. Th
 │   ├── passing.cdr.json
 │   └── <case-letter>-<description>.json
 │
+├── diu-packs/                    evidence-led papers, one per released DIU pack
+│   └── robotics/
 ├── challenge-kit/                frozen adversarial challenge (kept at root)
 │   ├── README.md                 threat model, expected results, limits
 │   ├── FINDINGS.md               confirmed findings log
