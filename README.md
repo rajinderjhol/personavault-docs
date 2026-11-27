@@ -14,7 +14,7 @@ This repository is the **public evidence layer** for PersonaVault: the papers, s
 
 | If you want to… | Read |
 |---|---|
-| Understand the product and its domains | [Packs and Domain Intelligence Units](enterprise/packs-and-dius.md) |
+| Understand the product and its domains | [Packs and Domain Intelligence Units](enterprise/packs-and-dius.md) · [DIU pack papers](diu-packs/README.md) |
 | Check regulatory alignment | [Conformance self-assessment](enterprise/conformance.md) |
 | Answer a sovereign / hospital procurement review | [Sovereign decision evidence pack](enterprise/sovereign-decision-evidence.md) |
 | Give an auditor something to test | [Third-party audit path](enterprise/third-party-audit-path.md) |
@@ -36,6 +36,8 @@ This repository is the **public evidence layer** for PersonaVault: the papers, s
 - [Measuring Clinical Judgment](whitepapers/measuring-clinical-judgment.md)
 
 - [Sovereignty Claims Need Evidence](whitepapers/sovereignty-claims-need-evidence.md)
+
+- [Models Propose, the Control Plane Disposes](whitepapers/models-propose-control-plane-disposes.md)
 
 ## Specification and boundaries
 
