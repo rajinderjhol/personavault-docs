@@ -247,7 +247,20 @@ proof system.
 The phrase "cryptographically signed decision records" is deliberate. We sign
 records, not arbitrary actions or clinical conclusions.
 
-Useful buyer questions:
+### Diligence checklist
+
+Two questions should be asked of any sovereignty claim, including ours:
+
+1. **Can you retrieve the records needed to investigate a failure?**
+2. **Can you move essential work elsewhere without stopping operations?**
+
+A signed decision record and an offline verifier answer the first question at
+the record level. The second is answered here only for the **record**: it is
+portable and does not depend on a vendor portal. It is not a claim that an AI
+workload or a model can be moved instantly — that remains an architecture and
+contract question for the buyer.
+
+Useful follow-up questions:
 
 1. Which model proposal was admitted for this decision, and under which evidence hashes?
 2. Which mandate authorized the act, and who signed the record?
